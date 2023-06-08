@@ -6,7 +6,7 @@ import org.drinkless.tdlib.TdApi;
 import java.io.IOError;
 import java.io.IOException;
 
-public class MainApp extends authorize {
+public class MainApp extends Base {
     public static void main(String[] args) throws InterruptedException {
         // set log message handler to handle only fatal errors (0) and plain log messages (-1)
         Client.setLogMessageHandler(0, new services.Handler.LogMessageHandler());

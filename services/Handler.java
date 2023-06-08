@@ -4,13 +4,13 @@ import com.google.gson.Gson;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-public class Handler extends authorize {
+public class Handler extends Base {
 
     public static class DefaultHandler implements Client.ResultHandler {
         @Override
         public void onResult(TdApi.Object object) {
             jsonString = new Gson().toJson(object);
-            print(jsonString);
+            Print.print(jsonString);
         }
     }
     public static class UpdateHandler implements Client.ResultHandler {
@@ -18,7 +18,7 @@ public class Handler extends authorize {
         public void onResult(TdApi.Object object) {
             switch (object.getConstructor()) {
                 case TdApi.UpdateAuthorizationState.CONSTRUCTOR:
-                    onAuthorizationStateUpdated(((TdApi.UpdateAuthorizationState) object).authorizationState);
+                    authorize.onAuthorizationStateUpdated(((TdApi.UpdateAuthorizationState) object).authorizationState);
                     break;
 
                 case TdApi.UpdateUser.CONSTRUCTOR:
@@ -54,7 +54,7 @@ public class Handler extends authorize {
 
                         TdApi.ChatPosition[] positions = chat.positions;
                         chat.positions = new TdApi.ChatPosition[0];
-                        setChatPositions(chat, positions);
+                        SetChatPosition.setChatPositions(chat, positions);
                     }
                     break;
                 }
@@ -79,7 +79,7 @@ public class Handler extends authorize {
                     TdApi.Chat chat = chats.get(updateChat.chatId);
                     synchronized (chat) {
                         chat.lastMessage = updateChat.lastMessage;
-                        setChatPositions(chat, updateChat.positions);
+                        SetChatPosition.setChatPositions(chat, updateChat.positions);
                     }
                     break;
                 }
@@ -109,7 +109,7 @@ public class Handler extends authorize {
                         }
                         assert pos == new_positions.length;
 
-                        setChatPositions(chat, new_positions);
+                        SetChatPosition.setChatPositions(chat, new_positions);
                     }
                     break;
                 }
@@ -159,7 +159,7 @@ public class Handler extends authorize {
                     TdApi.Chat chat = chats.get(updateChat.chatId);
                     synchronized (chat) {
                         chat.draftMessage = updateChat.draftMessage;
-                        setChatPositions(chat, updateChat.positions);
+                        SetChatPosition.setChatPositions(chat, updateChat.positions);
                     }
                     break;
                 }
@@ -237,7 +237,7 @@ public class Handler extends authorize {
             switch (object.getConstructor()) {
                 case TdApi.Error.CONSTRUCTOR:
                     System.err.println("Receive an error:" + newLine + object);
-                    onAuthorizationStateUpdated(null); // repeat last action
+                    authorize.onAuthorizationStateUpdated(null); // repeat last action
                     break;
                 case TdApi.Ok.CONSTRUCTOR:
                     // result is already received through UpdateAuthorizationState, nothing to do
@@ -251,7 +251,7 @@ public class Handler extends authorize {
         @Override
         public void onLogMessage(int verbosityLevel, String message) {
             if (verbosityLevel == 0) {
-                onFatalError(message);
+                authorize.onFatalError(message);
                 return;
             }
             System.err.println(message);
