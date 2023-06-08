@@ -33,7 +33,7 @@ public class MainApp extends authorize {
             }
 
             while (haveAuthorization) {
-                getCommand();
+                GetCommand.getCommand();
             }
         }
         while (!canQuit) {
