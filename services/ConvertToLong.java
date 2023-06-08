@@ -1,6 +1,6 @@
 package services;
 
-public class ConvertToLong extends authorize{
+public class ConvertToLong extends Base{
     public static long toLong(String arg) {
         long chatId = 0;
         try {

@@ -6,78 +6,14 @@ import org.drinkless.tdlib.TdApi;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.NavigableSet;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 
-public class authorize {
-    protected static Client client = null;
+public class authorize extends Base{
 
-    protected static TdApi.AuthorizationState authorizationState = null;
-    protected static volatile boolean haveAuthorization = false;
-    protected static volatile boolean needQuit = false;
-    protected static volatile boolean canQuit = false;
 
-    protected static final Client.ResultHandler defaultHandler = new services.Handler.DefaultHandler();
 
-    protected static final Lock authorizationLock = new ReentrantLock();
-    protected static final Condition gotAuthorization = authorizationLock.newCondition();
-
-    protected static final ConcurrentMap<Long, TdApi.User> users = new ConcurrentHashMap<Long, TdApi.User>();
-    protected static final ConcurrentMap<Long, TdApi.BasicGroup> basicGroups = new ConcurrentHashMap<Long, TdApi.BasicGroup>();
-    protected static final ConcurrentMap<Long, TdApi.Supergroup> supergroups = new ConcurrentHashMap<Long, TdApi.Supergroup>();
-    protected static final ConcurrentMap<Integer, TdApi.SecretChat> secretChats = new ConcurrentHashMap<Integer, TdApi.SecretChat>();
-
-    protected static final ConcurrentMap<Long, TdApi.Chat> chats = new ConcurrentHashMap<Long, TdApi.Chat>();
-    protected static final NavigableSet<OrderedChat> mainChatList = new TreeSet<OrderedChat>();
-    protected static boolean haveFullMainChatList = false;
-
-    protected static final ConcurrentMap<Long, TdApi.UserFullInfo> usersFullInfo = new ConcurrentHashMap<Long, TdApi.UserFullInfo>();
-    protected static final ConcurrentMap<Long, TdApi.BasicGroupFullInfo> basicGroupsFullInfo = new ConcurrentHashMap<Long, TdApi.BasicGroupFullInfo>();
-    protected static final ConcurrentMap<Long, TdApi.SupergroupFullInfo> supergroupsFullInfo = new ConcurrentHashMap<Long, TdApi.SupergroupFullInfo>();
-
-    protected static final String newLine = System.getProperty("line.separator");
-    protected static final String commandsLine = "Enter command (gcs - GetChats, gc <chatId> - GetChat, me - GetMe, sm <chatId> <message> - SendMessage, lo - LogOut, q - Quit): ";
-    protected static volatile String currentPrompt = null;
-    protected static String jsonString;
-
-    public static void print(String str) {
-        if (currentPrompt != null) {
-            System.out.println("");
-        }
-        System.out.println(str);
-        if (currentPrompt != null) {
-            System.out.print(currentPrompt);
-        }
-    }
-
-    public static void setChatPositions(TdApi.Chat chat, TdApi.ChatPosition[] positions) {
-        synchronized (mainChatList) {
-            synchronized (chat) {
-                for (TdApi.ChatPosition position : chat.positions) {
-                    if (position.list.getConstructor() == TdApi.ChatListMain.CONSTRUCTOR) {
-                        boolean isRemoved = mainChatList.remove(new OrderedChat(chat.id, position));
-                        assert isRemoved;
-                    }
-                }
-
-                chat.positions = positions;
-
-                for (TdApi.ChatPosition position : chat.positions) {
-                    if (position.list.getConstructor() == TdApi.ChatListMain.CONSTRUCTOR) {
-                        boolean isAdded = mainChatList.add(new OrderedChat(chat.id, position));
-                        assert isAdded;
-                    }
-                }
-            }
-        }
-    }
 
     public static void onAuthorizationStateUpdated(TdApi.AuthorizationState authorizationState) {
         if (authorizationState != null) {
@@ -96,11 +32,11 @@ public class authorize {
                 request.applicationVersion = "1.0";
                 request.enableStorageOptimizer = true;
 
-                client.send(request, new services.Handler.AuthorizationRequestHandler());
+                client.send(request, new Handler.AuthorizationRequestHandler());
                 break;
             case TdApi.AuthorizationStateWaitPhoneNumber.CONSTRUCTOR: {
-                String phoneNumber = promptString("Please enter phone number: ");
-                client.send(new TdApi.SetAuthenticationPhoneNumber(phoneNumber, null), new services.Handler.AuthorizationRequestHandler());
+                String phoneNumber = PromptString.promptString("Please enter phone number: ");
+                client.send(new TdApi.SetAuthenticationPhoneNumber(phoneNumber, null), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateWaitOtherDeviceConfirmation.CONSTRUCTOR: {
@@ -109,29 +45,29 @@ public class authorize {
                 break;
             }
             case TdApi.AuthorizationStateWaitEmailAddress.CONSTRUCTOR: {
-                String emailAddress = promptString("Please enter email address: ");
-                client.send(new TdApi.SetAuthenticationEmailAddress(emailAddress), new services.Handler.AuthorizationRequestHandler());
+                String emailAddress = PromptString.promptString("Please enter email address: ");
+                client.send(new TdApi.SetAuthenticationEmailAddress(emailAddress), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateWaitEmailCode.CONSTRUCTOR: {
-                String code = promptString("Please enter email authentication code: ");
-                client.send(new TdApi.CheckAuthenticationEmailCode(new TdApi.EmailAddressAuthenticationCode(code)), new services.Handler.AuthorizationRequestHandler());
+                String code = PromptString.promptString("Please enter email authentication code: ");
+                client.send(new TdApi.CheckAuthenticationEmailCode(new TdApi.EmailAddressAuthenticationCode(code)), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateWaitCode.CONSTRUCTOR: {
-                String code = promptString("Please enter authentication code: ");
-                client.send(new TdApi.CheckAuthenticationCode(code), new services.Handler.AuthorizationRequestHandler());
+                String code = PromptString.promptString("Please enter authentication code: ");
+                client.send(new TdApi.CheckAuthenticationCode(code), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateWaitRegistration.CONSTRUCTOR: {
-                String firstName = promptString("Please enter your first name: ");
-                String lastName = promptString("Please enter your last name: ");
-                client.send(new TdApi.RegisterUser(firstName, lastName), new services.Handler.AuthorizationRequestHandler());
+                String firstName = PromptString.promptString("Please enter your first name: ");
+                String lastName = PromptString.promptString("Please enter your last name: ");
+                client.send(new TdApi.RegisterUser(firstName, lastName), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateWaitPassword.CONSTRUCTOR: {
-                String password = promptString("Please enter password: ");
-                client.send(new TdApi.CheckAuthenticationPassword(password), new services.Handler.AuthorizationRequestHandler());
+                String password = PromptString.promptString("Please enter password: ");
+                client.send(new TdApi.CheckAuthenticationPassword(password), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateReady.CONSTRUCTOR:
@@ -145,16 +81,16 @@ public class authorize {
                 break;
             case TdApi.AuthorizationStateLoggingOut.CONSTRUCTOR:
                 haveAuthorization = false;
-                print("Logging out");
+                Print.print("Logging out");
                 break;
             case TdApi.AuthorizationStateClosing.CONSTRUCTOR:
                 haveAuthorization = false;
-                print("Closing");
+                Print.print("Closing");
                 break;
             case TdApi.AuthorizationStateClosed.CONSTRUCTOR:
-                print("Closed");
+                Print.print("Closed");
                 if (!needQuit) {
-                    client = Client.create(new services.Handler.UpdateHandler(), null, null); // recreate client after previous has closed
+                    client = Client.create(new Handler.UpdateHandler(), null, null); // recreate client after previous has closed
                 } else {
                     canQuit = true;
                 }
@@ -164,102 +100,19 @@ public class authorize {
         }
     }
 
-    public static int toInt(String arg) {
-        int result = 0;
-        try {
-            result = Integer.parseInt(arg);
-        } catch (NumberFormatException ignored) {
-        }
-        return result;
-    }
 
 
 
-    protected static String promptString(String prompt) {
-        System.out.print(prompt);
-        currentPrompt = prompt;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String str = "";
-        try {
-            str = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        currentPrompt = null;
-        return str;
-    }
 
 
 
-    protected static void getMainChatList(final int limit) {
-        synchronized (mainChatList) {
-            if (!haveFullMainChatList && limit > mainChatList.size()) {
-                // send LoadChats request if there are some unknown chats and have not enough known chats
-                client.send(new TdApi.LoadChats(new TdApi.ChatListMain(), limit - mainChatList.size()), new Client.ResultHandler() {
-                    @Override
-                    public void onResult(TdApi.Object object) {
-                        switch (object.getConstructor()) {
-                            case TdApi.Error.CONSTRUCTOR:
-                                if (((TdApi.Error) object).code == 404) {
-                                    synchronized (mainChatList) {
-                                        haveFullMainChatList = true;
-                                    }
-                                } else {
-                                    System.err.println("Receive an error for LoadChats:" + newLine + object);
-                                }
-                                break;
-                            case TdApi.Ok.CONSTRUCTOR:
-                                // chats had already been received through updates, let's retry request
-                                getMainChatList(limit);
-                                break;
-                            default:
-                                System.err.println("Receive wrong response from TDLib:" + newLine + object);
-                        }
-                    }
-                });
-                return;
-            }
 
-            java.util.Iterator<OrderedChat> iter = mainChatList.iterator();
-            System.out.println();
-            System.out.println("First " + limit + " chat(s) out of " + mainChatList.size() + " known chat(s):");
-            for (int i = 0; i < limit && i < mainChatList.size(); i++) {
-                long chatId = iter.next().chatId;
-                TdApi.Chat chat = chats.get(chatId);
-                synchronized (chat) {
-                    System.out.println(chatId + ": " + chat.title);
-                }
-            }
-            print("");
-        }
-    }
 
-    private static class OrderedChat implements Comparable<OrderedChat> {
-        final long chatId;
-        final TdApi.ChatPosition position;
 
-        OrderedChat(long chatId, TdApi.ChatPosition position) {
-            this.chatId = chatId;
-            this.position = position;
-        }
 
-        @Override
-        public int compareTo(OrderedChat o) {
-            if (this.position.order != o.position.order) {
-                return o.position.order < this.position.order ? -1 : 1;
-            }
-            if (this.chatId != o.chatId) {
-                return o.chatId < this.chatId ? -1 : 1;
-            }
-            return 0;
-        }
 
-        @Override
-        public boolean equals(Object obj) {
-            OrderedChat o = (OrderedChat) obj;
-            return this.chatId == o.chatId && this.position.order == o.position.order;
-        }
-    }
+
+
 
     protected static void onFatalError(String errorMessage) {
         final class ThrowError implements Runnable {

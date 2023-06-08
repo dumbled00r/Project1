@@ -3,7 +3,7 @@ package services;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-public class GetMember extends authorize {
+public class GetMember extends Base {
     public static void getMember(String[] args)
     {
         client.send(new TdApi.GetChat(ConvertToLong.toLong(args[0])), new Client.ResultHandler() {
