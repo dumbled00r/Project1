@@ -20,6 +20,8 @@ public class GetCommand extends Base {
                     System.out.println("pm <UserId> - Send Private Message To User ");
                     System.out.println("lo - Logout");
                     System.out.println("q - Quit");
+
+                    break;
                 }
                 case "gcs": {
                     int limit = 50;
