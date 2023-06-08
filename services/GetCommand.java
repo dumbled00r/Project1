@@ -18,7 +18,7 @@ public class GetCommand extends authorize {
                     break;
                 }
                 case "gc": {
-                    client.send(new TdApi.GetChat(getChatId(commands[1])), defaultHandler);
+                    client.send(new TdApi.GetChat(ConvertToLong.toLong(commands[1])), defaultHandler);
                     break;
                 }
                 case "me": {
@@ -27,7 +27,7 @@ public class GetCommand extends authorize {
                 }
                 case "sm": {
                     String[] args = commands[1].split(" ", 2);
-                    SendMessage.sendMessage(getChatId(args[0]), args[1]);
+                    SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
                     break;
                 }
                 case "lo":
@@ -40,39 +40,28 @@ public class GetCommand extends authorize {
                     client.send(new TdApi.Close(), defaultHandler);
                     break;
                 case "u":
-                    client.send(new TdApi.GetUser((int)getChatId(commands[1])), defaultHandler);
+                    client.send(new TdApi.GetUser((int) ConvertToLong.toLong(commands[1])), defaultHandler);
                     break;
                 case "add": {
                     String[] args = commands[1].split(" ", 3);
-                    client.send(new TdApi.AddChatMember(getChatId(args[0]), (int) getChatId(args[1]), 13), defaultHandler);
+                    client.send(new TdApi.AddChatMember(ConvertToLong.toLong(args[0]), (int) ConvertToLong.toLong(args[1]), 13), defaultHandler);
                     break;
                 }
                 case "getmem": {
                     String[] args = commands[1].split(" ", 2);
+                    GetMember.getMember(args);
 
-                    client.send(new TdApi.GetChat(getChatId(args[0])), new Client.ResultHandler() {
-                        @Override
-                        public void onResult(TdApi.Object object) {
-                            if (object instanceof TdApi.Chat){
-                                TdApi.Chat chat = (TdApi.Chat) object;
-                                if (chat.type instanceof TdApi.ChatTypeSupergroup){
-                                    long supergroupId = ((TdApi.ChatTypeSupergroup) chat.type).supergroupId;
-                                    client.send(new TdApi.GetSupergroupMembers(supergroupId, null, 0, 10), defaultHandler);
-                                } else { System.out.println("This chat is not a super group");}
-                            } else {System.out.println("Handle error");}
-                        }
-                    }, null);
                     break;
                 }
                 case "link": {
                     String[] args = commands[1].split(" ",  2);
-                    client.send(new TdApi.GetChatInviteLinks(getChatId(args[0]),getChatId(args[1]), false, 0, null, 10 ), defaultHandler);
+                    client.send(new TdApi.GetChatInviteLinks(ConvertToLong.toLong(args[0]), ConvertToLong.toLong(args[1]), false, 0, null, 10 ), defaultHandler);
                     break;
                 }
                 case "pm":{
                     String[] args = commands[1].split(" ", 2);
-                    client.send(new TdApi.CreatePrivateChat(getChatId(args[0]), true), defaultHandler);
-                    SendMessage.sendMessage(getChatId(args[0]), args[1]);
+                    client.send(new TdApi.CreatePrivateChat(ConvertToLong.toLong(args[0]), true), defaultHandler);
+                    SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
                     break;
                 }
                 default: {

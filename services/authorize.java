@@ -173,14 +173,7 @@ public class authorize {
         return result;
     }
 
-    public static long getChatId(String arg) {
-        long chatId = 0;
-        try {
-            chatId = Long.parseLong(arg);
-        } catch (NumberFormatException ignored) {
-        }
-        return chatId;
-    }
+
 
     protected static String promptString(String prompt) {
         System.out.print(prompt);
