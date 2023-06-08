@@ -3,20 +3,33 @@ package services;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-public class GetCommand extends authorize {
+public class GetCommand extends Base {
     protected static void getCommand() {
-        String command = promptString(commandsLine);
+        String command = PromptString.promptString(commandsLine);
         String[] commands = command.split(" ", 2);
         try {
             switch (commands[0]) {
+                case "help":{
+                    System.out.println("gcs - Get Chat Lists ");
+                    System.out.println("gc <ChatId> - Get Chat Information");
+                    System.out.println("me - Get My Information");
+                    System.out.println("sm <ChatId> <Message> - Send Message To An Existing Chat");
+                    System.out.println("gu <UserId> - Get User Information");
+                    System.out.println("add <ChatId> <UserId> - Add User To An Existing Chat");
+                    System.out.println("link <ChatId> <AdminId> - Get Invite Link To An Existing Chat");
+                    System.out.println("pm <UserId> - Send Private Message To User ");
+                    System.out.println("lo - Logout");
+                    System.out.println("q - Quit");
+                }
                 case "gcs": {
                     int limit = 50;
                     if (commands.length > 1) {
-                        limit = toInt(commands[1]);
+                        limit = ToInt.toInt(commands[1]);
                     }
-                    getMainChatList(limit);
+                    GetMainChatList.getMainChatList(limit);
                     break;
                 }
+
                 case "gc": {
                     client.send(new TdApi.GetChat(ConvertToLong.toLong(commands[1])), defaultHandler);
                     break;
@@ -30,27 +43,13 @@ public class GetCommand extends authorize {
                     SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
                     break;
                 }
-                case "lo":
-                    haveAuthorization = false;
-                    client.send(new TdApi.LogOut(), defaultHandler);
-                    break;
-                case "q":
-                    needQuit = true;
-                    haveAuthorization = false;
-                    client.send(new TdApi.Close(), defaultHandler);
-                    break;
-                case "u":
+                case "gu":
                     client.send(new TdApi.GetUser((int) ConvertToLong.toLong(commands[1])), defaultHandler);
+
                     break;
                 case "add": {
                     String[] args = commands[1].split(" ", 3);
                     client.send(new TdApi.AddChatMember(ConvertToLong.toLong(args[0]), (int) ConvertToLong.toLong(args[1]), 13), defaultHandler);
-                    break;
-                }
-                case "getmem": {
-                    String[] args = commands[1].split(" ", 2);
-                    GetMember.getMember(args);
-
                     break;
                 }
                 case "link": {
@@ -64,12 +63,21 @@ public class GetCommand extends authorize {
                     SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
                     break;
                 }
+                case "lo":
+                    haveAuthorization = false;
+                    client.send(new TdApi.LogOut(), defaultHandler);
+                    break;
+                case "q":
+                    needQuit = true;
+                    haveAuthorization = false;
+                    client.send(new TdApi.Close(), defaultHandler);
+                    break;
                 default: {
                     System.err.println("Unsupported command: " + command);
                 }
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            print("Not enough arguments");
+            Print.print("Not enough arguments");
         }
     }
 }
