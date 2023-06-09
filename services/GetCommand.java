@@ -20,6 +20,7 @@ public class GetCommand extends Base {
                     System.out.println("pm <UserId> - Send Private Message To User ");
                     System.out.println("lo - Logout");
                     System.out.println("q - Quit");
+                    break;
                 }
                 case "gcs": {
                     int limit = 50;
@@ -29,7 +30,6 @@ public class GetCommand extends Base {
                     GetMainChatList.getMainChatList(limit);
                     break;
                 }
-
                 case "gc": {
                     client.send(new TdApi.GetChat(ConvertToLong.toLong(commands[1])), defaultHandler);
                     break;
@@ -43,10 +43,11 @@ public class GetCommand extends Base {
                     SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
                     break;
                 }
-                case "gu":
-                    client.send(new TdApi.GetUser((int) ConvertToLong.toLong(commands[1])), defaultHandler);
-
+                case "gu": {
+                    String[] args = commands[1].split(" ", 1);
+                    GetUser.getUser(args);
                     break;
+                }
                 case "add": {
                     String[] args = commands[1].split(" ", 3);
                     client.send(new TdApi.AddChatMember(ConvertToLong.toLong(args[0]), (int) ConvertToLong.toLong(args[1]), 13), defaultHandler);
@@ -61,6 +62,11 @@ public class GetCommand extends Base {
                     String[] args = commands[1].split(" ", 2);
                     client.send(new TdApi.CreatePrivateChat(ConvertToLong.toLong(args[0]), true), defaultHandler);
                     SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
+                    break;
+                }
+                case "getmem":{
+                    String[] args = commands[1].split(" ", 2);
+                    GetMember.getMember(args);
                     break;
                 }
                 case "lo":
