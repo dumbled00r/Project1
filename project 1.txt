@@ -1,0 +1,8 @@
+- Class, use-case diagram
+- Git update, readme (Library used, argument used, action done)
+- Import,export csv
+- Airtable (Automatic or Manual)
+- More actions such as message delete time
+- PTTK
+- SonarQube (fixing bugs, if cant be fixed -> note, update time after time)
+
