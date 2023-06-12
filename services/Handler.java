@@ -1,6 +1,6 @@
 package services;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
@@ -9,8 +9,18 @@ public class Handler extends Base {
     public static class DefaultHandler implements Client.ResultHandler {
         @Override
         public void onResult(TdApi.Object object) {
-            jsonString = new Gson().toJson(object);
-            Print.print(jsonString);
+            // create Gson obj
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            // Convert result obj to JSON string
+            String jsonString = gson.toJson(object);
+
+            // Serialize the JSON string into a JsonElement obj
+            JsonParser jsonParser = new JsonParser();
+            JsonElement jsonElement = jsonParser.parse(jsonString);
+
+            // Print out
+            Print.print(gson.toJson(jsonElement).toString());
         }
     }
     public static class UpdateHandler implements Client.ResultHandler {
