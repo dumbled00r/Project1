@@ -1,5 +1,6 @@
 package services;
 
+import com.google.gson.stream.JsonToken;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
@@ -50,8 +51,9 @@ public class GetCommand extends Base {
                     break;
                 }
                 case "add": {
-                    String[] args = commands[1].split(" ", 3);
-                    client.send(new TdApi.AddChatMember(ConvertToLong.toLong(args[0]), (int) ConvertToLong.toLong(args[1]), 13), defaultHandler);
+                    String sChatId = commands[1];
+                    String sUserId = commands[2];
+                    AddMember.addSingleUser(ConvertToLong.toLong(sChatId), ConvertToLong.toLong(sUserId));
                     break;
                 }
                 case "pm":{
