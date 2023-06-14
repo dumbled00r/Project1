@@ -3,23 +3,19 @@ package services;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicLong;
 
 
-public class authorize extends Base{
+public class Authorize extends Base{
 
 
 
 
     public static void onAuthorizationStateUpdated(TdApi.AuthorizationState authorizationState) {
         if (authorizationState != null) {
-            authorize.authorizationState = authorizationState;
+            Authorize.authorizationState = authorizationState;
         }
-        switch (authorize.authorizationState.getConstructor()) {
+        switch (Authorize.authorizationState.getConstructor()) {
             case TdApi.AuthorizationStateWaitTdlibParameters.CONSTRUCTOR:
                 TdApi.SetTdlibParameters request = new TdApi.SetTdlibParameters();
                 request.databaseDirectory = "tdlib";
@@ -40,7 +36,7 @@ public class authorize extends Base{
                 break;
             }
             case TdApi.AuthorizationStateWaitOtherDeviceConfirmation.CONSTRUCTOR: {
-                String link = ((TdApi.AuthorizationStateWaitOtherDeviceConfirmation) authorize.authorizationState).link;
+                String link = ((TdApi.AuthorizationStateWaitOtherDeviceConfirmation) Authorize.authorizationState).link;
                 System.out.println("Please confirm this login link on another device: " + link);
                 break;
             }
@@ -96,7 +92,7 @@ public class authorize extends Base{
                 }
                 break;
             default:
-                System.err.println("Unsupported authorization state:" + newLine + authorize.authorizationState);
+                System.err.println("Unsupported authorization state:" + newLine + Authorize.authorizationState);
         }
     }
     protected static void onFatalError(String errorMessage) {
