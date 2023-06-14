@@ -9,18 +9,9 @@ public class Handler extends Base {
     public static class DefaultHandler implements Client.ResultHandler {
         @Override
         public void onResult(TdApi.Object object) {
-            // create Gson obj
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-            // Convert result obj to JSON string
-            String jsonString = gson.toJson(object);
-
-            // Serialize the JSON string into a JsonElement obj
-            JsonParser jsonParser = new JsonParser();
-            JsonElement jsonElement = jsonParser.parse(jsonString);
-
+            JsonElement jsonElement = services.PrettifiedJson.convertToPrettifiedJson(object);
             // Print out
-            Print.print(gson.toJson(jsonElement).toString());
+            Print.print(gson.toJson(jsonElement));
         }
     }
     public static class UpdateHandler implements Client.ResultHandler {
@@ -28,7 +19,7 @@ public class Handler extends Base {
         public void onResult(TdApi.Object object) {
             switch (object.getConstructor()) {
                 case TdApi.UpdateAuthorizationState.CONSTRUCTOR:
-                    authorize.onAuthorizationStateUpdated(((TdApi.UpdateAuthorizationState) object).authorizationState);
+                    Authorize.onAuthorizationStateUpdated(((TdApi.UpdateAuthorizationState) object).authorizationState);
                     break;
 
                 case TdApi.UpdateUser.CONSTRUCTOR:
@@ -247,7 +238,7 @@ public class Handler extends Base {
             switch (object.getConstructor()) {
                 case TdApi.Error.CONSTRUCTOR:
                     System.err.println("Receive an error:" + newLine + object);
-                    authorize.onAuthorizationStateUpdated(null); // repeat last action
+                    Authorize.onAuthorizationStateUpdated(null); // repeat last action
                     break;
                 case TdApi.Ok.CONSTRUCTOR:
                     // result is already received through UpdateAuthorizationState, nothing to do
@@ -261,7 +252,7 @@ public class Handler extends Base {
         @Override
         public void onLogMessage(int verbosityLevel, String message) {
             if (verbosityLevel == 0) {
-                authorize.onFatalError(message);
+                Authorize.onFatalError(message);
                 return;
             }
             System.err.println(message);

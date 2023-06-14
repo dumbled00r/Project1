@@ -1,5 +1,7 @@
 package services;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
@@ -40,5 +42,7 @@ public class Base {
     protected static final String newLine = System.getProperty("line.separator");
     protected static final String commandsLine = "Enter command (help - List of commands): ";
     protected static volatile String currentPrompt = null;
-    protected static String jsonString;
+
+    // create Gson obj
+    protected static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 }
