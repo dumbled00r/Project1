@@ -14,8 +14,13 @@ public class GetMember extends Base {
                     if (chat.type instanceof TdApi.ChatTypeSupergroup) {
                         long supergroupId = ((TdApi.ChatTypeSupergroup) chat.type).supergroupId;
                         client.send(new TdApi.GetSupergroupMembers(supergroupId, null, 0, 10), defaultHandler);
+                    } else if (chat.type instanceof TdApi.ChatTypeBasicGroup){
+                        // Upgrade to Super group to get member
+                        client.send(new TdApi.UpgradeBasicGroupChatToSupergroupChat(chat.id), defaultHandler);
+                        long supergroupId = ((TdApi.ChatTypeSupergroup) chat.type).supergroupId;
+                        client.send(new TdApi.GetSupergroupMembers(supergroupId, null, 0, 10), defaultHandler);
                     } else {
-                        System.out.println("This chat is not a super group");
+                        System.out.println("Unexpected error");
                     }
                 } else {
                     System.out.println("Handle error");
