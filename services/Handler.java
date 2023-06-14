@@ -11,7 +11,7 @@ public class Handler extends Base {
         public void onResult(TdApi.Object object) {
             JsonElement jsonElement = services.PrettifiedJson.convertToPrettifiedJson(object);
             // Print out
-            Print.print(gson.toJson(jsonElement));
+            Print.print(gson.toJson(jsonElement).toString());
         }
     }
     public static class UpdateHandler implements Client.ResultHandler {
