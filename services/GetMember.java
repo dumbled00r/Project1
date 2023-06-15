@@ -17,8 +17,9 @@ public class GetMember extends Base {
      */
     public static void getMember(String[] args)
     {
-        List<Long> chatMemberIds = new ArrayList<>();
+        chatMemberIds.clear();
         client.send(new TdApi.GetChat(ConvertToLong.toLong(args[0])), new Client.ResultHandler() {
+
             @Override
             public void onResult(TdApi.Object object) {
                 Object lock = new Object();
@@ -27,7 +28,7 @@ public class GetMember extends Base {
 
                     if (chat.type instanceof TdApi.ChatTypeSupergroup) {
                         if (((TdApi.ChatTypeSupergroup) chat.type).isChannel) {
-                            System.out.println("\nThis chat group is a channel, cannot get members");
+                            System.out.println("\nThis chat group is a channel, please provide a chat group");
                         }
                         long supergroupId = ((TdApi.ChatTypeSupergroup) chat.type).supergroupId;
                         client.send(new TdApi.GetSupergroupFullInfo(supergroupId), new Client.ResultHandler() {
@@ -79,7 +80,6 @@ public class GetMember extends Base {
                             Long userID = ((TdApi.MessageSenderUser) member.memberId).userId;
                             if (!chatMemberIds.contains(userID)){
                                 chatMemberIds.add(userID);
-                                GetUser.getUser(Long.toString(userID));
                             }
                         }
                     }
@@ -87,6 +87,10 @@ public class GetMember extends Base {
                 if (offset < numOfMembers) {
                     int nextOffset = offset + Math.min(200, numOfMembers - offset);
                     getSupergroupMembersRecursive(nextOffset, chatMemberIds, numOfMembers, supergroupId);
+                }
+                else {
+                    System.out.println(chatMemberIds);
+                    GetUser.getMassUser(chatMemberIds);
                 }
             }
         });
