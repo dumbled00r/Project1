@@ -5,8 +5,6 @@ import org.drinkless.tdlib.TdApi;
 
 import java.util.List;
 public class GetMember extends Base {
-    private static int limit = 200;
-    private static int offset = 0;
     private static int numOfMembers;
     /**
     Get the members' userid of a group chat
@@ -19,9 +17,7 @@ public class GetMember extends Base {
             @Override
             public void onResult(TdApi.Object object) {
                 Object lock = new Object();
-                if (object instanceof TdApi.Chat) {
-                    TdApi.Chat chat = (TdApi.Chat) object;
-
+                if (object instanceof TdApi.Chat chat) {
                     if (chat.type instanceof TdApi.ChatTypeSupergroup) {
                         if (((TdApi.ChatTypeSupergroup) chat.type).isChannel) {
                             System.out.println("\nThis chat group is a channel, please provide a chat group");
@@ -30,16 +26,14 @@ public class GetMember extends Base {
                         client.send(new TdApi.GetSupergroupFullInfo(supergroupId), new Client.ResultHandler() {
                             @Override
                             public void onResult(TdApi.Object object) {
-                                if (object instanceof TdApi.SupergroupFullInfo){
-                                    TdApi.SupergroupFullInfo supergroupFullInfo = (TdApi.SupergroupFullInfo) object;
+                                if (object instanceof TdApi.SupergroupFullInfo supergroupFullInfo){
                                     numOfMembers = supergroupFullInfo.memberCount;
                                     getSupergroupMembersRecursive(0, chatMemberIds, numOfMembers, supergroupId);
                                 }
                             }
                         });
-                    } else if (chat.type instanceof TdApi.ChatTypeBasicGroup){
+                    } else if (chat.type instanceof TdApi.ChatTypeBasicGroup basicGroup){
                         // Upgrade to Super group to get member
-                        TdApi.ChatTypeBasicGroup basicGroup = (TdApi.ChatTypeBasicGroup) chat.type;
                         client.send(new TdApi.GetBasicGroupFullInfo(basicGroup.basicGroupId), new Client.ResultHandler() {
                             @Override
                             public void onResult(TdApi.Object object) {
