@@ -34,10 +34,13 @@ public class GetMainChatList extends Base{
                 });
                 return;
             }
-
+            Integer numberOfChats = limit;
             Iterator<ChatOrder.OrderedChat> iter = mainChatList.iterator();
             System.out.println();
-            System.out.println("First " + limit + " chat(s) out of " + mainChatList.size() + " known chat(s):");
+            if (limit >= mainChatList.size()){
+                numberOfChats = mainChatList.size();
+            }
+            System.out.println("First " + numberOfChats + " chat(s) out of " + mainChatList.size() + " known chat(s):");
             for (int i = 0; i < limit && i < mainChatList.size(); i++) {
                 long chatId = iter.next().chatId;
                 TdApi.Chat chat = chats.get(chatId);
