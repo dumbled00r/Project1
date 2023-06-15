@@ -1,11 +1,8 @@
 package services;
 
-import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-import java.util.Arrays;
 import java.util.List;
-
 public class GetUser extends Base {
     /**
      *
@@ -19,7 +16,12 @@ public class GetUser extends Base {
                 long id = user.id;
                 String firstName = user.firstName;
                 String lastName = user.lastName;
-                String userName = user.usernames.activeUsernames[0];
+                String userName;
+                if (user.usernames != null){
+                    userName = user.usernames.activeUsernames[0];
+                } else {
+                    userName = null;
+                }
                 System.out.println("\nUser ID: " + id);
                 System.out.println("Username: " + userName);
                 System.out.println("First Name: " + firstName);

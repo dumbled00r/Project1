@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NavigableSet;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
@@ -45,4 +47,5 @@ public class Base {
 
     // create Gson obj
     protected static Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    protected static List<Long> chatMemberIds = new ArrayList<>();
 }

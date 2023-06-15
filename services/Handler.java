@@ -5,13 +5,12 @@ import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
 public class Handler extends Base {
-
     public static class DefaultHandler implements Client.ResultHandler {
         @Override
         public void onResult(TdApi.Object object) {
             JsonElement jsonElement = services.PrettifiedJson.convertToPrettifiedJson(object);
             // Print out
-            Print.print(gson.toJson(jsonElement));
+            Print.print(gson.toJson(jsonElement).toString());
         }
     }
     public static class UpdateHandler implements Client.ResultHandler {
