@@ -4,7 +4,6 @@ import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
 import java.util.Iterator;
-
 public class GetMainChatList extends Base{
     public static void getMainChatList(final int limit) {
         synchronized (mainChatList) {

@@ -1,5 +1,4 @@
 package services;
-
 public class Print extends Base{
     public static void print(String str) {
         if (currentPrompt != null) {

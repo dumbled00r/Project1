@@ -1,6 +1,5 @@
 package services;
 
-import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
 import java.util.List;

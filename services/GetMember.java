@@ -1,13 +1,9 @@
 package services;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
 public class GetMember extends Base {
     private static int limit = 200;
     private static int offset = 0;
@@ -89,7 +85,6 @@ public class GetMember extends Base {
                     getSupergroupMembersRecursive(nextOffset, chatMemberIds, numOfMembers, supergroupId);
                 }
                 else {
-                    System.out.println(chatMemberIds);
                     GetUser.getMassUser(chatMemberIds);
                 }
             }

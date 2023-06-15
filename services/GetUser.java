@@ -1,11 +1,8 @@
 package services;
 
-import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-import java.util.Arrays;
 import java.util.List;
-
 public class GetUser extends Base {
     /**
      *

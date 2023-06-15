@@ -1,5 +1,4 @@
 package services;
-
 public class ToInt extends Base{
     public static int toInt(String arg) {
         int result = 0;
