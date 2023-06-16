@@ -1,5 +1,6 @@
 package services;
 
+import AirTableUtils.AirTable;
 import org.drinkless.tdlib.TdApi;
 
 public class GetCommand extends Base {
@@ -7,7 +8,7 @@ public class GetCommand extends Base {
         String command = PromptString.promptString(commandsLine);
         String[] commands = command.split(" ", 3);
         try {
-            switch (commands[0]) {
+            switch (commands[0].toLowerCase()) {
                 case "help":{
                     System.out.println("gcs - Get Chat Lists ");
                     System.out.println("gc <ChatId> - Get Chat Information");
@@ -17,6 +18,7 @@ public class GetCommand extends Base {
                     System.out.println("add <ChatId> <UserId> - Add User To An Existing Chat");
                     System.out.println("pm <UserId> - Send Private Message To User ");
                     System.out.println("getmem <ChatId> - Get Members Of A Chat Group");
+                    System.out.println("upload - Upload latest query to Airtable");
                     System.out.println("lo - Logout");
                     System.out.println("q - Quit");
                     break;
@@ -45,7 +47,7 @@ public class GetCommand extends Base {
                 }
                 case "gu": {
                     String[] args = commands[1].split(" ", 1);
-                    GetUser.getUser(args[0]);
+                    GetUser.getUser(args[0], 0L, false);
                     break;
                 }
                 case "add": {
@@ -63,6 +65,10 @@ public class GetCommand extends Base {
                 case "getmem":{
                     String[] args = commands[1].split(" ", 2);
                     GetMember.getMember(args);
+                    break;
+                }
+                case "upload":{
+                    AirTable.uploadUser();
                     break;
                 }
                 case "lo":
