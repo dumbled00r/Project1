@@ -25,7 +25,7 @@ public class AirTable {
             BufferedReader csvReader = new BufferedReader(new FileReader("./users.csv"));
             String row;
             while ((row = csvReader.readLine()) != null) {
-                String[] data = row.split(",");
+                String[] data = row.split(";");
 
                 JsonObject fields = new JsonObject();
                 fields.addProperty("User Id", data[0]);
