@@ -8,18 +8,15 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 public class AirTable {
 
-    public static void main(String[] args) {
+    public static void uploadUser() {
         try {
             // Set up the API endpoint
             String personal_access_token = "patSKeitTJVS6GY5Q.5479b0e63dbc534cb60aec48ba97951541b30e16ba7c73bac25e34d07af637f9";
             String baseId = "appV34Ec7l8VWjbr3";
-            String tableName = "tblBZ0VAEApVRsjxK";
-            String endpoint = "https://api.airtable.com/v0/" + baseId + "/" + tableName;
+            String tableId = "tblBZ0VAEApVRsjxK";
+            String endpoint = "https://api.airtable.com/v0/" + baseId + "/" + tableId;
 
             // Declare the request body variable
             JsonObject requestBody = new JsonObject();
@@ -43,6 +40,7 @@ public class AirTable {
                     }
                     fields.addProperty(mapping[0], value);
                 }
+                fields.addProperty("Chat Id", Long.parseLong(data[4]));
                 JsonObject record = new JsonObject();
                 record.add("fields", fields);
 
