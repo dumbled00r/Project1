@@ -1,5 +1,6 @@
 package services;
 
+import AirTableUtils.AirTable;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
@@ -13,7 +14,6 @@ public class GetMember extends Base {
     {
         chatMemberIds.clear();
         client.send(new TdApi.GetChat(ConvertToLong.toLong(args[0])), new Client.ResultHandler() {
-
             @Override
             public void onResult(TdApi.Object object) {
                 Object lock = new Object();
@@ -45,7 +45,7 @@ public class GetMember extends Base {
                                             chatMemberIds.add(((TdApi.MessageSenderUser) member.memberId).userId);
                                         }
                                     }
-                                    GetUser.getMassUser(chatMemberIds);
+                                    GetUser.getMassUser(chatMemberIds, basicGroup.basicGroupId);
                                 }
                             }
                         });
@@ -79,10 +79,9 @@ public class GetMember extends Base {
                     getSupergroupMembersRecursive(nextOffset, chatMemberIds, numOfMembers, supergroupId);
                 }
                 else {
-                    GetUser.getMassUser(chatMemberIds);
+                    GetUser.getMassUser(chatMemberIds, supergroupId);
                 }
             }
         });
     }
 }
-

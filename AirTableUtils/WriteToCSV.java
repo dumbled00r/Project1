@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 public class WriteToCSV {
     private static CSVWriter csvWriter;
     private static boolean fileCleanedUp = false;
-
     public static void writeToCSV(String[] data, Long chatId){
         try {
             // Set up the CSV writer with UTF-8 encoding
