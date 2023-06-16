@@ -1,8 +1,10 @@
 package services;
 
 import org.drinkless.tdlib.TdApi;
-
 import java.util.List;
+
+import static AirTableUtils.WriteToCSV.writeToCSV;
+
 public class GetUser extends Base {
     /**
      *
@@ -26,6 +28,8 @@ public class GetUser extends Base {
                 System.out.println("Username: " + userName);
                 System.out.println("First Name: " + firstName);
                 System.out.println("Last Name: " + lastName + "\n");
+                String[] data = {Long.toString(id), userName, firstName, lastName};
+                writeToCSV(data);
             } else {
                 System.out.println("Failed to get user: " + object);
             }
