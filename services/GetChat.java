@@ -1,11 +1,7 @@
 package services;
 
-import com.google.gson.stream.JsonToken;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GetChat extends Base {
     /**

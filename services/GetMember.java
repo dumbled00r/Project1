@@ -1,55 +1,45 @@
 package services;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-import java.util.ArrayList;
 import java.util.List;
-
 public class GetMember extends Base {
+    private static int numOfMembers;
     /**
     Get the members' userid of a group chat
      */
     public static void getMember(String[] args)
     {
+        chatMemberIds.clear();
         client.send(new TdApi.GetChat(ConvertToLong.toLong(args[0])), new Client.ResultHandler() {
+
             @Override
             public void onResult(TdApi.Object object) {
-                if (object instanceof TdApi.Chat) {
-                    TdApi.Chat chat = (TdApi.Chat) object;
-
+                Object lock = new Object();
+                if (object instanceof TdApi.Chat chat) {
                     if (chat.type instanceof TdApi.ChatTypeSupergroup) {
                         if (((TdApi.ChatTypeSupergroup) chat.type).isChannel) {
-                            System.out.println("This chat group is a channel, cannot get members");
+                            System.out.println("\nThis chat group is a channel, please provide a chat group");
                         }
                         long supergroupId = ((TdApi.ChatTypeSupergroup) chat.type).supergroupId;
-                        client.send(new TdApi.GetSupergroupMembers(supergroupId, null, 0, 200), new Client.ResultHandler() {
+                        client.send(new TdApi.GetSupergroupFullInfo(supergroupId), new Client.ResultHandler() {
                             @Override
                             public void onResult(TdApi.Object object) {
-                                if (object instanceof TdApi.ChatMembers){
-                                    TdApi.ChatMember[] chatMembers = ((TdApi.ChatMembers) object ).members;
-                                    List<Long> chatMemberIds = new ArrayList<>();
-                                    for (TdApi.ChatMember member : chatMembers){
-                                        if (member.memberId instanceof TdApi.MessageSenderUser){
-                                            chatMemberIds.add(((TdApi.MessageSenderUser) member.memberId).userId);
-                                        }
-                                    }
-                                    GetUser.getMassUser(chatMemberIds);
+                                if (object instanceof TdApi.SupergroupFullInfo supergroupFullInfo){
+                                    numOfMembers = supergroupFullInfo.memberCount;
+                                    getSupergroupMembersRecursive(0, chatMemberIds, numOfMembers, supergroupId);
                                 }
                             }
                         });
-                    } else if (chat.type instanceof TdApi.ChatTypeBasicGroup){
+                    } else if (chat.type instanceof TdApi.ChatTypeBasicGroup basicGroup){
                         // Upgrade to Super group to get member
-                        TdApi.ChatTypeBasicGroup basicGroup = (TdApi.ChatTypeBasicGroup) chat.type;
                         client.send(new TdApi.GetBasicGroupFullInfo(basicGroup.basicGroupId), new Client.ResultHandler() {
                             @Override
                             public void onResult(TdApi.Object object) {
                                 if (object instanceof TdApi.BasicGroupFullInfo){
 
                                     TdApi.ChatMember[] chatMembers = ((TdApi.BasicGroupFullInfo) object ).members;
-                                    List<Long> chatMemberIds = new ArrayList<>();
                                     for (TdApi.ChatMember member : chatMembers) {
                                         if (member.memberId instanceof TdApi.MessageSenderUser) {
                                             chatMemberIds.add(((TdApi.MessageSenderUser) member.memberId).userId);
@@ -68,4 +58,31 @@ public class GetMember extends Base {
             }
         }, null);
     }
+    private static void getSupergroupMembersRecursive(int offset, List<Long> chatMemberIds, int numOfMembers, long supergroupId) {
+        client.send(new TdApi.GetSupergroupMembers(supergroupId, null, offset, 200), new Client.ResultHandler() {
+            @Override
+            public void onResult(TdApi.Object object) {
+                if (object instanceof TdApi.ChatMembers){
+                    TdApi.ChatMember[] chatMembers = ((TdApi.ChatMembers) object ).members;
+
+                    for (TdApi.ChatMember member : chatMembers){
+                        if (member.memberId instanceof TdApi.MessageSenderUser){
+                            Long userID = ((TdApi.MessageSenderUser) member.memberId).userId;
+                            if (!chatMemberIds.contains(userID)){
+                                chatMemberIds.add(userID);
+                            }
+                        }
+                    }
+                }
+                if (offset < numOfMembers) {
+                    int nextOffset = offset + Math.min(200, numOfMembers - offset);
+                    getSupergroupMembersRecursive(nextOffset, chatMemberIds, numOfMembers, supergroupId);
+                }
+                else {
+                    GetUser.getMassUser(chatMemberIds);
+                }
+            }
+        });
+    }
 }
+

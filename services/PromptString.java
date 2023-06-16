@@ -3,7 +3,6 @@ package services;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 public class PromptString extends Base {
     public static String promptString(String prompt) {
         System.out.print(prompt);

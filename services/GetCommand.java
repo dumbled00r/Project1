@@ -1,7 +1,5 @@
 package services;
 
-import com.google.gson.stream.JsonToken;
-import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
 public class GetCommand extends Base {
