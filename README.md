@@ -12,7 +12,7 @@ Link download: https://www.jetbrains.com/idea/download/?var=1&section=windows
 
     More information: https://tdlib.github.io/td/build.html?language=Java
 - After that, we need to set up our external libraries:
-    - ![external_libraries_1](https://imgur.com/a/zdwZMvm)
+    - ![external_libraries_1](https://github.com/dumbled00r/Project1/blob/develop_2/img/external_lib_1.jpg)
 
 - Inside the project1 file, most of our commands stay at services file:
     - Inside services file, there are some parameters you need to change to make the program works properly: 
