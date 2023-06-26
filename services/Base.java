@@ -5,6 +5,8 @@ import com.google.gson.GsonBuilder;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NavigableSet;
@@ -48,4 +50,7 @@ public class Base {
     // create Gson obj
     protected static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     protected static List<Long> chatMemberIds = new ArrayList<>();
+
+    protected static int numOfMembers;
+    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 }

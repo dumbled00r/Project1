@@ -1,6 +1,6 @@
 package services;
 
-import AirTableUtils.AirTable;
+import AirTableUtils.*;
 import org.drinkless.tdlib.TdApi;
 
 public class GetCommand extends Base {
@@ -9,6 +9,10 @@ public class GetCommand extends Base {
         String[] commands = command.split(" ", 3);
         try {
             switch (commands[0].toLowerCase()) {
+                case "":{
+                    System.out.println("Please enter a command");
+                    break;
+                }
                 case "help":{
                     System.out.println("gcs - Get Chat Lists ");
                     System.out.println("gc <ChatId> - Get Chat Information");
@@ -68,7 +72,7 @@ public class GetCommand extends Base {
                     break;
                 }
                 case "upload":{
-                    AirTable.uploadUser();
+                    UploadUser.uploadUser();
                     break;
                 }
                 case "lo":

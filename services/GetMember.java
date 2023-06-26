@@ -8,7 +8,7 @@ import java.util.List;
 public class GetMember extends Base {
     private static int numOfMembers;
     /**
-    Get the members' userid of a group chat
+     Get the members' userid of a group chat
      */
     public static void getMember(String[] args)
     {
