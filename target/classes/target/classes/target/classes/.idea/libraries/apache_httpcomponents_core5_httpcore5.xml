@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="apache.httpcomponents.core5.httpcore5" type="repository">
+    <properties maven-id="org.apache.httpcomponents.core5:httpcore5:5.2.2" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/core5/httpcore5/5.2.2/httpcore5-5.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
