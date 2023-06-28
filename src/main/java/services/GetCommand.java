@@ -1,5 +1,6 @@
-package services;
+package Services;
 
+import Utils.*;
 import org.drinkless.tdlib.TdApi;
 
 public class GetCommand extends Base {

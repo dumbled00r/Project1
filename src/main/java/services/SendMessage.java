@@ -1,5 +1,6 @@
-package services;
+package Services;
 
+import Utils.Base;
 import org.drinkless.tdlib.TdApi;
 public class SendMessage extends Base {
     public static void sendMessage(long chatId, String message) {

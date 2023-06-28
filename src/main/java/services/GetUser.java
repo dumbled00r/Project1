@@ -1,5 +1,7 @@
-package services;
+package Services;
 
+import Utils.Base;
+import Utils.ConvertToLong;
 import org.drinkless.tdlib.TdApi;
 import com.google.gson.*;
 

@@ -1,3 +1,3 @@
-package services;
+package Services;
 public class PrivateChat {
 }

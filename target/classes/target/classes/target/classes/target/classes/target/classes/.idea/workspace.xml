@@ -4013,7 +4013,7 @@
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApp">
+  <component name="RunManager" selected="Application.AirTable">
     <configuration name="AirTable" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AirTableUtils.AirTable" />
       <module name="Project1" />
@@ -4047,8 +4047,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainApp" />
         <item itemvalue="Application.AirTable" />
+        <item itemvalue="Application.MainApp" />
       </list>
     </recent_temporary>
   </component>
