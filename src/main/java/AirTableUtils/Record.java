@@ -2,16 +2,21 @@ package AirTableUtils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.apache.hc.client5.http.classic.methods.HttpDelete;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPatch;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.core5.http.ClassicHttpResponse;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-public class Record extends AirTable{
+public class Record{
     private final String id;
     private final JsonObject fields;
     private final String IdFieldVal;
@@ -59,78 +64,48 @@ public class Record extends AirTable{
     protected static String listRecords(String tableId, String baseId, String token) {
         //curl "https://api.airtable.com/v0/{baseId}/{tableIdOrName}" \
         //-H "Authorization: Bearer YOUR_TOKEN"
-        String urlStr = "https://api.airtable.com/v0/" + baseId + "/" + tableId;
+        String url = "https://api.airtable.com/v0/" + baseId + "/" + tableId;
 
-        try {
-            URL url = new URL(urlStr);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Authorization", "Bearer " + token);
-            conn.setRequestProperty("Content-Type", "application/json");
+        try(CloseableHttpClient client = HttpClientBuilder.create().build()) {
+            HttpGet get = new HttpGet(url);
+            get.setHeader("Authorization", "Bearer " + token);
+            get.setHeader("Content-Type", "application/json");
 
-            if (conn.getResponseCode() != 200) {
-                System.out.println("Error " + conn.getResponseCode());
-                System.out.println("Broh");
-                return null;
-            }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-            String output;
-            StringBuilder sb = new StringBuilder();
-            while ((output = br.readLine()) != null) {
-                System.out.println(output);
-                sb.append(output);
-            }
-            return sb.toString();
-        } catch (IOException e) {
+            ClassicHttpResponse response = client.execute(get);
+            return EntityUtils.toString(response.getEntity());
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
             return null;
         }
     }
     protected static String updateRecord(JsonObject fields, String recordId, String tableId, String baseId, String Token){
-        String urlStr = "https://api.airtable.com/v0/" + baseId + "/" + tableId + "/" + recordId;
+        String url = "https://api.airtable.com/v0/" + baseId + "/" + tableId + "/" + recordId;
 
-        try {
-            URL url = new URL(urlStr);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("PATCH");
-            conn.setRequestProperty("Authorization", "Bearer " + Token);
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
+        try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
+            HttpPatch patch = new HttpPatch(url);
+            patch.setHeader("Authorization", "Bearer " + Token);
+            patch.setHeader("Content-Type", "application/json");
 
             JsonObject fullBody = new JsonObject();
             fullBody.add("fields", fields);
+            patch.setEntity(new StringEntity(fullBody.toString()));
 
-            byte[] input = fullBody.toString().getBytes(StandardCharsets.UTF_8);
-            conn.getOutputStream().write(input);
+            ClassicHttpResponse response = client.execute(patch);
 
-            if (conn.getResponseCode() != 200) {
-                System.out.println("Error updating record: " + conn.getResponseCode());
+            if (response.getCode() == 200) {
+                return EntityUtils.toString(response.getEntity());
+            } else {
                 return null;
             }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-            String output;
-            StringBuilder sb = new StringBuilder();
-            while ((output = br.readLine()) != null) {
-                sb.append(output);
-            }
-            return sb.toString();
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
             return null;
         }
     }
     protected static String createRecord(JsonObject fields, String tableId, String baseId, String Token){
-        String urlStr = "https://api.airtable.com/v0/" + baseId + "/" + tableId;
+        String url = "https://api.airtable.com/v0/" + baseId + "/" + tableId;
 
-        try {
-            URL url = new URL(urlStr);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Authorization", "Bearer " + Token);
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
+        try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
 
             JsonObject body = new JsonObject();
             body.add("fields", fields);
@@ -141,47 +116,45 @@ public class Record extends AirTable{
             JsonObject fullBody = new JsonObject();
             fullBody.add("records", records);
 
-            byte[] input = fullBody.toString().getBytes(StandardCharsets.UTF_8);
-            conn.getOutputStream().write(input);
+            HttpPost post = new HttpPost(url);
+            post.setHeader("Authorization", "Bearer " + Token);
+            post.setHeader("Content-Type", "application/json");
+            post.setEntity(new StringEntity(fullBody.toString()));
 
-            if (conn.getResponseCode() != 200) {
-                System.out.println("Error creating record: " + conn.getResponseCode());
+            ClassicHttpResponse response = client.execute(post);
+
+            if (response.getCode() == 200) {
+                return EntityUtils.toString(response.getEntity());
+            } else {
+                System.out.println("Error creating record: " + response.getCode());
+                System.out.println("fullBody: " + fullBody);
                 return null;
             }
-
-            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-            String output;
-            StringBuilder sb = new StringBuilder();
-            while ((output = br.readLine()) != null) {
-                sb.append(output);
-            }
-            return sb.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException | ParseException e) {
+            System.out.println("Error creating record: " + e.getMessage());
             return null;
         }
     }
     protected static boolean dropRecord(String recordId, String tableId, String baseId, String Token){
         // curl -X DELETE "https://api.airtable.com/v0/{baseId}/{tableIdOrName}/{recordId}" \
         //-H "Authorization: Bearer YOUR_TOKEN"
-        String urlStr = "https://api.airtable.com/v0/" + baseId + "/" + tableId + "/" + recordId;
+        String url = "https://api.airtable.com/v0/" + baseId + "/" + tableId + "/" + recordId;
 
-        try {
-            URL url = new URL(urlStr);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("DELETE");
-            conn.setRequestProperty("Authorization", "Bearer " + Token);
+        try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
+            HttpDelete delete = new HttpDelete(url);
+            delete.setHeader("Authorization", "Bearer " + Token);
 
-            if (conn.getResponseCode() != 200) {
-                System.out.println("Error deleting record: " + conn.getResponseCode());
+            ClassicHttpResponse response = client.execute(delete);
+
+            if (response.getCode() == 200) {
+                System.out.println("Record " + recordId + " deleted");
+                return true;
+            } else {
                 return false;
             }
-
-            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
     }
-
 }
