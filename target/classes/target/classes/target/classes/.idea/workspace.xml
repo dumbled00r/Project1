@@ -4013,7 +4013,7 @@
       <recent name="$PROJECT_DIR$/src/main" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AirTable">
+  <component name="RunManager">
     <configuration name="AirTable" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AirTableUtils.AirTable" />
       <module name="Project1" />
