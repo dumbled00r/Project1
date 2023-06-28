@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AirTable {
-    static String personal_access_token = "patSKeitTJVS6GY5Q.5479b0e63dbc534cb60aec48ba97951541b30e16ba7c73bac25e34d07af637f9";
-    static String baseId = "appV34Ec7l8VWjbr3";
+    static String personal_access_token = "patv0ej5dUApUGh1C.be1f25f23a0817bf20853e2a55693f96210c9272a7133836866c36d916c3bece";
+    static String baseId = "apphDXbOWUoH9LMZp";
     Table userData;
     public AirTable(){
         String response = Table.listTables(baseId, personal_access_token);
@@ -18,12 +18,11 @@ public class AirTable {
         JsonArray tables = jsonObject.get("tables").getAsJsonArray();
         for (var ele : tables){
             JsonObject table = ele.getAsJsonObject();
-            if (table.get("name").getAsString().equals("Users Data")){
+            if (table.has("name") && table.get("name").isJsonPrimitive() && table.get("name").getAsString().equals("Users Data")){
                 userData = new Table(table, baseId, personal_access_token);
                 break;
             }
         }
-
     }
 
     public void pushUserData(JsonObject jsonObject){
@@ -35,12 +34,11 @@ public class AirTable {
     public static void main(String[] args){
         AirTable airTable = new AirTable();
         JsonObject a = new JsonObject();
-        a.addProperty("Id", "xjkhhfdjsk");
+        a.addProperty("User Id", "12312");
         a.addProperty("First Name", "sfdgdf");
         a.addProperty("Last Name", "sfdgdf");
         a.addProperty("Username", "sfdgdf");
-        a.addProperty("Chat Id", 12312);
+        a.addProperty("Chat Id", 123412);
         airTable.pushUserData(a);
     }
-
 }

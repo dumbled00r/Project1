@@ -4,7 +4,6 @@ import com.google.gson.*;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.ParseException;
@@ -27,7 +26,6 @@ public class Table{
         this.id = table.get("id").getAsString();
         this.name = table.get("name").getAsString();
         table.get("fields").getAsJsonArray().forEach(field -> this.fields.add(new Field(field.getAsJsonObject())));
-
         // Get Records
         syncRecord(baseId, token);
     }
@@ -149,16 +147,15 @@ public class Table{
         }
         return false;
     }
-    protected boolean pullAllRecord(List<JsonObject> fields, String baseId, String token) {
+    protected void pullAllRecord(List<JsonObject> fields, String baseId, String token) {
         numChanges = 0;
         for (JsonObject field : fields) {
             if (!pullRecord(field, baseId, token)) {
                 System.out.println("Error: Could not pull record: " + field.get("Id").getAsString() + " in table: " + name);
-                return false;
+                return;
             }
         }
         System.out.println("Pulled all records in table: " + name);
-        return true;
     }
     protected void dropRecord(List<JsonObject> fields, String baseId, String token) {
         List<Record> dropList = new ArrayList<>();
@@ -190,7 +187,7 @@ public class Table{
             get.setHeader("Authorization", "Bearer " + token);
             ClassicHttpResponse response = client.execute(get);
             if (response.getCode() != 200) {
-                System.out.println(response);
+                System.out.println("Error: Could not list tables");
                 return null;
             }
             System.out.println("Listed tables");
