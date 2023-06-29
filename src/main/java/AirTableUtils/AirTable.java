@@ -34,7 +34,7 @@ public class AirTable {
     public static void main(String[] args){
         AirTable airTable = new AirTable();
         JsonObject a = new JsonObject();
-        a.addProperty("User Id", "12312");
+        a.addProperty("Id", "123a12");
         a.addProperty("First Name", "sfdgdf");
         a.addProperty("Last Name", "sfdgdf");
         a.addProperty("Username", "sfdgdf");

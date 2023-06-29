@@ -14,7 +14,7 @@ public class GetUser extends Base {
      *
      * Get single user
      */
-    public static void getUser(String args, Long chatId) {
+    public static void getUser(String args, String chatTile) {
         TdApi.GetUser getUser = new TdApi.GetUser(ConvertToLong.toLong(args));
         client.send(getUser, object -> {
             if (object.getConstructor() == TdApi.User.CONSTRUCTOR) {
@@ -29,14 +29,12 @@ public class GetUser extends Base {
                     userName = null;
                 }
                 JsonObject json = new JsonObject();
-                json.addProperty("User Id", id);
+                json.addProperty("Id", id);
                 json.addProperty("Username", userName);
                 json.addProperty("First Name", firstName);
                 json.addProperty("Last Name", lastName);
-                json.addProperty("Chat Id", chatId);
+                json.addProperty("Chat Title", chatTile);
                 System.out.println(json);
-//                AirTable airTable = new AirTable();
-//                airTable.pushUserData(json);
             } else {
                 System.out.println("Failed to get user: " + object);
             }
@@ -46,11 +44,11 @@ public class GetUser extends Base {
     /**
      * This is only for saving data usage
      * @param userIds
-     * @param chatId
+     * @param chatTitle
      */
-    public static void getMassUser(List<Long> userIds, Long chatId){
+    public static void getMassUser(List<Long> userIds, String chatTitle){
         for (Long userId : userIds){
-            getUser(Long.toString(userId), chatId);
+            getUser(Long.toString(userId), chatTitle);
         }
     }
 }
