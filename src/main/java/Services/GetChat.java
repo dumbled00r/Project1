@@ -13,8 +13,8 @@ public class GetChat extends Base {
     /**
      Get Chat's Information
      */
-    public static void getChat(String[] args){
-        client.send(new TdApi.GetChat(ConvertToLong.toLong(args[0])), new Client.ResultHandler() {
+    public static void getChat(Long chatId){
+        client.send(new TdApi.GetChat(chatId), new Client.ResultHandler() {
             @Override
             public void onResult(TdApi.Object object) {
                 if (object instanceof TdApi.Chat chat){
@@ -31,6 +31,7 @@ public class GetChat extends Base {
                                     String inviteLink = (supergroupFullInfo.inviteLink == null) ? "" : supergroupFullInfo.inviteLink.inviteLink;
                                     chatJson.addProperty("invite link", inviteLink);
                                     System.out.println(chatJson);
+                                    airTableGroup.pushGroupData(chatJson);
                                 }
                             }
                         });
@@ -46,6 +47,7 @@ public class GetChat extends Base {
                                     chatJson.addProperty("members count", basicGroupFullInfo.members.length);
                                     chatJson.addProperty("invite link", basicGroupFullInfo.inviteLink.inviteLink);
                                     System.out.println(chatJson);
+                                    airTableGroup.pushGroupData(chatJson);
                                 }
                             }
                         }, null);

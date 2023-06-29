@@ -1,7 +1,11 @@
 package Utils;
 
+import AirTableUtils.AirTableGroup;
+import AirTableUtils.AirTableUser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
@@ -50,7 +54,10 @@ public class Base {
     // create Gson obj
     protected static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     protected static List<Long> chatMemberIds = new ArrayList<>();
+    protected static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    protected static int numOfMembers;
-    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public static AirTableUser airTableUser = new AirTableUser();
+    public static AirTableGroup airTableGroup = new AirTableGroup();
+
+
 }

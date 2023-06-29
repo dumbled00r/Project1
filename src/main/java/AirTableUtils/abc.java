@@ -55,11 +55,11 @@ public class abc {
         String token = "patv0ej5dUApUGh1C.be1f25f23a0817bf20853e2a55693f96210c9272a7133836866c36d916c3bece";
 
         JsonObject a = new JsonObject();
-        a.addProperty("User Id", "12312");
+        a.addProperty("Id", 1231);
         a.addProperty("First Name", "sfdgdf");
         a.addProperty("Last Name", "sfdgdf");
         a.addProperty("Username", "sfdgdf");
-        a.addProperty("Chat Id", 123412);
+        a.addProperty("Chat Title", "asdas");
 
         String response = createRecord(a, tableId, base, token);
         System.out.println(response);

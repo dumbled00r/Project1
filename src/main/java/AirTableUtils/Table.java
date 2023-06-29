@@ -121,8 +121,10 @@ public class Table{
     }
     protected Record getRecord(String idFieldVal) {
         for (Record record : this.records) {
-            if (record.getValOfId().equals(idFieldVal)) {
-                return record;
+            if (record.getValOfId() != null) {
+                if (record.getValOfId().equals(idFieldVal)) {
+                    return record;
+                }
             }
         }
         return null;
@@ -190,7 +192,7 @@ public class Table{
                 System.out.println("Error: Could not list tables");
                 return null;
             }
-            System.out.println("Listed tables");
+            System.out.println("Connected to the tables");
             return EntityUtils.toString(response.getEntity());
         } catch (IOException | ParseException e) {
             System.out.println("Error: Could not list tables due to exception: " + e.getMessage());

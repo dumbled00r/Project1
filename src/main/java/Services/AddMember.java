@@ -13,7 +13,7 @@ public class AddMember extends Base {
      *
      */
     public static void addSingleUser(Long chatId, Long userId){
-        client.send(new TdApi.AddChatMember(chatId, userId, 13), defaultHandler);
+        client.send(new TdApi.AddChatMember(chatId, userId, 9999), defaultHandler);
     }
 
     /**

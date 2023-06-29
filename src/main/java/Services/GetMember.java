@@ -1,5 +1,7 @@
 package Services;
 
+import AirTableUtils.AirTable;
+import AirTableUtils.AirTableUser;
 import Utils.Base;
 import Utils.ConvertToLong;
 import org.drinkless.tdlib.Client;
@@ -12,15 +14,13 @@ import static Services.GetChat.chatJson;
 
 public class GetMember extends Base {
     private static int numOfMembers;
-
     private static String chatTitle;
-
     /**
      * Get the members' userid of a group chat
      */
-    public static void getMember(String[] args) {
+    public static void getMember(Long chatId) {
         chatMemberIds.clear();
-        long chatId = ConvertToLong.toLong(args[0]);
+        chatTitle = "";
         client.send(new TdApi.GetChat(chatId), new Client.ResultHandler() {
             @Override
             public void onResult(TdApi.Object object) {

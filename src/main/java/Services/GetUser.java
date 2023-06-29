@@ -1,20 +1,21 @@
 package Services;
 
+import AirTableUtils.AirTable;
 import Utils.Base;
 import Utils.ConvertToLong;
 import org.drinkless.tdlib.TdApi;
 import com.google.gson.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class GetUser extends Base {
+    public static JsonObject jsonResults = new JsonObject();
     /**
      *
      * Get single user
      */
-    public static void getUser(String args, String chatTile) {
+    public static void getUser(String args, String chatTitle) {
         TdApi.GetUser getUser = new TdApi.GetUser(ConvertToLong.toLong(args));
         client.send(getUser, object -> {
             if (object.getConstructor() == TdApi.User.CONSTRUCTOR) {
@@ -28,13 +29,13 @@ public class GetUser extends Base {
                 } else {
                     userName = null;
                 }
-                JsonObject json = new JsonObject();
-                json.addProperty("Id", id);
-                json.addProperty("Username", userName);
-                json.addProperty("First Name", firstName);
-                json.addProperty("Last Name", lastName);
-                json.addProperty("Chat Title", chatTile);
-                System.out.println(json);
+                jsonResults.addProperty("Id", id);
+                jsonResults.addProperty("Username", userName);
+                jsonResults.addProperty("First Name", firstName);
+                jsonResults.addProperty("Last Name", lastName);
+                jsonResults.addProperty("Chat Title", chatTitle);
+                airTableUser.pushUserData(jsonResults);
+                System.out.println(jsonResults);
             } else {
                 System.out.println("Failed to get user: " + object);
             }

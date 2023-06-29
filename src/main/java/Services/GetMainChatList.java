@@ -6,8 +6,13 @@ import Utils.Print;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 public class GetMainChatList extends Base {
+    public static long[] chatIds;
     public static void getMainChatList(final int limit) {
         synchronized (mainChatList) {
             if (!haveFullMainChatList && limit > mainChatList.size()) {
@@ -36,7 +41,7 @@ public class GetMainChatList extends Base {
                 });
                 return;
             }
-            Integer numberOfChats = limit;
+            int numberOfChats = limit;
             Iterator<ChatOrder.OrderedChat> iter = mainChatList.iterator();
             System.out.println();
             if (limit >= mainChatList.size()){
@@ -52,5 +57,24 @@ public class GetMainChatList extends Base {
             }
             Print.print("");
         }
+    }
+
+    public static void loadChatIds() {
+        // Create a ChatList object
+        TdApi.ChatList chatList = new TdApi.ChatListMain();
+
+        // Send a request to get all the chats
+        client.send(new TdApi.GetChats(chatList, 50), new Client.ResultHandler() {
+            @Override
+            public void onResult(TdApi.Object object) {
+                if (object instanceof TdApi.Chats) {
+                    // Get the list of chat IDs and print them to the console
+                    chatIds =((TdApi.Chats) object).chatIds;
+                    for (long chatId : chatIds) {
+                        System.out.println("Chat ID: " + chatId);
+                    }
+                }
+            }
+        });
     }
 }

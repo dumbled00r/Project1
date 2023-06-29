@@ -25,7 +25,7 @@ public final class Client {
          *
          * @param object Result of query or update of type TdApi.Update about new events.
          */
-        void onResult(TdApi.Object object) throws IOException;
+        void onResult(TdApi.Object object) throws IOException, InterruptedException;
     }
 
     /**

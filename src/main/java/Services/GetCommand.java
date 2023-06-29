@@ -1,7 +1,14 @@
 package Services;
 
+import AirTableUtils.AirTable;
 import Utils.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.drinkless.tdlib.TdApi;
+
+import static Services.GetMainChatList.chatIds;
+
 
 public class GetCommand extends Base {
     protected static void getCommand() {
@@ -35,7 +42,7 @@ public class GetCommand extends Base {
                 }
                 case "gc": {
                     String[] args = commands[1].split(" ", 2);
-                    GetChat.getChat(args);
+                    GetChat.getChat(Long.parseLong(args[0]));
                     break;
                 }
                 case "me": {
@@ -47,10 +54,15 @@ public class GetCommand extends Base {
                     SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
                     break;
                 }
+                case "gu": {
+                    GetUser.getUser(commands[1], "ABC");
+                    break;
+                }
                 case "add": {
                     String sChatId = commands[1];
                     String sUserId = commands[2];
-                    AddMember.addSingleUser(ConvertToLong.toLong(sChatId), ConvertToLong.toLong(sUserId));
+                    Long longChatId = ConvertToLong.toLong(sChatId);
+                    AddMember.addSingleUser(longChatId, ConvertToLong.toLong(sUserId));
                     break;
                 }
                 case "pm":{
@@ -61,7 +73,18 @@ public class GetCommand extends Base {
                 }
                 case "getmem":{
                     String[] args = commands[1].split(" ", 2);
-                    GetMember.getMember(args);
+                    GetMember.getMember(Long.parseLong(args[0]));
+                    break;
+                }
+                case "sync":{
+                    GetMainChatList.loadChatIds();
+                    Thread.sleep(3000);
+                    for (long chatId : chatIds) {
+                        GetChat.getChat(chatId);
+                        GetMember.getMember(chatId);
+                        Thread.sleep(3000);
+                    }
+                    System.out.println("Syncing done");
                     break;
                 }
                 case "lo":
@@ -79,6 +102,8 @@ public class GetCommand extends Base {
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             Print.print("Not enough arguments");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }
