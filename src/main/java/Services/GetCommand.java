@@ -17,7 +17,6 @@ public class GetCommand extends Base {
                     System.out.println("gc <ChatId> - Get Chat Information");
                     System.out.println("me - Get My Information");
                     System.out.println("sm <ChatId> <Message> - Send Message To An Existing Chat");
-                    System.out.println("gu <UserId> - Get User Information");
                     System.out.println("add <ChatId> <UserId> - Add User To An Existing Chat");
                     System.out.println("pm <UserId> - Send Private Message To User ");
                     System.out.println("getmem <ChatId> - Get Members Of A Chat Group");
@@ -46,11 +45,6 @@ public class GetCommand extends Base {
                 case "sm": {
                     String[] args = commands[1].split(" ", 3);
                     SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
-                    break;
-                }
-                case "gu": {
-                    String[] args = commands[1].split(" ", 1);
-                    GetUser.getUser(args[0], 0L);
                     break;
                 }
                 case "add": {
