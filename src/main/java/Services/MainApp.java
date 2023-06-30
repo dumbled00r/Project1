@@ -18,6 +18,15 @@ public class MainApp extends Base {
         if (Client.execute(new TdApi.SetLogStream(new TdApi.LogStreamFile("tdlib.log", 1 << 27, false))) instanceof TdApi.Error) {
             throw new IOError(new IOException("Write access to the current directory is required"));
         }
+        String blue = "\033[34m";
+        String reset = "\033[0m";
+
+        System.out.println(blue + "  ______     __   ______            __    " + reset);
+        System.out.println(blue + " /_  __/__  / /__/_  __/___  ____  / /____" + reset);
+        System.out.println(blue + "  / / / _ \\/ / _ \\/ / / __ \\/ __ \\/ / ___/" + reset);
+        System.out.println(blue + " / / /  __/ /  __/ / / /_/ / /_/ / (__  ) " + reset);
+        System.out.println(blue + "/_/  \\___/_/\\___/_/  \\____/\\____/_/____/  " + reset);
+
 
         // create client
         client = Client.create(new Handler.UpdateHandler(), null, null);
@@ -39,7 +48,7 @@ public class MainApp extends Base {
             }
         }
         while (!canQuit) {
-            Thread.sleep(1);
+            Thread.sleep(20);
         }
     }
 }
