@@ -55,9 +55,6 @@ public class Base {
     protected static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     protected static List<Long> chatMemberIds = new ArrayList<>();
     protected static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-    public static AirTableUser airTableUser = new AirTableUser();
-    public static AirTableGroup airTableGroup = new AirTableGroup();
-
-
+    protected static List<JsonObject> jsonGroupRes = new ArrayList<>();
+    protected static List<JsonObject> jsonUserRes = new ArrayList<>();
 }

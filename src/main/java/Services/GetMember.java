@@ -4,28 +4,26 @@ import AirTableUtils.AirTable;
 import AirTableUtils.AirTableUser;
 import Utils.Base;
 import Utils.ConvertToLong;
+import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static Services.GetChat.chatJson;
-
 public class GetMember extends Base {
     private static int numOfMembers;
-    private static String chatTitle;
+
+    private static final List<JsonObject> lstObjResults = new ArrayList<>();
     /**
      * Get the members' userid of a group chat
      */
-    public static void getMember(Long chatId) {
+    public static List<JsonObject> getMember(Long chatId) {
         chatMemberIds.clear();
-        chatTitle = "";
         client.send(new TdApi.GetChat(chatId), new Client.ResultHandler() {
             @Override
             public void onResult(TdApi.Object object) {
                 if (object instanceof TdApi.Chat chat) {
-                    chatTitle = chat.title;
                     if (chat.type instanceof TdApi.ChatTypeSupergroup) {
                         if (((TdApi.ChatTypeSupergroup) chat.type).isChannel) {
                             System.out.println("\nThis chat group is a channel, please provide a chat group");
@@ -38,7 +36,7 @@ public class GetMember extends Base {
                                 if (object instanceof TdApi.SupergroupFullInfo supergroupFullInfo) {
                                     if (supergroupFullInfo.canGetMembers) {
                                         numOfMembers = supergroupFullInfo.memberCount;
-                                        getSupergroupMembers(chatId, supergroupId);
+                                        getSupergroupMembers(chatId, supergroupId, chat.title);
                                     } else {
                                         System.out.println("Group does not allow us to get members");
                                     }
@@ -48,7 +46,7 @@ public class GetMember extends Base {
                     } else if (chat.type instanceof TdApi.ChatTypeBasicGroup basicGroup) {
                         client.send(new TdApi.GetBasicGroupFullInfo(basicGroup.basicGroupId), new Client.ResultHandler() {
                             @Override
-                            public void onResult(TdApi.Object object) {
+                            public void onResult(TdApi.Object object) throws InterruptedException {
                                 if (object instanceof TdApi.BasicGroupFullInfo) {
 
                                     TdApi.ChatMember[] chatMembers = ((TdApi.BasicGroupFullInfo) object).members;
@@ -57,7 +55,7 @@ public class GetMember extends Base {
                                             chatMemberIds.add(((TdApi.MessageSenderUser) member.memberId).userId);
                                         }
                                     }
-                                    GetUser.getMassUser(chatMemberIds, chatTitle);
+                                    lstObjResults.addAll(GetUser.getMassUser(chatMemberIds, chat.title));
                                 }
                             }
                         });
@@ -69,16 +67,17 @@ public class GetMember extends Base {
                 }
             }
         }, null);
+        return lstObjResults;
     }
 
-    private static void getSupergroupMembers(long chatId, long supergroupId) {
+    private static void getSupergroupMembers(long chatId, long supergroupId, String chatTitle) {
         int offset = 0;
         int limit = 200;
         List<Long> memberIds = new ArrayList<>();
         while (offset < numOfMembers) {
             client.send(new TdApi.GetSupergroupMembers(supergroupId, null, offset, limit), new Client.ResultHandler() {
                 @Override
-                public void onResult(TdApi.Object object) {
+                public void onResult(TdApi.Object object) throws InterruptedException {
                     if (object instanceof TdApi.ChatMembers) {
                         TdApi.ChatMember[] chatMembers = ((TdApi.ChatMembers) object).members;
                         for (TdApi.ChatMember member : chatMembers) {
@@ -92,7 +91,7 @@ public class GetMember extends Base {
                     }
                     // if we have received all members, call the getMassUser method
                     if (memberIds.size() == numOfMembers) {
-                        GetUser.getMassUser(memberIds, chatTitle);
+                        lstObjResults.addAll(GetUser.getMassUser(memberIds, chatTitle));
                     }
                 }
             });

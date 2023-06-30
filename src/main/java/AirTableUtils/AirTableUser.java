@@ -9,13 +9,14 @@ import java.util.List;
 
 public class AirTableUser extends AirTable{
     public AirTableUser(){
+        super();
         String response = Table.listTables(baseId, personal_access_token);
         JsonObject jsonObject = new Gson().fromJson(response, JsonObject.class);
         JsonArray tables = jsonObject.get("tables").getAsJsonArray();
         for (var ele : tables){
             JsonObject table = ele.getAsJsonObject();
             if (table.has("name") && table.get("name").isJsonPrimitive() && table.get("name").getAsString().equals("Users Data")){
-                Data = new Table(table, baseId, personal_access_token);
+                userData = new Table(table, baseId, personal_access_token);
                 break;
             }
         }
@@ -23,6 +24,6 @@ public class AirTableUser extends AirTable{
     public void pushUserData(JsonObject jsonObject){
         List<JsonObject> list = new ArrayList<>();
         list.add(jsonObject);
-        Data.pullAllRecord(list, baseId, personal_access_token);
+        userData.pullAllRecord(list, baseId, personal_access_token);
     }
 }

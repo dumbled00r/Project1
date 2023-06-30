@@ -70,9 +70,6 @@ public class GetMainChatList extends Base {
                 if (object instanceof TdApi.Chats) {
                     // Get the list of chat IDs and print them to the console
                     chatIds =((TdApi.Chats) object).chatIds;
-                    for (long chatId : chatIds) {
-                        System.out.println("Chat ID: " + chatId);
-                    }
                 }
             }
         });

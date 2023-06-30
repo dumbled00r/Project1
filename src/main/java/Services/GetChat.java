@@ -6,14 +6,13 @@ import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-import java.util.Objects;
-
 public class GetChat extends Base {
-    public static JsonObject chatJson = new JsonObject();
     /**
      Get Chat's Information
      */
-    public static void getChat(Long chatId){
+
+    public static JsonObject getChat(Long chatId){
+        JsonObject chatJson = new JsonObject();
         client.send(new TdApi.GetChat(chatId), new Client.ResultHandler() {
             @Override
             public void onResult(TdApi.Object object) {
@@ -30,8 +29,7 @@ public class GetChat extends Base {
                                     chatJson.addProperty("members count", supergroupFullInfo.memberCount);
                                     String inviteLink = (supergroupFullInfo.inviteLink == null) ? "" : supergroupFullInfo.inviteLink.inviteLink;
                                     chatJson.addProperty("invite link", inviteLink);
-                                    System.out.println(chatJson);
-                                    airTableGroup.pushGroupData(chatJson);
+//                                    System.out.println(chatJson);
                                 }
                             }
                         });
@@ -46,8 +44,6 @@ public class GetChat extends Base {
                                     chatJson.addProperty("description", basicGroupFullInfo.description);
                                     chatJson.addProperty("members count", basicGroupFullInfo.members.length);
                                     chatJson.addProperty("invite link", basicGroupFullInfo.inviteLink.inviteLink);
-                                    System.out.println(chatJson);
-                                    airTableGroup.pushGroupData(chatJson);
                                 }
                             }
                         }, null);
@@ -55,5 +51,6 @@ public class GetChat extends Base {
                 }
             }
         }, null);
+        return chatJson;
     }
 }

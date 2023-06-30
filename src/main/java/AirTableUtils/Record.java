@@ -14,6 +14,7 @@ import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class Record{
@@ -84,11 +85,11 @@ public class Record{
         try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
             HttpPatch patch = new HttpPatch(url);
             patch.setHeader("Authorization", "Bearer " + Token);
-            patch.setHeader("Content-Type", "application/json");
+            patch.setHeader("Content-Type", "application/json; charset=utf-8");
 
             JsonObject fullBody = new JsonObject();
             fullBody.add("fields", fields);
-            patch.setEntity(new StringEntity(fullBody.toString()));
+            patch.setEntity(new StringEntity(fullBody.toString(), StandardCharsets.UTF_8));
 
             ClassicHttpResponse response = client.execute(patch);
 
@@ -119,7 +120,7 @@ public class Record{
             HttpPost post = new HttpPost(url);
             post.setHeader("Authorization", "Bearer " + Token);
             post.setHeader("Content-Type", "application/json");
-            post.setEntity(new StringEntity(fullBody.toString()));
+            post.setEntity(new StringEntity(fullBody.toString(), StandardCharsets.UTF_8));
 
             ClassicHttpResponse response = client.execute(post);
 
@@ -136,8 +137,6 @@ public class Record{
         }
     }
     protected static boolean dropRecord(String recordId, String tableId, String baseId, String Token){
-        // curl -X DELETE "https://api.airtable.com/v0/{baseId}/{tableIdOrName}/{recordId}" \
-        //-H "Authorization: Bearer YOUR_TOKEN"
         String url = "https://api.airtable.com/v0/" + baseId + "/" + tableId + "/" + recordId;
 
         try (CloseableHttpClient client = HttpClientBuilder.create().build()) {

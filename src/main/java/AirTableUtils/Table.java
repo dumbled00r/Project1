@@ -130,30 +130,39 @@ public class Table{
         return null;
     }
     private boolean pullRecord(JsonObject fields, String baseId, String token) {
-        Record oldRecord = getRecord(fields.get("Id").getAsString());
-        if (oldRecord == null) {
-            if (addRecord(fields, baseId, token)){
-                System.out.println("Add record: " + fields.get("Id").getAsString() + " in table: " + name);
+        Record oldRecord = null;
+        try {
+            oldRecord = getRecord(fields.get("Id").getAsString());
+            if (oldRecord == null) {
+                if (addRecord(fields, baseId, token)){
+                    System.out.println("Add record: " + fields.get("Id").getAsString() + " in table: " + name);
+                    numChanges++;
+                    return true;
+                }
+                return false;
+            }
+            if (oldRecord.equals(fields, this.fields)) {
+                return true;
+            }
+            if (updateRecord(fields, oldRecord, baseId, token)) {
+                System.out.println("Update record: " + fields.get("Id").getAsString() + " in table: " + name);
                 numChanges++;
                 return true;
             }
             return false;
+        } catch (NullPointerException e) {
+            return false;
         }
-        if (oldRecord.equals(fields, this.fields)) {
-            return true;
-        }
-        if (updateRecord(fields, oldRecord, baseId, token)) {
-            System.out.println("Update record: " + fields.get("Id").getAsString() + " in table: " + name);
-            numChanges++;
-            return true;
-        }
-        return false;
     }
+
+
     protected void pullAllRecord(List<JsonObject> fields, String baseId, String token) {
         numChanges = 0;
         for (JsonObject field : fields) {
             if (!pullRecord(field, baseId, token)) {
-                System.out.println("Error: Could not pull record: " + field.get("Id").getAsString() + " in table: " + name);
+                try {
+                    System.out.println("Error: Could not pull record: " + field.get("Id").getAsString() + " in table: " + name);
+                } catch (NullPointerException e) {}
                 return;
             }
         }
@@ -196,32 +205,6 @@ public class Table{
             return EntityUtils.toString(response.getEntity());
         } catch (IOException | ParseException e) {
             System.out.println("Error: Could not list tables due to exception: " + e.getMessage());
-            return null;
-        }
-    }
-    protected static String createTable(String name, JsonArray fields, String baseId, String token){
-        String url = "https://api.airtable.com/v0/meta/bases/" + baseId + "/tables";
-        try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
-
-            HttpPost post = new HttpPost(url);
-            post.setHeader("Authorization", "Bearer " + token);
-            post.setHeader("Content-Type", "application/json");
-
-            JsonObject body = new JsonObject();
-            body.addProperty("name", name);
-            body.add("fields", fields);
-
-            post.setEntity(new StringEntity(body.toString()));
-
-            ClassicHttpResponse response = client.execute(post);
-            if (response.getCode() != 200) {
-                System.out.println("Error: Could not create table: " + name);
-                return null;
-            }
-            System.out.println("Created table: " + name);
-            return EntityUtils.toString(response.getEntity());
-        } catch (IOException | ParseException e) {
-            System.out.println("Error: Could not create table: " + name + " with message: " + e.getMessage());
             return null;
         }
     }

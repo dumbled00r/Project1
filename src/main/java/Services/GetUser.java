@@ -10,13 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetUser extends Base {
-    public static JsonObject jsonResults = new JsonObject();
+    private static List<JsonObject> lstJsonResults = new ArrayList<>();
+
     /**
      *
      * Get single user
      */
-    public static void getUser(String args, String chatTitle) {
-        TdApi.GetUser getUser = new TdApi.GetUser(ConvertToLong.toLong(args));
+    public static JsonObject getUser(Long args, String chatTitle) {
+        JsonObject jsonResults = new JsonObject();
+        TdApi.GetUser getUser = new TdApi.GetUser(args);
         client.send(getUser, object -> {
             if (object.getConstructor() == TdApi.User.CONSTRUCTOR) {
                 TdApi.User user = (TdApi.User) object;
@@ -34,12 +36,11 @@ public class GetUser extends Base {
                 jsonResults.addProperty("First Name", firstName);
                 jsonResults.addProperty("Last Name", lastName);
                 jsonResults.addProperty("Chat Title", chatTitle);
-                airTableUser.pushUserData(jsonResults);
-                System.out.println(jsonResults);
             } else {
                 System.out.println("Failed to get user: " + object);
             }
         });
+        return jsonResults;
     }
 
     /**
@@ -47,9 +48,14 @@ public class GetUser extends Base {
      * @param userIds
      * @param chatTitle
      */
-    public static void getMassUser(List<Long> userIds, String chatTitle){
+    public static List<JsonObject> getMassUser(List<Long> userIds, String chatTitle) throws InterruptedException {
         for (Long userId : userIds){
-            getUser(Long.toString(userId), chatTitle);
+            JsonObject data = getUser(userId, chatTitle);
+            if (!data.isJsonNull()) {
+                lstJsonResults.add(data);
+            }
         }
+        System.out.println(lstJsonResults);
+        return lstJsonResults;
     }
 }

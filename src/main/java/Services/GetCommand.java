@@ -1,11 +1,14 @@
 package Services;
 
 import AirTableUtils.AirTable;
+import AirTableUtils.AirTableGroup;
+import AirTableUtils.AirTableUser;
 import Utils.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.drinkless.tdlib.TdApi;
+import java.util.List;
 
 import static Services.GetMainChatList.chatIds;
 
@@ -13,7 +16,7 @@ import static Services.GetMainChatList.chatIds;
 public class GetCommand extends Base {
     protected static void getCommand() {
         String command = PromptString.promptString(commandsLine);
-        String[] commands = command.split(" ", 3);
+        String[] commands = command.split(" ", 2);
         try {
             switch (commands[0].toLowerCase()) {
                 case "":{
@@ -50,12 +53,12 @@ public class GetCommand extends Base {
                     break;
                 }
                 case "sm": {
-                    String[] args = commands[1].split(" ", 3);
+                    String[] args = commands[1].split(" ", 2);
                     SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
                     break;
                 }
                 case "gu": {
-                    GetUser.getUser(commands[1], "ABC");
+                    GetUser.getUser(Long.parseLong(commands[1]), "ABC");
                     break;
                 }
                 case "add": {
@@ -67,7 +70,7 @@ public class GetCommand extends Base {
                 }
                 case "pm":{
                     String[] args = commands[1].split(" ", 2);
-                    client.send(new TdApi.CreatePrivateChat(ConvertToLong.toLong(args[0]), true), defaultHandler);
+                    client.send(new TdApi.CreatePrivateChat(ConvertToLong.toLong(args[0]), true), null);
                     SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
                     break;
                 }
@@ -80,11 +83,23 @@ public class GetCommand extends Base {
                     GetMainChatList.loadChatIds();
                     Thread.sleep(3000);
                     for (long chatId : chatIds) {
-                        GetChat.getChat(chatId);
-                        GetMember.getMember(chatId);
-                        Thread.sleep(3000);
+//                        JsonObject groupRes = GetChat.getChat(chatId);
+
+//                        if (!groupRes.isJsonNull()) {
+//                            jsonGroupRes.add(groupRes);
                     }
-                    System.out.println("Syncing done");
+                    Thread.sleep(2000);
+                    for (JsonObject obj : jsonUserRes) {
+                        System.out.println(obj);
+                    }
+//                    AirTableGroup airTableGroup = new AirTableGroup();
+//                    for (JsonObject jsonObject : jsonGroupRes) {
+//                        airTableGroup.pushGroupData(jsonObject);
+//                    }
+//                    AirTableUser airTableUser = new AirTableUser();
+//                    for (JsonObject jsonObject : jsonUserRes) {
+//                        airTableUser.pushUserData(jsonObject);
+//                    }
                     break;
                 }
                 case "lo":
