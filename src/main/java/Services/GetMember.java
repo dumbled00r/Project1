@@ -14,7 +14,7 @@ import java.util.List;
 public class GetMember extends Base {
     private static int numOfMembers;
 
-    private static final List<JsonObject> lstObjResults = new ArrayList<>();
+    private static List<JsonObject> lstObjResults = new ArrayList<>();
     /**
      * Get the members' userid of a group chat
      */

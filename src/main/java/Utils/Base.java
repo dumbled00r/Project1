@@ -1,22 +1,18 @@
 package Utils;
 
-import AirTableUtils.AirTableGroup;
-import AirTableUtils.AirTableUser;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NavigableSet;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -56,5 +52,5 @@ public class Base {
     protected static List<Long> chatMemberIds = new ArrayList<>();
     protected static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     protected static List<JsonObject> jsonGroupRes = new ArrayList<>();
-    protected static List<JsonObject> jsonUserRes = new ArrayList<>();
+    protected static Set<JsonObject> jsonUserRes = new HashSet<>();
 }

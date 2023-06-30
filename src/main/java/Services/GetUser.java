@@ -55,7 +55,6 @@ public class GetUser extends Base {
                 lstJsonResults.add(data);
             }
         }
-        System.out.println(lstJsonResults);
         return lstJsonResults;
     }
 }

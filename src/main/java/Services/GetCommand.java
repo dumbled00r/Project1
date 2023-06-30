@@ -83,23 +83,29 @@ public class GetCommand extends Base {
                     GetMainChatList.loadChatIds();
                     Thread.sleep(3000);
                     for (long chatId : chatIds) {
-//                        JsonObject groupRes = GetChat.getChat(chatId);
-
-//                        if (!groupRes.isJsonNull()) {
-//                            jsonGroupRes.add(groupRes);
+                        JsonObject groupRes = GetChat.getChat(chatId);
+                        List<JsonObject> res = GetMember.getMember(chatId);
+                        Thread.sleep(1000);
+                        for (JsonObject jsonObject : res) {
+                            if (!jsonObject.isJsonNull() && !jsonObject.isEmpty()) {
+                                    jsonUserRes.add(jsonObject);
+                                }
+                            }
+                        if (!groupRes.isJsonNull()) {
+                            jsonGroupRes.add(groupRes);
+                        }
                     }
-                    Thread.sleep(2000);
                     for (JsonObject obj : jsonUserRes) {
                         System.out.println(obj);
                     }
-//                    AirTableGroup airTableGroup = new AirTableGroup();
-//                    for (JsonObject jsonObject : jsonGroupRes) {
-//                        airTableGroup.pushGroupData(jsonObject);
-//                    }
-//                    AirTableUser airTableUser = new AirTableUser();
-//                    for (JsonObject jsonObject : jsonUserRes) {
-//                        airTableUser.pushUserData(jsonObject);
-//                    }
+                    AirTableGroup airTableGroup = new AirTableGroup();
+                    for (JsonObject jsonObject : jsonGroupRes) {
+                        airTableGroup.pushGroupData(jsonObject);
+                    }
+                    AirTableUser airTableUser = new AirTableUser();
+                    for (JsonObject jsonObject : jsonUserRes) {
+                        airTableUser.pushUserData(jsonObject);
+                    }
                     break;
                 }
                 case "lo":
