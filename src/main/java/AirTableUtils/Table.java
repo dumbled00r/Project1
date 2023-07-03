@@ -31,7 +31,7 @@ public class Table{
     }
 
     protected void syncRecord(String baseId, String token) {
-        records.clear();
+//        records.clear();
         String records = Record.listRecords(id, baseId, token);
         if (records == null) {
             System.out.println("Error: Could not get records for table: " + name);
@@ -64,31 +64,6 @@ public class Table{
             }
         }
         return null;
-    }
-    @Deprecated // api not allow to update field type
-    protected boolean updateField(JsonObject newField, Field field, String baseId, String token) {
-        String fieldUpdate = Field.updateField(newField, field.getId(), id, baseId, token);
-        if (fieldUpdate == null) {
-            System.out.println("Error: Could not update field: " + field.getName() + " in table: " + name);
-            return false;
-        }
-        JsonObject fieldJson = JsonParser.parseString(fieldUpdate).getAsJsonObject();
-        fields.remove(field);
-        fields.add(new Field(fieldJson));
-        System.out.println("Updated field: " + field.getName() + " in table: " + name);
-        return true;
-    }
-
-    protected boolean addField(JsonObject field, String baseId, String token) {
-        String fieldCreate = Field.createField(field, id, baseId, token);
-        if (fieldCreate == null) {
-            System.out.println("Error: Could not create field: " + field.get("name").getAsString() + " in table: " + name);
-            return false;
-        }
-        JsonObject fieldJson = JsonParser.parseString(fieldCreate).getAsJsonObject();
-        fields.add(new Field(fieldJson));
-        System.out.println("Created field: " + field.get("name").getAsString() + " in table: " + name);
-        return true;
     }
 
     // Handle Records
@@ -154,7 +129,6 @@ public class Table{
             return false;
         }
     }
-
 
     protected void pullAllRecord(List<JsonObject> fields, String baseId, String token) {
         numChanges = 0;

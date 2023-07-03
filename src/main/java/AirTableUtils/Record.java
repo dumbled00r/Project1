@@ -64,8 +64,7 @@ public class Record{
     }
     // API Methods
     protected static String listRecords(String tableId, String baseId, String token) {
-        //curl "https://api.airtable.com/v0/{baseId}/{tableIdOrName}" \
-        //-H "Authorization: Bearer YOUR_TOKEN"
+
         String url = "https://api.airtable.com/v0/" + baseId + "/" + tableId;
 
         try(CloseableHttpClient client = HttpClientBuilder.create().build()) {
