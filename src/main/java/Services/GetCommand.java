@@ -1,17 +1,9 @@
 package Services;
 
-import AirTableUtils.AirTable;
-import AirTableUtils.AirTableGroup;
-import AirTableUtils.AirTableUser;
+import AirTableUtils.*;
 import Utils.*;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import org.drinkless.tdlib.TdApi;
-import java.util.List;
 
-
-import static Services.GetMainChatList.chatIds;
 
 
 public class GetCommand extends Base {
@@ -59,7 +51,7 @@ public class GetCommand extends Base {
                     break;
                 }
                 case "gu": {
-                    GetUser.getUser(Long.parseLong(commands[1]), "ABC");
+                    GetUser.getUser(Long.parseLong(commands[1]), 123L);
                     break;
                 }
                 case "add": {
@@ -81,32 +73,7 @@ public class GetCommand extends Base {
                     break;
                 }
                 case "sync":{
-                    GetMainChatList.loadChatIds();
-                    Thread.sleep(3000);
-                    for (long chatId : chatIds) {
-                        JsonObject groupRes = GetChat.getChat(chatId);
-                        List<JsonObject> res = GetMember.getMember(chatId);
-                        Thread.sleep(1000);
-                        for (JsonObject jsonObject : res) {
-                            if (!jsonObject.isJsonNull() && !jsonObject.isEmpty()) {
-                                    jsonUserRes.add(jsonObject);
-                                }
-                            }
-                        if (!groupRes.isJsonNull()) {
-                            jsonGroupRes.add(groupRes);
-                        }
-                    }
-                    for (JsonObject obj : jsonUserRes) {
-                        System.out.println(obj);
-                    }
-                    AirTableGroup airTableGroup = new AirTableGroup();
-                    for (JsonObject jsonObject : jsonGroupRes) {
-                        airTableGroup.pushGroupData(jsonObject);
-                    }
-                    AirTableUser airTableUser = new AirTableUser();
-                    for (JsonObject jsonObject : jsonUserRes) {
-                        airTableUser.pushUserData(jsonObject);
-                    }
+                    SyncToAirTable.syncToAirTable();
                     break;
                 }
                 case "lo":

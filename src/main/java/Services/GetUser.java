@@ -16,7 +16,7 @@ public class GetUser extends Base {
      *
      * Get single user
      */
-    public static JsonObject getUser(Long args, String chatTitle) {
+    public static JsonObject getUser(Long args, long chatId) {
         JsonObject jsonResults = new JsonObject();
         TdApi.GetUser getUser = new TdApi.GetUser(args);
         client.send(getUser, object -> {
@@ -35,7 +35,7 @@ public class GetUser extends Base {
                 jsonResults.addProperty("Username", userName);
                 jsonResults.addProperty("First Name", firstName);
                 jsonResults.addProperty("Last Name", lastName);
-                jsonResults.addProperty("Chat Title", chatTitle);
+                jsonResults.addProperty("Chat Id", chatId);
             } else {
                 System.out.println("Failed to get user: " + object);
             }
@@ -46,11 +46,11 @@ public class GetUser extends Base {
     /**
      * This is only for saving data usage
      * @param userIds
-     * @param chatTitle
+     * @param chatId
      */
-    public static List<JsonObject> getMassUser(List<Long> userIds, String chatTitle) throws InterruptedException {
+    public static List<JsonObject> getMassUser(List<Long> userIds, Long chatId) throws InterruptedException {
         for (Long userId : userIds){
-            JsonObject data = getUser(userId, chatTitle);
+            JsonObject data = getUser(userId, chatId);
             if (!data.isJsonNull()) {
                 lstJsonResults.add(data);
             }

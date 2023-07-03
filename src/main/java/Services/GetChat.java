@@ -27,7 +27,6 @@ public class GetChat extends Base {
                                     chatJson.addProperty("type", chat.type.getClass().getSimpleName().substring(8));
                                     chatJson.addProperty("title", chat.title);
                                     chatJson.addProperty("description", supergroupFullInfo.description);
-                                    chatJson.addProperty("members count", supergroupFullInfo.memberCount);
                                     String inviteLink = (supergroupFullInfo.inviteLink == null) ? "" : supergroupFullInfo.inviteLink.inviteLink;
                                     chatJson.addProperty("invite link", inviteLink);
 //                                    System.out.println(chatJson);
@@ -43,7 +42,6 @@ public class GetChat extends Base {
                                     chatJson.addProperty("type" ,chat.type.getClass().getSimpleName().substring(8));
                                     chatJson.addProperty("title", chat.title);
                                     chatJson.addProperty("description", basicGroupFullInfo.description);
-                                    chatJson.addProperty("members count", basicGroupFullInfo.members.length);
                                     chatJson.addProperty("invite link", basicGroupFullInfo.inviteLink.inviteLink);
                                 }
                             }

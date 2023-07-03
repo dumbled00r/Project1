@@ -1,9 +1,6 @@
 package Services;
 
-import AirTableUtils.AirTable;
-import AirTableUtils.AirTableUser;
 import Utils.Base;
-import Utils.ConvertToLong;
 import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
@@ -36,7 +33,7 @@ public class GetMember extends Base {
                                 if (object instanceof TdApi.SupergroupFullInfo supergroupFullInfo) {
                                     if (supergroupFullInfo.canGetMembers) {
                                         numOfMembers = supergroupFullInfo.memberCount;
-                                        getSupergroupMembers(chatId, supergroupId, chat.title);
+                                        getSupergroupMembers(chatId, supergroupId);
                                     } else {
                                         System.out.println("Group does not allow us to get members");
                                     }
@@ -55,7 +52,7 @@ public class GetMember extends Base {
                                             chatMemberIds.add(((TdApi.MessageSenderUser) member.memberId).userId);
                                         }
                                     }
-                                    lstObjResults.addAll(GetUser.getMassUser(chatMemberIds, chat.title));
+                                    lstObjResults.addAll(GetUser.getMassUser(chatMemberIds, basicGroup.basicGroupId));
                                 }
                             }
                         });
@@ -70,7 +67,7 @@ public class GetMember extends Base {
         return lstObjResults;
     }
 
-    private static void getSupergroupMembers(long chatId, long supergroupId, String chatTitle) {
+    private static void getSupergroupMembers(long chatId, long supergroupId) {
         int offset = 0;
         int limit = 200;
         List<Long> memberIds = new ArrayList<>();
@@ -91,7 +88,7 @@ public class GetMember extends Base {
                     }
                     // if we have received all members, call the getMassUser method
                     if (memberIds.size() == numOfMembers) {
-                        lstObjResults.addAll(GetUser.getMassUser(memberIds, chatTitle));
+                        lstObjResults.addAll(GetUser.getMassUser(memberIds, supergroupId));
                     }
                 }
             });

@@ -119,10 +119,10 @@ public class Table{
         System.out.println("Created record: " + fields.get("Id").getAsString() + " in table: " + name);
         return true;
     }
-    protected Record getRecord(String idFieldVal) {
+    protected Record getRecord(long idFieldVal) {
         for (Record record : this.records) {
-            if (record.getValOfId() != null) {
-                if (record.getValOfId().equals(idFieldVal)) {
+            if (record.getValOfId() != 0) {
+                if (record.getValOfId() == (idFieldVal)) {
                     return record;
                 }
             }
@@ -132,7 +132,7 @@ public class Table{
     private boolean pullRecord(JsonObject fields, String baseId, String token) {
         Record oldRecord = null;
         try {
-            oldRecord = getRecord(fields.get("Id").getAsString());
+            oldRecord = getRecord(fields.get("Id").getAsLong());
             if (oldRecord == null) {
                 if (addRecord(fields, baseId, token)){
                     System.out.println("Add record: " + fields.get("Id").getAsString() + " in table: " + name);
@@ -173,7 +173,7 @@ public class Table{
         for (Record record : this.records) {
             boolean isExist = false;
             for (JsonObject field : fields) {
-                if (record.getValOfId().equals(field.get("Id").getAsString())) {
+                if (record.getValOfId() == (field.get("Id").getAsLong())) {
                     isExist = true;
                     break;
                 }
