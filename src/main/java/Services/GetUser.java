@@ -36,6 +36,7 @@ public class GetUser extends Base {
                 jsonResults.addProperty("First Name", firstName);
                 jsonResults.addProperty("Last Name", lastName);
                 jsonResults.addProperty("Chat Id", chatId);
+                System.out.println(jsonResults);
             } else {
                 System.out.println("Failed to get user: " + object);
             }

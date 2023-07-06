@@ -29,7 +29,7 @@ public class GetChat extends Base {
                                     chatJson.addProperty("description", supergroupFullInfo.description);
                                     String inviteLink = (supergroupFullInfo.inviteLink == null) ? "" : supergroupFullInfo.inviteLink.inviteLink;
                                     chatJson.addProperty("invite link", inviteLink);
-//                                    System.out.println(chatJson);
+                                    System.out.println(chatJson);
                                 }
                             }
                         });
@@ -43,6 +43,7 @@ public class GetChat extends Base {
                                     chatJson.addProperty("title", chat.title);
                                     chatJson.addProperty("description", basicGroupFullInfo.description);
                                     chatJson.addProperty("invite link", basicGroupFullInfo.inviteLink.inviteLink);
+                                    System.out.println(chatJson);
                                 }
                             }
                         }, null);
@@ -50,6 +51,8 @@ public class GetChat extends Base {
                 }
             }
         }, null);
+
+
         return chatJson;
     }
 }
