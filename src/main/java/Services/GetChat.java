@@ -1,6 +1,7 @@
 package Services;
 
 import Utils.Base;
+import Utils.Print;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
@@ -67,6 +68,8 @@ public class GetChat extends Base {
                     } else {
                         System.out.println("No chat information available");
                     }
+                    System.out.println("You can use the command getmem + <ChatID> to get members of a group \nOr use help for more commands");
+                    Print.print("");
                     return results;
                 });
     }

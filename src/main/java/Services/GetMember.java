@@ -56,7 +56,6 @@ public class GetMember extends Base {
                                     for (TdApi.ChatMember member : chatMembers) {
                                         if (member.memberId instanceof TdApi.MessageSenderUser) {
                                             chatMemberIds.add(((TdApi.MessageSenderUser) member.memberId).userId);
-                                            System.out.println(((TdApi.MessageSenderUser) member.memberId).userId);
                                         }
                                     }
                                     GetUser.getMassUser(chatMemberIds, chatId).thenAccept(result -> {
