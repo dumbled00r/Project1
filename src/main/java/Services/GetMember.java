@@ -101,7 +101,7 @@ public class GetMember extends Base {
                     }
                     // if we have received all members, call the getMassUser method
                     if (memberIds.size() == numOfMembers) {
-                        GetUser.getMassUser(memberIds, supergroupId).thenAccept(result -> {
+                        GetUser.getMassUser(memberIds, chatId).thenAccept(result -> {
                             lstObjResults.addAll(result);
                             future.complete(null);
                         });

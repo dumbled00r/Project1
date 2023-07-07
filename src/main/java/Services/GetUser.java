@@ -72,7 +72,7 @@ public class GetUser extends Base {
                     if (!results.isEmpty()) {
                         System.out.println("User information:");
                         System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");
-                        System.out.println("|        ID       |     Username    |           First Name           |         Last Name              |      Chat ID    |");
+                        System.out.println("|        ID       |     Username    |           First Name           |         Last Name              |     Chat ID     |");
                         System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");
                         for (JsonObject result : results) {
                             long id = result.get("Id").getAsLong();
