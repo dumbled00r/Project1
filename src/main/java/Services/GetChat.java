@@ -23,7 +23,7 @@ public class GetChat extends Base {
                             @Override
                             public void onResult(TdApi.Object object) {
                                 if (object instanceof TdApi.SupergroupFullInfo supergroupFullInfo){
-                                    chatJson.addProperty("Id", supergroup.supergroupId);
+                                    chatJson.addProperty("Id", chat.id);
                                     chatJson.addProperty("type", chat.type.getClass().getSimpleName().substring(8));
                                     chatJson.addProperty("title", chat.title);
                                     chatJson.addProperty("description", supergroupFullInfo.description);
