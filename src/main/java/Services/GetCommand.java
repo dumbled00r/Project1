@@ -1,130 +1,171 @@
 package Services;
 
-import AirTableUtils.AirTable;
-import AirTableUtils.AirTableGroup;
-import AirTableUtils.AirTableUser;
+import AirTableUtils.SyncToAirTable;
 import Utils.*;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import org.drinkless.tdlib.TdApi;
-import java.util.List;
 
-import static Services.GetMainChatList.chatIds;
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class GetCommand extends Base {
-    protected static void getCommand() {
+    private static final Map<String, Command> commands = new HashMap<>();
+
+    static {
+        commands.put("", new EmptyCommand());
+        commands.put("help", new HelpCommand());
+        commands.put("gcs", new GetMainChatListCommand());
+        commands.put("gc", new GetChatCommand());
+        commands.put("me", new GetMeCommand());
+        commands.put("sm", new SendMessageCommand());
+        commands.put("gu", new GetUserCommand());
+        commands.put("add", new AddMemberCommand());
+        commands.put("pm", new SendPrivateMessageCommand());
+        commands.put("getmem", new GetMemberCommand());
+        commands.put("sync", new SyncToAirTableCommand());
+        commands.put("lo", new LogoutCommand());
+        commands.put("q", new QuitCommand());
+    }
+    private static final ReentrantLock lock = new ReentrantLock();
+
+
+    protected static void getCommand() throws InterruptedException {
         String command = PromptString.promptString(commandsLine);
-        String[] commands = command.split(" ", 2);
-        try {
-            switch (commands[0].toLowerCase()) {
-                case "":{
-                    break;
-                }
-                case "help":{
-                    System.out.println("gcs - Get Chat Lists ");
-                    System.out.println("gc <ChatId> - Get Chat Information");
-                    System.out.println("me - Get My Information");
-                    System.out.println("sm <ChatId> <Message> - Send Message To An Existing Chat");
-                    System.out.println("add <ChatId> <UserId> - Add User To An Existing Chat");
-                    System.out.println("pm <UserId> - Send Private Message To User ");
-                    System.out.println("getmem <ChatId> - Get Members Of A Chat Group");
-                    System.out.println("upload - Upload latest query to Airtable");
-                    System.out.println("lo - Logout");
-                    System.out.println("q - Quit");
-                    break;
-                }
-                case "gcs": {
-                    int limit = 50;
-                    if (commands.length > 1) {
-                        limit = ToInt.toInt(commands[1]);
-                    }
-                    GetMainChatList.getMainChatList(limit);
-                    break;
-                }
-                case "gc": {
-                    String[] args = commands[1].split(" ", 2);
-                    GetChat.getChat(Long.parseLong(args[0]));
-                    break;
-                }
-                case "me": {
-                    client.send(new TdApi.GetMe(), defaultHandler);
-                    break;
-                }
-                case "sm": {
-                    String[] args = commands[1].split(" ", 2);
-                    SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
-                    break;
-                }
-                case "gu": {
-                    GetUser.getUser(Long.parseLong(commands[1]), "ABC");
-                    break;
-                }
-                case "add": {
-                    String sChatId = commands[1];
-                    String sUserId = commands[2];
-                    Long longChatId = ConvertToLong.toLong(sChatId);
-                    AddMember.addSingleUser(longChatId, ConvertToLong.toLong(sUserId));
-                    break;
-                }
-                case "pm":{
-                    String[] args = commands[1].split(" ", 2);
-                    client.send(new TdApi.CreatePrivateChat(ConvertToLong.toLong(args[0]), true), null);
-                    SendMessage.sendMessage(ConvertToLong.toLong(args[0]), args[1]);
-                    break;
-                }
-                case "getmem":{
-                    String[] args = commands[1].split(" ", 2);
-                    GetMember.getMember(Long.parseLong(args[0]));
-                    break;
-                }
-                case "sync":{
-                    GetMainChatList.loadChatIds();
-                    Thread.sleep(3000);
-                    for (long chatId : chatIds) {
-                        JsonObject groupRes = GetChat.getChat(chatId);
-                        List<JsonObject> res = GetMember.getMember(chatId);
-                        Thread.sleep(1000);
-                        for (JsonObject jsonObject : res) {
-                            if (!jsonObject.isJsonNull() && !jsonObject.isEmpty()) {
-                                    jsonUserRes.add(jsonObject);
-                                }
-                            }
-                        if (!groupRes.isJsonNull()) {
-                            jsonGroupRes.add(groupRes);
-                        }
-                    }
-                    for (JsonObject obj : jsonUserRes) {
-                        System.out.println(obj);
-                    }
-                    AirTableGroup airTableGroup = new AirTableGroup();
-                    for (JsonObject jsonObject : jsonGroupRes) {
-                        airTableGroup.pushGroupData(jsonObject);
-                    }
-                    AirTableUser airTableUser = new AirTableUser();
-                    for (JsonObject jsonObject : jsonUserRes) {
-                        airTableUser.pushUserData(jsonObject);
-                    }
-                    break;
-                }
-                case "lo":
-                    haveAuthorization = false;
-                    client.send(new TdApi.LogOut(), defaultHandler);
-                    break;
-                case "q":
-                    needQuit = true;
-                    haveAuthorization = false;
-                    client.send(new TdApi.Close(), defaultHandler);
-                    break;
-                default: {
-                    System.err.println("Unsupported command: " + command);
-                }
+        String[] commandParts = command.split(" ", 2);
+        Command cmd = commands.get(commandParts[0].toLowerCase());
+        if (cmd != null) {
+            cmd.execute(commandParts.length > 1 ? commandParts[1] : "");
+        }
+        else {
+            System.err.println("Unsupported command: " + command);
+        }
+    }
+
+    private static abstract class Command {
+        public abstract void execute(String args) throws InterruptedException;
+    }
+
+    private static class EmptyCommand extends Command {
+        @Override
+        public void execute(String args) {
+            // do nothing
+        }
+    }
+
+    private static class HelpCommand extends Command {
+        @Override
+        public void execute(String args) {
+            System.out.println("gcs - Get Chat Lists ");
+            System.out.println("gc <ChatId> - Get Chat Information");
+            System.out.println("me - Get My Information");
+            System.out.println("sm <ChatId> <Message> - Send Message To An Existing Chat");
+            System.out.println("add <ChatId> <UserId> - Add User To An Existing Chat");
+            System.out.println("pm <UserId> - Send Private Message To User ");
+            System.out.println("getmem <ChatId> - Get Members Of A Chat Group");
+            System.out.println("upload - Upload latest query to Airtable");
+            System.out.println("lo - Logout");
+            System.out.println("q - Quit");
+        }
+    }
+
+    private static class GetMainChatListCommand extends Command {
+        @Override
+        public void execute(String args) {
+            int limit = 50;
+            if (!args.isEmpty()) {
+                limit = ToInt.toInt(args);
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            Print.print("Not enough arguments");
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            GetMainChatList.getMainChatList(limit);
+        }
+    }
+
+    private static class GetChatCommand extends Command {
+        @Override
+        public void execute(String args) {
+            String[] chatArgs = args.split(" ", 2);
+            GetChat.getChat(Long.parseLong(chatArgs[0]));
+        }
+    }
+
+    private static class GetMeCommand extends Command {
+        @Override
+        public void execute(String args) {
+            client.send(new TdApi.GetMe(), defaultHandler);
+        }
+    }
+
+    private static class SendMessageCommand extends Command {
+        @Override
+        public void execute(String args) {
+            String[] sendArgs = args.split(" ", 2);
+            SendMessage.sendMessage(ConvertToLong.toLong(sendArgs[0]), sendArgs[1]);
+        }
+    }
+
+    private static class GetUserCommand extends Command {
+        @Override
+        public void execute(String args) {
+            GetUser.getUser(Long.parseLong(args), 123L);
+        }
+    }
+
+    private static class AddMemberCommand extends Command {
+        @Override
+        public void execute(String args) {
+            String[] addArgs = args.split(" ", 2);
+            Long longChatId = ConvertToLong.toLong(addArgs[0]);
+            AddMember.addSingleUser(longChatId, ConvertToLong.toLong(addArgs[1]));
+        }
+    }
+
+    private static class SendPrivateMessageCommand extends Command {
+        @Override
+        public void execute(String args) {
+            String[] pmArgs = args.split(" ", 2);
+            client.send(new TdApi.CreatePrivateChat(ConvertToLong.toLong(pmArgs[0]), true), null);
+            SendMessage.sendMessage(ConvertToLong.toLong(pmArgs[0]), pmArgs[1]);
+        }
+    }
+
+    private static class GetMemberCommand extends Command {
+        @Override
+        public void execute(String args) throws InterruptedException {
+
+            String[] getMemArgs = args.split(" ", 2);
+            authorizationLock.lock();
+            try {
+                GetMember.getMember(Long.parseLong(getMemArgs[0]));
+                while (!haveAuthorization) {
+                    gotResult.await();
+                }
+            } finally {
+                authorizationLock.unlock();
+            }
+
+        }
+    }
+
+    private static class SyncToAirTableCommand extends Command {
+        @Override
+        public void execute(String args) throws InterruptedException {
+//            SyncToAirTable.syncToAirTable();
+        }
+    }
+
+    private static class LogoutCommand extends Command {
+        @Override
+        public void execute(String args) {
+            haveAuthorization = false;
+            client.send(new TdApi.LogOut(), defaultHandler);
+        }
+    }
+
+    private static class QuitCommand extends Command {
+        @Override
+        public void execute(String args) {
+            needQuit = true;
+            haveAuthorization = false;
+            client.send(new TdApi.Close(), defaultHandler);
         }
     }
 }

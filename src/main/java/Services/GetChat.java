@@ -1,8 +1,9 @@
 package Services;
 
 import Utils.Base;
-import Utils.ConvertToLong;
+
 import com.google.gson.JsonObject;
+
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
@@ -22,14 +23,13 @@ public class GetChat extends Base {
                             @Override
                             public void onResult(TdApi.Object object) {
                                 if (object instanceof TdApi.SupergroupFullInfo supergroupFullInfo){
-                                    chatJson.addProperty("Id", supergroup.supergroupId);
+                                    chatJson.addProperty("Id", chat.id);
                                     chatJson.addProperty("type", chat.type.getClass().getSimpleName().substring(8));
                                     chatJson.addProperty("title", chat.title);
                                     chatJson.addProperty("description", supergroupFullInfo.description);
-                                    chatJson.addProperty("members count", supergroupFullInfo.memberCount);
                                     String inviteLink = (supergroupFullInfo.inviteLink == null) ? "" : supergroupFullInfo.inviteLink.inviteLink;
                                     chatJson.addProperty("invite link", inviteLink);
-//                                    System.out.println(chatJson);
+                                    System.out.println(chatJson);
                                 }
                             }
                         });
@@ -42,8 +42,8 @@ public class GetChat extends Base {
                                     chatJson.addProperty("type" ,chat.type.getClass().getSimpleName().substring(8));
                                     chatJson.addProperty("title", chat.title);
                                     chatJson.addProperty("description", basicGroupFullInfo.description);
-                                    chatJson.addProperty("members count", basicGroupFullInfo.members.length);
                                     chatJson.addProperty("invite link", basicGroupFullInfo.inviteLink.inviteLink);
+                                    System.out.println(chatJson);
                                 }
                             }
                         }, null);
@@ -51,6 +51,8 @@ public class GetChat extends Base {
                 }
             }
         }, null);
+
+
         return chatJson;
     }
 }

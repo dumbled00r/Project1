@@ -22,13 +22,14 @@ public class Base {
 
     protected static TdApi.AuthorizationState authorizationState = null;
     protected static volatile boolean haveAuthorization = false;
+    protected static volatile boolean haveResult = false;
     protected static volatile boolean needQuit = false;
     protected static volatile boolean canQuit = false;
-
     protected static final Client.ResultHandler defaultHandler = new Handler.DefaultHandler();
-
     protected static final Lock authorizationLock = new ReentrantLock();
+    protected static final Lock resultLock = new ReentrantLock();
     protected static final Condition gotAuthorization = authorizationLock.newCondition();
+    protected static final Condition gotResult = resultLock.newCondition();
 
     protected static final ConcurrentMap<Long, TdApi.User> users = new ConcurrentHashMap<Long, TdApi.User>();
     protected static final ConcurrentMap<Long, TdApi.BasicGroup> basicGroups = new ConcurrentHashMap<Long, TdApi.BasicGroup>();
@@ -38,15 +39,12 @@ public class Base {
     protected static final ConcurrentMap<Long, TdApi.Chat> chats = new ConcurrentHashMap<Long, TdApi.Chat>();
     protected static final NavigableSet<ChatOrder.OrderedChat> mainChatList = new TreeSet<ChatOrder.OrderedChat>();
     protected static boolean haveFullMainChatList = false;
-
     protected static final ConcurrentMap<Long, TdApi.UserFullInfo> usersFullInfo = new ConcurrentHashMap<Long, TdApi.UserFullInfo>();
     protected static final ConcurrentMap<Long, TdApi.BasicGroupFullInfo> basicGroupsFullInfo = new ConcurrentHashMap<Long, TdApi.BasicGroupFullInfo>();
     protected static final ConcurrentMap<Long, TdApi.SupergroupFullInfo> supergroupsFullInfo = new ConcurrentHashMap<Long, TdApi.SupergroupFullInfo>();
-
     protected static final String newLine = System.getProperty("line.separator");
     protected static final String commandsLine = "Enter command (help - List of commands): ";
     protected static volatile String currentPrompt = null;
-
     // create Gson obj
     protected static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     protected static List<Long> chatMemberIds = new ArrayList<>();

@@ -7,7 +7,7 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AirTableGroup extends AirTable{
+public class    AirTableGroup extends AirTable{
     public AirTableGroup(){
         super();
         String response = Table.listTables(baseId, personal_access_token);

@@ -20,15 +20,15 @@ import java.util.List;
 public class Record{
     private final String id;
     private final JsonObject fields;
-    private final String IdFieldVal;
+    private final long IdFieldVal;
 
     Record(JsonObject record) {
         this.id = record.get("id").getAsString();
         this.fields = record.get("fields").getAsJsonObject();
         if (this.fields.has("Id"))
-            this.IdFieldVal = this.fields.get("Id").getAsString();
+            this.IdFieldVal = this.fields.get("Id").getAsLong();
         else
-            this.IdFieldVal = null;
+            this.IdFieldVal = 0;
     }
     protected String getId() {
         return this.id;
@@ -55,16 +55,16 @@ public class Record{
         }
         return true;
     }
-    protected String getValOfId() {
+    protected long getValOfId() {
         return this.IdFieldVal;
     }
+
     protected JsonObject getFields() {
         return this.fields;
     }
     // API Methods
     protected static String listRecords(String tableId, String baseId, String token) {
-        //curl "https://api.airtable.com/v0/{baseId}/{tableIdOrName}" \
-        //-H "Authorization: Bearer YOUR_TOKEN"
+
         String url = "https://api.airtable.com/v0/" + baseId + "/" + tableId;
 
         try(CloseableHttpClient client = HttpClientBuilder.create().build()) {
@@ -128,6 +128,7 @@ public class Record{
                 return EntityUtils.toString(response.getEntity());
             } else {
                 System.out.println("Error creating record: " + response.getCode());
+                System.out.println(url);
                 System.out.println("fullBody: " + fullBody);
                 return null;
             }
