@@ -81,9 +81,12 @@ public class GetCommand extends Base {
 
     private static class GetChatCommand extends Command {
         @Override
-        public void execute(String args) {
-            String[] chatArgs = args.split(" ", 2);
-            GetChat.getChat(Long.parseLong(chatArgs[0]));
+        public void execute(String args) throws InterruptedException {
+//            String[] chatArgs = args.split(" ", 2);
+//            GetChat.getChat(Long.parseLong(chatArgs[0]));
+            GetMainChatList.loadChatIds();
+            Thread.sleep(3000);
+            GetChat.getMassChat();
         }
     }
 

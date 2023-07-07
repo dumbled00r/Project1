@@ -2,6 +2,7 @@ package Services;
 
 import AirTableUtils.AirTable;
 import Utils.Base;
+import Utils.Print;
 import org.drinkless.tdlib.TdApi;
 import com.google.gson.*;
 
@@ -70,7 +71,7 @@ public class GetUser extends Base {
                         }
                     }
                     if (!results.isEmpty()) {
-                        System.out.println("User information:");
+                        System.out.println("\nUser information:");
                         System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");
                         System.out.println("|        ID       |     Username    |           First Name           |         Last Name              |     Chat ID     |");
                         System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");
@@ -86,6 +87,7 @@ public class GetUser extends Base {
                     } else {
                         System.out.println("No user information available");
                     }
+                    Print.print("");
                     return results;
                 });
     }
