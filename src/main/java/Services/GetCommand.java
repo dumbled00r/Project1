@@ -81,16 +81,24 @@ public class GetCommand extends Base {
         public void execute(String args) throws InterruptedException, ExecutionException {
             CompletableFuture<Void> chatIdsFuture = GetMainChatList.loadChatIdsAsync();
             chatIdsFuture.thenComposeAsync((Void v) -> {
+                CompletableFuture<List<GroupChat>> massChatFuture = null;
                 try {
-                    return GetChat.getMassChat();
+                    massChatFuture = GetChat.getMassChat();
                 } catch (ExecutionException e) {
                     throw new RuntimeException(e);
                 } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
                     throw new RuntimeException(e);
                 }
-            });
-            chatIdsFuture.get();
+                return massChatFuture.thenAcceptAsync(results -> {
+                    try {
+                        GetChat.printChatInfo();
+                    } catch (ExecutionException e) {
+                        throw new RuntimeException(e);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }).join();
         }
     }
 

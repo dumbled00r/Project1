@@ -38,11 +38,15 @@ public class SyncToAirTable {
                 JsonObject groupJson = groupRes.get().toJsonObject();
                 jsonGroupRes.add(groupJson);
             } catch (NullPointerException e) {
-                System.out.println("Not a group chat");
+                if (Thread.currentThread().getStackTrace()[2].getClassName().equals(SyncToAirTable.class.getName())) {
+                    System.out.println("Not a group chat");
+                }
             }
 
         }
-        System.out.println(jsonGroupRes);
+        if (Thread.currentThread().getStackTrace()[2].getClassName().equals(SyncToAirTable.class.getName())) {
+            System.out.println(jsonGroupRes);
+        }
         Map<String, JsonObject> idToJsonObject = new HashMap<>();
 
         for (JsonObject jsonObject : jsonUserRes) {
@@ -97,4 +101,3 @@ public class SyncToAirTable {
         }
     }
 }
-
