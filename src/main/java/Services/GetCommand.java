@@ -7,6 +7,7 @@ import org.drinkless.tdlib.TdApi;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -145,7 +146,8 @@ public class GetCommand extends Base {
         public void execute(String args) throws InterruptedException, ExecutionException, IOException {
             String[] getmsgArgs = args.split(" ", 2);
             Long chatId = ConvertToLong.toLong(getmsgArgs[0]);
-            GetMessagesHistory.printMessages(chatId);
+            CompletableFuture<List<TdApi.Message>> future = GetMessagesHistory.getMessages(chatId);
+            List<TdApi.Message> messages = future.join();
         }
     }
 

@@ -13,14 +13,14 @@ import java.util.concurrent.CompletableFuture;
 public class GetMember extends Base {
     private static int numOfMembers;
 
-    private static List<User> lstResults = new ArrayList<>();
+    private static List<User> lstUsers = new ArrayList<>();
 
     /**
      * Get the members' userid of a group chat
      */
     public static CompletableFuture<List<User>> getMember(Long chatId) {
         chatMemberIds.clear();
-        lstResults.clear();
+        lstUsers.clear();
         CompletableFuture<List<User>> future = new CompletableFuture<>();
         client.send(new TdApi.GetChat(chatId), new Client.ResultHandler() {
             @Override
@@ -29,7 +29,7 @@ public class GetMember extends Base {
                     if (chat.type instanceof TdApi.ChatTypeSupergroup) {
                         if (((TdApi.ChatTypeSupergroup) chat.type).isChannel) {
                             System.err.println("\nThis chat group is a channel, please provide a chat group");
-                            future.complete(lstResults);
+                            future.complete(lstUsers);
                             return;
                         }
                         long supergroupId = ((TdApi.ChatTypeSupergroup) chat.type).supergroupId;
@@ -40,10 +40,10 @@ public class GetMember extends Base {
                                     if (supergroupFullInfo.canGetMembers) {
                                         numOfMembers = supergroupFullInfo.memberCount;
                                         getSupergroupMembers(chatId, supergroupId)
-                                                .thenAccept(result -> future.complete(lstResults));
+                                                .thenAccept(result -> future.complete(lstUsers));
                                     } else {
                                         System.out.println("Group does not allow us to get members");
-                                        future.complete(lstResults);
+                                        future.complete(lstUsers);
                                     }
                                 }
                             }
@@ -60,8 +60,8 @@ public class GetMember extends Base {
                                         }
                                     }
                                     GetUser.getMassUser(chatMemberIds, chatId).thenAccept(result -> {
-                                        lstResults.addAll(result);
-                                        future.complete(lstResults);
+                                        lstUsers.addAll(result);
+                                        future.complete(lstUsers);
                                     });
                                 }
                             }
@@ -69,12 +69,12 @@ public class GetMember extends Base {
                     } else {
                         System.err.println("\nThis is not a chat group");
                         Print.print("");
-                        future.complete(lstResults);
+                        future.complete(lstUsers);
                     }
                 } else {
                     System.err.println("\nInvalid Chat ID");
                     Print.print("");
-                    future.complete(lstResults);
+                    future.complete(lstUsers);
                 }
             }
         }, null);
@@ -104,7 +104,7 @@ public class GetMember extends Base {
                     // if we have received all members, call the getMassUser method
                     if (memberIds.size() == numOfMembers) {
                         GetUser.getMassUser(memberIds, chatId).thenAccept(result -> {
-                            lstResults.addAll(result);
+                            lstUsers.addAll(result);
                             future.complete(null);
                         });
                     }
