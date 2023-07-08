@@ -1,28 +1,27 @@
 package Services;
 
 import Utils.Base;
+import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class AddMember extends Base {
     /**
-     * Add a single user to a group chat
+     * Add a single (in contact) user to a group chat
      * @param chatId
      * @param userId
      *
      */
-    public static void addSingleUser(Long chatId, Long userId){
-        client.send(new TdApi.AddChatMember(chatId, userId, 9999), defaultHandler);
-    }
-
-    /**
-     * Add multiple users to a group chat
-     * @param chatId
-     * @param userId
-     */
-    public static void addMassUser(Long chatId, List<Long> userId){
-        long[] aUserId = userId.stream().mapToLong(Long::longValue).toArray();
-        client.send(new TdApi.AddChatMembers(chatId, aUserId), defaultHandler);
+    public static void addMember(Long chatId, Long userId){
+        client.send(new TdApi.AddChatMember(chatId, userId, 0), new Client.ResultHandler() {
+            @Override
+            public void onResult(TdApi.Object object) throws IOException, InterruptedException, ExecutionException {
+                if (object instanceof TdApi.Error) System.err.println("\nFailed to add member: " + ((TdApi.Error) object).message);
+                else System.out.println("Added successfully");
+            }
+        });
     }
 }

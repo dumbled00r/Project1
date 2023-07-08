@@ -12,6 +12,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class GetMessagesHistory extends Base {
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     public static CompletableFuture<List<TdApi.Message>> getMessages(Long chatId) {
@@ -42,8 +46,8 @@ public class GetMessagesHistory extends Base {
                         } else {
                             offset[0] += limit;
                         }
-                    } else {
-                        future.completeExceptionally(new RuntimeException("Failed to get messages"));
+                    } else if (object instanceof TdApi.Error) {
+                        future.completeExceptionally(new RuntimeException("Failed to get messages: " + ((TdApi.Error) object).message));
                     }
                 }
             });
@@ -53,13 +57,24 @@ public class GetMessagesHistory extends Base {
     }
 
     public static void printMessages(Long chatId) {
-        getMessages(chatId).thenAcceptAsync(messages -> {
-            System.out.println("Total messages: " + messages.size());
-            for (TdApi.Message message : messages) {
-                System.out.println(message.content);
-            }
-            Print.print("");
-        }, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS, scheduler));
+        String fileName = "messages_" + chatId + ".txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            getMessages(chatId).thenAcceptAsync(messages -> {
+                try {
+                    writer.write("Total messages: " + messages.size() + "\n");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                for (TdApi.Message message : messages) {
+                    try {
+                        writer.write(message.content + "\n");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS, scheduler)).join();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 }

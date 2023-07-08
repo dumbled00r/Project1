@@ -18,7 +18,7 @@ public class SendMessage extends Base {
                 System.err.println("Failed to send message: " + ((TdApi.Error) object).message);
             } else {
                 // Unexpected result object
-                System.err.println("Unexpected result object: " + object);
+                System.err.println("Unexpected result object: " + ((TdApi.Error) object).message);
             }
         });
     }

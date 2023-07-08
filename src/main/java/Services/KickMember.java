@@ -12,7 +12,7 @@ public class KickMember extends Base {
             @Override
             public void onResult(TdApi.Object object)
             {
-                if (object.getConstructor() == TdApi.Error.CONSTRUCTOR) System.err.println(((TdApi.Error) object).message);
+                if (object instanceof TdApi.Error) System.err.println("Failed to kick member: " + ((TdApi.Error) object).message);
                 else System.out.println("Member kicked successfully");
             }
         });

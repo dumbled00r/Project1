@@ -42,37 +42,34 @@ public class GetMember extends Base {
                                         getSupergroupMembers(chatId, supergroupId)
                                                 .thenAccept(result -> future.complete(lstUsers));
                                     } else {
-                                        System.out.println("Group does not allow us to get members");
+                                        System.err.println("\nGroup does not allow us to get members");
                                         future.complete(lstUsers);
                                     }
                                 }
                             }
                         });
                     } else if (chat.type instanceof TdApi.ChatTypeBasicGroup basicGroup) {
-                        client.send(new TdApi.GetBasicGroupFullInfo(basicGroup.basicGroupId), new Client.ResultHandler() {
-                            @Override
-                            public void onResult(TdApi.Object object) {
-                                if (object instanceof TdApi.BasicGroupFullInfo) {
-                                    TdApi.ChatMember[] chatMembers = ((TdApi.BasicGroupFullInfo) object).members;
-                                    for (TdApi.ChatMember member : chatMembers) {
-                                        if (member.memberId instanceof TdApi.MessageSenderUser) {
-                                            chatMemberIds.add(((TdApi.MessageSenderUser) member.memberId).userId);
-                                        }
+                        client.send(new TdApi.GetBasicGroupFullInfo(basicGroup.basicGroupId), object1 -> {
+                            if (object1 instanceof TdApi.BasicGroupFullInfo) {
+                                TdApi.ChatMember[] chatMembers = ((TdApi.BasicGroupFullInfo) object1).members;
+                                for (TdApi.ChatMember member : chatMembers) {
+                                    if (member.memberId instanceof TdApi.MessageSenderUser) {
+                                        chatMemberIds.add(((TdApi.MessageSenderUser) member.memberId).userId);
                                     }
-                                    GetUser.getMassUser(chatMemberIds, chatId).thenAccept(result -> {
-                                        lstUsers.addAll(result);
-                                        future.complete(lstUsers);
-                                    });
                                 }
+                                GetUser.getMassUser(chatMemberIds, chatId).thenAccept(result -> {
+                                    lstUsers.addAll(result);
+                                    future.complete(lstUsers);
+                                });
                             }
                         });
                     } else {
-                        System.err.println("\nThis is not a chat group");
+                        System.err.println("\nThis is not a chat group: " + ((TdApi.Error) object).message);
                         Print.print("");
                         future.complete(lstUsers);
                     }
                 } else {
-                    System.err.println("\nInvalid Chat ID");
+                    System.err.println("\nInvalid Chat ID: " + ((TdApi.Error) object).message);
                     Print.print("");
                     future.complete(lstUsers);
                 }
@@ -100,6 +97,8 @@ public class GetMember extends Base {
                                 }
                             }
                         }
+                    } else {
+                        System.out.println("Failed to get member: " + ((TdApi.Error) object).message);
                     }
                     // if we have received all members, call the getMassUser method
                     if (memberIds.size() == numOfMembers) {

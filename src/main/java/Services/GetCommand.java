@@ -17,12 +17,12 @@ public class GetCommand extends Base {
     static {
         commands.put("", new EmptyCommand());
         commands.put("help", new HelpCommand());
-        commands.put("gcs", new GetMainChatListCommand());
-        commands.put("gc", new GetChatCommand());
+        commands.put("getallchat", new GetChatCommand());
         commands.put("me", new GetMeCommand());
         commands.put("sm", new SendMessageCommand());
         commands.put("add", new AddMemberCommand());
-        commands.put("getmem", new GetMemberCommand());
+        commands.put("kick", new KickMemberCommand());
+        commands.put("getmember", new GetMemberCommand());
         commands.put("getmessage", new GetMessage());
         commands.put("sync", new SyncToAirTableCommand());
         commands.put("lo", new LogoutCommand());
@@ -46,6 +46,7 @@ public class GetCommand extends Base {
             }
             else {
                 System.err.println("Unsupported command: " + command);
+                Print.print("");
             }
             return null;
         });
@@ -65,35 +66,19 @@ public class GetCommand extends Base {
     private static class HelpCommand extends Command {
         @Override
         public void execute(String args) {
-            System.out.println("gcs - Get Chat Lists ");
-            System.out.println("gc <ChatId> - Get Chat Information");
+            System.out.println("getallchat - Get All Administrated Chat Information");
             System.out.println("me - Get My Information");
             System.out.println("sm <ChatId> <Message> - Send Message To An Existing Chat");
             System.out.println("add <ChatId> <UserId> - Add User To An Existing Chat");
-            System.out.println("pm <UserId> - Send Private Message To User ");
-            System.out.println("getmem <ChatId> - Get Members Of A Chat Group");
-            System.out.println("upload - Upload latest query to Airtable");
+            System.out.println("getmember <ChatId> - Get Members Of A Chat Group");
             System.out.println("lo - Logout");
             System.out.println("q - Quit");
-        }
-    }
-
-    private static class GetMainChatListCommand extends Command {
-        @Override
-        public void execute(String args) throws InterruptedException, ExecutionException {
-            int limit = 50;
-            if (!args.isEmpty()) {
-                limit = ToInt.toInt(args);
-            }
-            GetMainChatList.getMainChatListAsync(limit);
         }
     }
 
     private static class GetChatCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
-//            String[] chatArgs = args.split(" ", 2);
-//            GetChat.getChat(Long.parseLong(chatArgs[0]));
             CompletableFuture<Void> chatIdsFuture = GetMainChatList.loadChatIdsAsync();
             chatIdsFuture.thenComposeAsync((Void v) -> {
                 try {
@@ -129,10 +114,20 @@ public class GetCommand extends Base {
         public void execute(String args) throws InterruptedException, ExecutionException {
             String[] addArgs = args.split(" ", 2);
             Long longChatId = ConvertToLong.toLong(addArgs[0]);
-            AddMember.addSingleUser(longChatId, ConvertToLong.toLong(addArgs[1]));
+            Long longUserId = ConvertToLong.toLong(addArgs[1]);
+            AddMember.addMember(longChatId, longUserId);
         }
     }
 
+    private static class KickMemberCommand extends Command {
+        @Override
+        public void execute(String args) throws InterruptedException, ExecutionException, IOException {
+            String[] kickArgs = args.split(" ", 2);
+            Long longChatId = ConvertToLong.toLong(kickArgs[0]);
+            Long longUserId = ConvertToLong.toLong(kickArgs[1]);
+            KickMember.kickMember(longChatId, longUserId);
+        }
+    }
     private static class GetMemberCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
