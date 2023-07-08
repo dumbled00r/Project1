@@ -1,10 +1,12 @@
 package Services;
 
 import AirTableUtils.SyncToAirTable;
+import Models.GroupChat;
 import Utils.*;
 import org.drinkless.tdlib.TdApi;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -92,9 +94,17 @@ public class GetCommand extends Base {
         public void execute(String args) throws InterruptedException, ExecutionException {
 //            String[] chatArgs = args.split(" ", 2);
 //            GetChat.getChat(Long.parseLong(chatArgs[0]));
-            GetMainChatList.loadChatIdsAsync();
-            Thread.sleep(3000);
-            GetChat.getMassChat();
+            CompletableFuture<Void> chatIdsFuture = GetMainChatList.loadChatIdsAsync();
+            CompletableFuture<List<GroupChat>> massChatFuture = chatIdsFuture.thenComposeAsync((Void v) -> {
+                try {
+                    return GetChat.getMassChat();
+                } catch (ExecutionException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            chatIdsFuture.get();
 //            GetChat.getChat()
         }
     }
