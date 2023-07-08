@@ -49,7 +49,7 @@ public class User {
         String firstName = json.get("First Name").getAsString();
         String lastName = json.get("Last Name").getAsString();
         long chatId = json.get("Chat Id").getAsLong();
-        String type = json.get("Type").getAsString(); // new field
+        String type = json.get("Type").getAsString();
         return new User(id, username, firstName, lastName, chatId, type);
     }
 }

@@ -2,6 +2,7 @@ package Services;
 
 import Utils.Base;
 import Models.User;
+import Utils.Print;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
@@ -27,7 +28,7 @@ public class GetMember extends Base {
                 if (object instanceof TdApi.Chat chat) {
                     if (chat.type instanceof TdApi.ChatTypeSupergroup) {
                         if (((TdApi.ChatTypeSupergroup) chat.type).isChannel) {
-                            System.out.println("\nThis chat group is a channel, please provide a chat group");
+                            System.err.println("\nThis chat group is a channel, please provide a chat group");
                             future.complete(lstResults);
                             return;
                         }
@@ -66,11 +67,13 @@ public class GetMember extends Base {
                             }
                         });
                     } else {
-                        System.out.println("Not a group chat");
+                        System.err.println("\nThis is not a chat group");
+                        Print.print("");
                         future.complete(lstResults);
                     }
                 } else {
-                    System.out.println("Handle error");
+                    System.err.println("\nInvalid Chat ID");
+                    Print.print("");
                     future.complete(lstResults);
                 }
             }
