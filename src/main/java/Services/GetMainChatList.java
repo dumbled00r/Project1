@@ -6,41 +6,52 @@ import Utils.Print;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class GetMainChatList extends Base {
     public static long[] chatIds;
-    public static void getMainChatList(final int limit) {
-        synchronized (mainChatList) {
-            if (!haveFullMainChatList && limit > mainChatList.size()) {
-                // send LoadChats request if there are some unknown chats and have not enough known chats
-                client.send(new TdApi.LoadChats(new TdApi.ChatListMain(), limit - mainChatList.size()), new Client.ResultHandler() {
-                    @Override
-                    public void onResult(TdApi.Object object) {
-                        switch (object.getConstructor()) {
-                            case TdApi.Error.CONSTRUCTOR:
-                                if (((TdApi.Error) object).code == 404) {
-                                    synchronized (mainChatList) {
-                                        haveFullMainChatList = true;
-                                    }
-                                } else {
-                                    System.err.println("Receive an error for LoadChats:" + newLine + object);
+    public static CompletableFuture<Void> getMainChatListAsync(final int limit) {
+        CompletableFuture<Void> future = new CompletableFuture<>();
+        if (haveFullMainChatList || limit <= mainChatList.size()) {
+            // If we already have the full main chat list, or if the limit is less than or equal to the size of the main chat list,
+            // we can return the list immediately.
+            getMainChatList(limit);
+            future.complete(null);
+        } else {
+            // Otherwise, we need to send a LoadChats request to TDLib to get more chats.
+            client.send(new TdApi.LoadChats(new TdApi.ChatListMain(), limit - mainChatList.size()), new Client.ResultHandler() {
+                @Override
+                public void onResult(TdApi.Object object) {
+                    switch (object.getConstructor()) {
+                        case TdApi.Error.CONSTRUCTOR:
+                            if (((TdApi.Error) object).code == 404) {
+                                synchronized (mainChatList) {
+                                    haveFullMainChatList = true;
                                 }
-                                break;
-                            case TdApi.Ok.CONSTRUCTOR:
-                                // chats had already been received through updates, let's retry request
-                                getMainChatList(limit);
-                                break;
-                            default:
-                                System.err.println("Receive wrong response from TDLib:" + newLine + object);
-                        }
+                            } else {
+                                System.err.println("Receive an error for LoadChats:" + newLine + object);
+                            }
+                            future.completeExceptionally(new RuntimeException("Error loading chats"));
+                            break;
+                        case TdApi.Ok.CONSTRUCTOR:
+                            // Chats have already been received through updates, so retry the request.
+                            getMainChatListAsync(limit).thenAccept((Void v) -> future.complete(null));
+                            break;
+                        default:
+                            System.err.println("Receive wrong response from TDLib:" + newLine + object);
+                            future.completeExceptionally(new RuntimeException("Error loading chats"));
                     }
-                });
-                return;
-            }
+                }
+            });
+        }
+        return future;
+    }
+
+    public static void getMainChatList(int limit) {
+        synchronized (mainChatList) {
             int numberOfChats = limit;
             Iterator<ChatOrder.OrderedChat> iter = mainChatList.iterator();
             System.out.println();
@@ -59,19 +70,23 @@ public class GetMainChatList extends Base {
         }
     }
 
-    public static void loadChatIds() {
+    public static CompletableFuture<Void> loadChatIdsAsync() {
+        CompletableFuture<Void> future = new CompletableFuture<>();
         // Create a ChatList object
         TdApi.ChatList chatList = new TdApi.ChatListMain();
-
         // Send a request to get all the chats
         client.send(new TdApi.GetChats(chatList, 50), new Client.ResultHandler() {
             @Override
             public void onResult(TdApi.Object object) {
                 if (object instanceof TdApi.Chats) {
                     // Get the list of chat IDs and print them to the console
-                    chatIds =((TdApi.Chats) object).chatIds;
+                    chatIds = ((TdApi.Chats) object).chatIds;
+                    future.complete(null);
+                } else {
+                    future.completeExceptionally(new RuntimeException("Error loading chat IDs"));
                 }
             }
         });
+        return future;
     }
 }

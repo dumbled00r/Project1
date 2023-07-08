@@ -92,7 +92,7 @@ public class GetCommand extends Base {
         public void execute(String args) throws InterruptedException, ExecutionException {
 //            String[] chatArgs = args.split(" ", 2);
 //            GetChat.getChat(Long.parseLong(chatArgs[0]));
-            GetMainChatList.loadChatIds();
+            GetMainChatList.loadChatIdsAsync();
             Thread.sleep(3000);
             GetChat.getMassChat();
 //            GetChat.getChat()
