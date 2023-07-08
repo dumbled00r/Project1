@@ -63,8 +63,8 @@ public class GetMember extends Base {
                                 });
                             }
                         });
-                    } else {
-                        System.err.println("\nThis is not a chat group: " + ((TdApi.Error) object).message);
+                    } else if (chat.type instanceof TdApi.ChatTypePrivate) {
+                        System.err.println("\nThis is not a chat group");
                         Print.print("");
                         future.complete(lstUsers);
                     }

@@ -148,7 +148,12 @@ public class GetCommand extends Base {
     private static class SyncToAirTableCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
-//            SyncToAirTable.sync();
+            try {
+                SyncToAirTable.syncToAirTable();
+            } catch (Exception e) {
+                System.err.println("Error executing SyncToAirTableCommand: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
     }
 

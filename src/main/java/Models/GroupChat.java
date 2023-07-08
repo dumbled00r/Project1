@@ -52,4 +52,14 @@ public class GroupChat {
         String inviteLink = json.get("invite link").getAsString();
         return new GroupChat(id, type, title, membersCount, description, inviteLink);
     }
+
+    public JsonObject toJsonObject() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("Id", getId());
+        jsonObject.addProperty("type", getType());
+        jsonObject.addProperty("title", getTitle());
+        jsonObject.addProperty("description", getDescription());
+        jsonObject.addProperty("invite link", getInviteLink());
+        return jsonObject;
+    }
 }
