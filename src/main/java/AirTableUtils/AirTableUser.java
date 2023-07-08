@@ -11,7 +11,7 @@ public class AirTableUser extends AirTable{
     Table group;
     public AirTableUser(){
         super();
-        String response1 = Table.listTables(baseId, personal_access_token);
+        String response1 = Table.getListTables(baseId, personal_access_token);
         JsonObject jsonObject1 = new Gson().fromJson(response1, JsonObject.class);
         JsonArray tables1 = jsonObject1.get("tables").getAsJsonArray();
         for (var ele : tables1){
@@ -21,7 +21,7 @@ public class AirTableUser extends AirTable{
                 break;
             }
         }
-        String response = Table.listTables(baseId, personal_access_token);
+        String response = Table.getListTables(baseId, personal_access_token);
         JsonObject jsonObject = new Gson().fromJson(response, JsonObject.class);
         JsonArray tables = jsonObject.get("tables").getAsJsonArray();
         for (var ele : tables){
@@ -32,6 +32,7 @@ public class AirTableUser extends AirTable{
             }
         }
     }
+    @Override
     public void pushUserData(JsonObject jsonObject){
         String chatsId = jsonObject.get("Chat Ids").getAsString();
         String[] listChatId = chatsId.split(";");
@@ -49,6 +50,6 @@ public class AirTableUser extends AirTable{
         List<JsonObject> list = new ArrayList<>();
         list.add(jsonObject);
 
-        userData.pullAllRecord(list, baseId, personal_access_token);
+        userData.checkAllRecords(list, baseId, personal_access_token);
     }
 }

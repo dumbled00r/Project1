@@ -171,7 +171,7 @@ public class GetChat extends Base {
         } else {
             System.out.println("No chat information available");
         }
-        System.out.println("You can use the command getmem + <ChatID> to get members of a group \nOr use help for more commands");
+        System.out.println("You can use the command getmember + <ChatID> to get members of a group \nOr use help for more commands");
         Print.print("");
     }
 }
