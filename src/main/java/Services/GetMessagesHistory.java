@@ -74,7 +74,7 @@ public class GetMessagesHistory extends Base {
                 }
             }, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS, scheduler)).join();
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 }

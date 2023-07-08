@@ -168,6 +168,7 @@ public final class Client {
                         exceptionHandler = defaultExceptionHandlers.get(clientId);
                     }
                     if (exceptionHandler != null) {
+                        Thread.currentThread().interrupt();
                         try {
                             exceptionHandler.onException(cause);
                         } catch (Throwable ignored) {

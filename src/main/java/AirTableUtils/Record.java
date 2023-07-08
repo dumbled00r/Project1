@@ -149,7 +149,7 @@ public class Record{
                 return false;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             return false;
         }
     }
