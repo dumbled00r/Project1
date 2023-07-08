@@ -5,6 +5,7 @@ import Models.GroupChat;
 import Utils.*;
 import org.drinkless.tdlib.TdApi;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -19,9 +20,9 @@ public class GetCommand extends Base {
         commands.put("gc", new GetChatCommand());
         commands.put("me", new GetMeCommand());
         commands.put("sm", new SendMessageCommand());
-        commands.put("gu", new GetUserCommand());
         commands.put("add", new AddMemberCommand());
         commands.put("getmem", new GetMemberCommand());
+        commands.put("getmessage", new GetMessage());
         commands.put("sync", new SyncToAirTableCommand());
         commands.put("lo", new LogoutCommand());
         commands.put("q", new QuitCommand());
@@ -38,6 +39,8 @@ public class GetCommand extends Base {
                     Thread.currentThread().interrupt();
                 } catch (ExecutionException e) {
                     System.err.println("Error executing command: " + e.getMessage());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
             else {
@@ -48,7 +51,7 @@ public class GetCommand extends Base {
     }
 
     private abstract static class Command {
-        public abstract void execute(String args) throws InterruptedException, ExecutionException;
+        public abstract void execute(String args) throws InterruptedException, ExecutionException, IOException;
     }
 
     private static class EmptyCommand extends Command {
@@ -120,13 +123,6 @@ public class GetCommand extends Base {
         }
     }
 
-    private static class GetUserCommand extends Command {
-        @Override
-        public void execute(String args) throws InterruptedException, ExecutionException {
-            GetUser.getUser(Long.parseLong(args), 123L);
-        }
-    }
-
     private static class AddMemberCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
@@ -141,6 +137,15 @@ public class GetCommand extends Base {
         public void execute(String args) throws InterruptedException, ExecutionException {
             long chatId = ConvertToLong.toLong(args);
             GetMember.getMember(chatId);
+        }
+    }
+
+    private static class GetMessage extends Command {
+        @Override
+        public void execute(String args) throws InterruptedException, ExecutionException, IOException {
+            String[] getmsgArgs = args.split(" ", 2);
+            Long chatId = ConvertToLong.toLong(getmsgArgs[0]);
+            GetMessagesHistory.printMessages(chatId);
         }
     }
 
