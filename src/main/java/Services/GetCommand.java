@@ -6,12 +6,9 @@ import Utils.*;
 import org.drinkless.tdlib.TdApi;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.locks.ReentrantLock;
-
 public class GetCommand extends Base {
     private static final Map<String, Command> commands = new HashMap<>();
 
@@ -24,14 +21,11 @@ public class GetCommand extends Base {
         commands.put("sm", new SendMessageCommand());
         commands.put("gu", new GetUserCommand());
         commands.put("add", new AddMemberCommand());
-        commands.put("pm", new SendPrivateMessageCommand());
         commands.put("getmem", new GetMemberCommand());
         commands.put("sync", new SyncToAirTableCommand());
         commands.put("lo", new LogoutCommand());
         commands.put("q", new QuitCommand());
     }
-    private static final ReentrantLock lock = new ReentrantLock();
-
 
     protected static CompletableFuture<Void> getCommand() {
         return PromptString.promptStringAsync(commandsLine).thenApply(command -> {
@@ -40,7 +34,9 @@ public class GetCommand extends Base {
             if (cmd != null) {
                 try {
                     cmd.execute(commandParts.length > 1 ? commandParts[1] : "");
-                } catch (InterruptedException | ExecutionException e) {
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                } catch (ExecutionException e) {
                     System.err.println("Error executing command: " + e.getMessage());
                 }
             }
@@ -51,7 +47,7 @@ public class GetCommand extends Base {
         });
     }
 
-    private static abstract class Command {
+    private abstract static class Command {
         public abstract void execute(String args) throws InterruptedException, ExecutionException;
     }
 
@@ -85,7 +81,7 @@ public class GetCommand extends Base {
             if (!args.isEmpty()) {
                 limit = ToInt.toInt(args);
             }
-            GetMainChatList.getMainChatList(limit);
+            GetMainChatList.getMainChatListAsync(limit);
         }
     }
 
@@ -95,17 +91,17 @@ public class GetCommand extends Base {
 //            String[] chatArgs = args.split(" ", 2);
 //            GetChat.getChat(Long.parseLong(chatArgs[0]));
             CompletableFuture<Void> chatIdsFuture = GetMainChatList.loadChatIdsAsync();
-            CompletableFuture<List<GroupChat>> massChatFuture = chatIdsFuture.thenComposeAsync((Void v) -> {
+            chatIdsFuture.thenComposeAsync((Void v) -> {
                 try {
                     return GetChat.getMassChat();
                 } catch (ExecutionException e) {
                     throw new RuntimeException(e);
                 } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                     throw new RuntimeException(e);
                 }
             });
             chatIdsFuture.get();
-//            GetChat.getChat()
         }
     }
 
@@ -137,13 +133,6 @@ public class GetCommand extends Base {
             String[] addArgs = args.split(" ", 2);
             Long longChatId = ConvertToLong.toLong(addArgs[0]);
             AddMember.addSingleUser(longChatId, ConvertToLong.toLong(addArgs[1]));
-        }
-    }
-
-    private static class SendPrivateMessageCommand extends Command {
-        @Override
-        public void execute(String args) throws InterruptedException, ExecutionException {
-//            SendPrivateMessage.sendPrivateMessage(Long.parseLong(args));
         }
     }
 
