@@ -1,7 +1,8 @@
 package Services;
 
 import Utils.Base;
-import com.google.gson.JsonObject;
+import Models.User;
+import Utils.Print;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
@@ -12,23 +13,23 @@ import java.util.concurrent.CompletableFuture;
 public class GetMember extends Base {
     private static int numOfMembers;
 
-    private static List<JsonObject> lstObjResults = new ArrayList<>();
+    private static List<User> lstResults = new ArrayList<>();
 
     /**
      * Get the members' userid of a group chat
      */
-    public static CompletableFuture<List<JsonObject>> getMember(Long chatId) {
+    public static CompletableFuture<List<User>> getMember(Long chatId) {
         chatMemberIds.clear();
-        lstObjResults.clear();
-        CompletableFuture<List<JsonObject>> future = new CompletableFuture<>();
+        lstResults.clear();
+        CompletableFuture<List<User>> future = new CompletableFuture<>();
         client.send(new TdApi.GetChat(chatId), new Client.ResultHandler() {
             @Override
             public void onResult(TdApi.Object object) {
                 if (object instanceof TdApi.Chat chat) {
                     if (chat.type instanceof TdApi.ChatTypeSupergroup) {
                         if (((TdApi.ChatTypeSupergroup) chat.type).isChannel) {
-                            System.out.println("\nThis chat group is a channel, please provide a chat group");
-                            future.complete(lstObjResults);
+                            System.err.println("\nThis chat group is a channel, please provide a chat group");
+                            future.complete(lstResults);
                             return;
                         }
                         long supergroupId = ((TdApi.ChatTypeSupergroup) chat.type).supergroupId;
@@ -39,10 +40,10 @@ public class GetMember extends Base {
                                     if (supergroupFullInfo.canGetMembers) {
                                         numOfMembers = supergroupFullInfo.memberCount;
                                         getSupergroupMembers(chatId, supergroupId)
-                                                .thenAccept(result -> future.complete(lstObjResults));
+                                                .thenAccept(result -> future.complete(lstResults));
                                     } else {
                                         System.out.println("Group does not allow us to get members");
-                                        future.complete(lstObjResults);
+                                        future.complete(lstResults);
                                     }
                                 }
                             }
@@ -59,19 +60,21 @@ public class GetMember extends Base {
                                         }
                                     }
                                     GetUser.getMassUser(chatMemberIds, chatId).thenAccept(result -> {
-                                        lstObjResults.addAll(result);
-                                        future.complete(lstObjResults);
+                                        lstResults.addAll(result);
+                                        future.complete(lstResults);
                                     });
                                 }
                             }
                         });
                     } else {
-                        System.out.println("Not a group chat");
-                        future.complete(lstObjResults);
+                        System.err.println("\nThis is not a chat group");
+                        Print.print("");
+                        future.complete(lstResults);
                     }
                 } else {
-                    System.out.println("Handle error");
-                    future.complete(lstObjResults);
+                    System.err.println("\nInvalid Chat ID");
+                    Print.print("");
+                    future.complete(lstResults);
                 }
             }
         }, null);
@@ -101,7 +104,7 @@ public class GetMember extends Base {
                     // if we have received all members, call the getMassUser method
                     if (memberIds.size() == numOfMembers) {
                         GetUser.getMassUser(memberIds, chatId).thenAccept(result -> {
-                            lstObjResults.addAll(result);
+                            lstResults.addAll(result);
                             future.complete(null);
                         });
                     }

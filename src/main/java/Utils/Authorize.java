@@ -31,7 +31,7 @@ public class Authorize extends Base{
                 client.send(request, new Handler.AuthorizationRequestHandler());
                 break;
             case TdApi.AuthorizationStateWaitPhoneNumber.CONSTRUCTOR: {
-                String phoneNumber = PromptString.promptString("Please enter phone number: ");
+                String phoneNumber = String.valueOf(PromptString.promptStringAsync("Please enter phone number: "));
                 client.send(new TdApi.SetAuthenticationPhoneNumber(phoneNumber, null), new Handler.AuthorizationRequestHandler());
                 break;
             }
@@ -41,28 +41,28 @@ public class Authorize extends Base{
                 break;
             }
             case TdApi.AuthorizationStateWaitEmailAddress.CONSTRUCTOR: {
-                String emailAddress = PromptString.promptString("Please enter email address: ");
+                String emailAddress = String.valueOf(PromptString.promptStringAsync("Please enter email address: "));
                 client.send(new TdApi.SetAuthenticationEmailAddress(emailAddress), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateWaitEmailCode.CONSTRUCTOR: {
-                String code = PromptString.promptString("Please enter email authentication code: ");
+                String code = String.valueOf(PromptString.promptStringAsync("Please enter email authentication code: "));
                 client.send(new TdApi.CheckAuthenticationEmailCode(new TdApi.EmailAddressAuthenticationCode(code)), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateWaitCode.CONSTRUCTOR: {
-                String code = PromptString.promptString("Please enter authentication code: ");
+                String code = String.valueOf(PromptString.promptStringAsync("Please enter authentication code: "));
                 client.send(new TdApi.CheckAuthenticationCode(code), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateWaitRegistration.CONSTRUCTOR: {
-                String firstName = PromptString.promptString("Please enter your first name: ");
-                String lastName = PromptString.promptString("Please enter your last name: ");
+                String firstName = String.valueOf(PromptString.promptStringAsync("Please enter your first name: "));
+                String lastName = String.valueOf(PromptString.promptStringAsync("Please enter your last name: "));
                 client.send(new TdApi.RegisterUser(firstName, lastName), new Handler.AuthorizationRequestHandler());
                 break;
             }
             case TdApi.AuthorizationStateWaitPassword.CONSTRUCTOR: {
-                String password = PromptString.promptString("Please enter password: ");
+                String password = String.valueOf(PromptString.promptStringAsync("Please enter password: "));
                 client.send(new TdApi.CheckAuthenticationPassword(password), new Handler.AuthorizationRequestHandler());
                 break;
             }

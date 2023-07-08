@@ -1,18 +1,20 @@
 package Utils;
 
-import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 public class PromptString extends Base {
-    public static String promptString(String prompt) {
+    public static CompletableFuture<String> promptStringAsync(String prompt) {
+        CompletableFuture<String> future = new CompletableFuture<>();
         System.out.print(prompt);
         currentPrompt = prompt;
-        String str = "";
         try {
-            str = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+            String str = reader.readLine();
+            currentPrompt = null;
+            future.complete(str);
+        } catch (Exception e) {
+            currentPrompt = null;
+            future.completeExceptionally(e);
         }
-        currentPrompt = null;
-        return str;
+        return future;
     }
 }

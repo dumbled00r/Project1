@@ -7,9 +7,10 @@ import org.drinkless.tdlib.TdApi;
 
 import java.io.IOError;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class MainApp extends Base {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
         // set log message handler to handle only fatal errors (0) and plain log messages (-1)
         Client.setLogMessageHandler(0, new Handler.LogMessageHandler());
 
