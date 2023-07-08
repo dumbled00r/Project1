@@ -7,12 +7,6 @@ S
 #src/main/java/Utils/FileLogger.java,c\0\c09881272cdd96067b224d86e60e3c157cce6754
 ^
 .src/main/java/Services/GetMessagesHistory.java,1\1\114549b85392cef65c7f46f149091ecac865fbf0
-Y
-)src/main/java/AirTableUtils/AirTable.java,d\c\dcf35910691bd71781fdade9ca60c664dddbb799
-^
-.src/main/java/AirTableUtils/AirTableGroup.java,f\7\f73e1256f91ac7be06b8543e84cb7198e00d6c9c
-]
--src/main/java/AirTableUtils/AirTableUser.java,7\c\7c14936ea8a50965e98236bfd3d8bce4c31471b0
 V
 &src/main/java/AirTableUtils/Field.java,b\1\b194f9567c9c8703c26b217b6a394811550c20b0
 W

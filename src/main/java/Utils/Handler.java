@@ -4,6 +4,7 @@ import com.google.gson.*;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 public class Handler extends Base {
@@ -17,7 +18,7 @@ public class Handler extends Base {
     }
     public static class UpdateHandler implements Client.ResultHandler {
         @Override
-        public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException {
+        public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException, IOException {
             switch (object.getConstructor()) {
                 case TdApi.UpdateAuthorizationState.CONSTRUCTOR:
                     Authorize.onAuthorizationStateUpdated(((TdApi.UpdateAuthorizationState) object).authorizationState);
@@ -238,7 +239,7 @@ public class Handler extends Base {
 
     public static class AuthorizationRequestHandler implements Client.ResultHandler {
         @Override
-        public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException {
+        public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException, IOException {
             switch (object.getConstructor()) {
                 case TdApi.Error.CONSTRUCTOR:
                     System.err.println("Receive an error:" + newLine + object);

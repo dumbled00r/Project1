@@ -1,29 +1,33 @@
 package Utils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicLong;
 
 
 public class Authorize extends Base{
-
-
-
-
-    public static void onAuthorizationStateUpdated(TdApi.AuthorizationState authorizationState) throws ExecutionException, InterruptedException {
+    public static void onAuthorizationStateUpdated(TdApi.AuthorizationState authorizationState) throws ExecutionException, InterruptedException, IOException {
         if (authorizationState != null) {
             Authorize.authorizationState = authorizationState;
         }
         switch (Authorize.authorizationState.getConstructor()) {
             case TdApi.AuthorizationStateWaitTdlibParameters.CONSTRUCTOR:
+                Gson gson = new Gson();
+                String jsonString = new String(Files.readAllBytes(Paths.get("td.json")));
+                JsonObject json = gson.fromJson(jsonString, JsonObject.class);
                 TdApi.SetTdlibParameters request = new TdApi.SetTdlibParameters();
                 request.databaseDirectory = "tdlib";
                 request.useMessageDatabase = true;
                 request.useSecretChats = true;
-                request.apiId = 26486494;
-                request.apiHash = "14209c4ff6103f138c89313486a36661";
+                request.apiId = json.get("apiId").getAsInt();
+                request.apiHash = json.get("apiHash").getAsString();
                 request.systemLanguageCode = "en";
                 request.deviceModel = "Desktop";
                 request.applicationVersion = "1.0";

@@ -5,9 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
+      <change afterPath="$PROJECT_DIR$/airtablecfg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/td.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7c14936ea8a50965e98236bfd3d8bce4c31471b0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dcf35910691bd71781fdade9ca60c664dddbb799" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f73e1256f91ac7be06b8543e84cb7198e00d6c9c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/c/7c14936ea8a50965e98236bfd3d8bce4c31471b0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/c/dcf35910691bd71781fdade9ca60c664dddbb799" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/7/f73e1256f91ac7be06b8543e84cb7198e00d6c9c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTableGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTableGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTableUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTableUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/SyncToAirTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/SyncToAirTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Authorize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/Authorize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTableGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTableGroup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTableUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTableUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/SyncToAirTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/SyncToAirTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdlib/td.binlog" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/td.binlog" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

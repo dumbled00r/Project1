@@ -10,6 +10,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -20,7 +21,7 @@ public class SyncToAirTable {
     private static Set<JsonObject> jsonUserRes = new HashSet<>();
     private static Set<JsonObject> jsonGroupRes = new HashSet<>();
 
-    public static void syncToAirTable() throws InterruptedException, ExecutionException {
+    public static void syncToAirTable() throws InterruptedException, ExecutionException, IOException {
         GetMainChatList.loadChatIdsAsync().join(); // Wait for the CompletableFuture to complete
 
         int numChats = chatIds.length;
@@ -104,7 +105,7 @@ public class SyncToAirTable {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String mergedJson = gson.toJson(mergedObjects);
-
+        System.out.println("\nUploading...");
         AirTableGroup airTableGroup = new AirTableGroup();
         for (JsonObject jsonObject : jsonGroupRes) {
             airTableGroup.pushGroupData(jsonObject);
