@@ -93,7 +93,7 @@ public class GetCommand extends Base {
     private static class GetMeCommand extends Command {
         @Override
         public void execute(String args) {
-            client.send(new TdApi.GetMe(), defaultHandler);
+            GetMe.printMyInfo();
         }
     }
 
