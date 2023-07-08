@@ -5,10 +5,8 @@ import Models.User;
 import Utils.Base;
 import Utils.Print;
 import org.drinkless.tdlib.TdApi;
-import com.google.gson.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -36,7 +34,7 @@ public class GetUser extends Base {
                 User user = new User(id, username, firstName, lastName, chatId, type);
                 future.complete(user);
             } else {
-                String errorMessage = "Failed to get user: " + object;
+                String errorMessage = "Failed to get user: " + ((TdApi.Error) object).message;
                 System.err.println(errorMessage);
                 future.completeExceptionally(new RuntimeException(errorMessage));
             }

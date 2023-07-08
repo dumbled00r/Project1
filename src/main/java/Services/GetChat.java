@@ -102,7 +102,6 @@ public class GetChat extends Base {
                                     if (!isAdmin) {
                                         System.out.println("You are not an administrator in this chat.");
                                         future.complete(null);
-                                        return;
                                     }
                                 }
                             }
@@ -117,7 +116,7 @@ public class GetChat extends Base {
                                     GroupChat groupChat = new GroupChat(chat.id, chat.type.getClass().getSimpleName().substring(8), chat.title, supergroupFullInfo.memberCount, description, inviteLink);
                                     future.complete(groupChat);
                                 } else {
-                                    String errorMessage = "Failed to get supergroup full info: " + object;
+                                    String errorMessage = "Failed to get supergroup full info: " + ((TdApi.Error) object).message;
                                     System.err.println(errorMessage);
                                     future.completeExceptionally(new RuntimeException(errorMessage));
                                 }
@@ -139,7 +138,6 @@ public class GetChat extends Base {
                                     if (!isAdmin) {
                                         System.out.println("You are not an administrator in this chat.");
                                         future.complete(null);
-                                        return;
                                     }
                                 }
                             }
@@ -154,7 +152,7 @@ public class GetChat extends Base {
                                     GroupChat groupChat = new GroupChat(chat.id, chat.type.getClass().getSimpleName().substring(8), chat.title, basicGroupFullInfo.members.length, description, inviteLink);
                                     future.complete(groupChat);
                                 } else {
-                                    String errorMessage = "Failed to get basic group full info: " + object;
+                                    String errorMessage = "Failed to get basic group full info: " + ((TdApi.Error) object).message;
                                     System.err.println(errorMessage);
                                     future.completeExceptionally(new RuntimeException(errorMessage));
                                 }
@@ -165,7 +163,7 @@ public class GetChat extends Base {
                         future.complete(null);
                     }
                 } else {
-                    String errorMessage = "Failed to get chat: " + object;
+                    String errorMessage = "Failed to get chat: " + ((TdApi.Error) object).message;
                     System.err.println(errorMessage);
                     future.completeExceptionally(new RuntimeException(errorMessage));
                 }

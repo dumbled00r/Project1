@@ -32,7 +32,7 @@ public class GetMainChatList extends Base {
                                     haveFullMainChatList = true;
                                 }
                             } else {
-                                System.err.println("Receive an error for LoadChats:" + newLine + object);
+                                System.err.println("\nReceive an error for LoadChats:" + ((TdApi.Error) object).message);
                             }
                             future.completeExceptionally(new RuntimeException("Error loading chats"));
                             break;
@@ -41,7 +41,7 @@ public class GetMainChatList extends Base {
                             getMainChatListAsync(limit).thenAccept((Void v) -> future.complete(null));
                             break;
                         default:
-                            System.err.println("Receive wrong response from TDLib:" + newLine + object);
+                            System.err.println("\nReceive wrong response from TDLib:" + ((TdApi.Error) object).message);
                             future.completeExceptionally(new RuntimeException("Error loading chats"));
                     }
                 }
@@ -83,7 +83,7 @@ public class GetMainChatList extends Base {
                     chatIds = ((TdApi.Chats) object).chatIds;
                     future.complete(null);
                 } else {
-                    future.completeExceptionally(new RuntimeException("Error loading chat IDs"));
+                    future.completeExceptionally(new RuntimeException("Error loading chat IDs: " + ((TdApi.Error) object).message));
                 }
             }
         });
