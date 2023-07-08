@@ -4,6 +4,9 @@ import com.google.gson.*;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
 public class Handler extends Base {
     public static class DefaultHandler implements Client.ResultHandler {
         @Override
@@ -15,7 +18,7 @@ public class Handler extends Base {
     }
     public static class UpdateHandler implements Client.ResultHandler {
         @Override
-        public void onResult(TdApi.Object object) {
+        public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException, IOException {
             switch (object.getConstructor()) {
                 case TdApi.UpdateAuthorizationState.CONSTRUCTOR:
                     Authorize.onAuthorizationStateUpdated(((TdApi.UpdateAuthorizationState) object).authorizationState);
@@ -226,14 +229,17 @@ public class Handler extends Base {
                     break;
 
                 default:
-                    // print("Unsupported update:" + newLine + object);
+                     if (object instanceof TdApi.Error) {
+                         Print.print("Unsupported update:" + newLine + ((TdApi.Error)object).message);
+                     }
+
             }
         }
     }
 
     public static class AuthorizationRequestHandler implements Client.ResultHandler {
         @Override
-        public void onResult(TdApi.Object object) {
+        public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException, IOException {
             switch (object.getConstructor()) {
                 case TdApi.Error.CONSTRUCTOR:
                     System.err.println("Receive an error:" + newLine + object);
@@ -243,7 +249,7 @@ public class Handler extends Base {
                     // result is already received through UpdateAuthorizationState, nothing to do
                     break;
                 default:
-                    System.err.println("Receive wrong response from TDLib:" + newLine + object);
+                    System.err.println("Receive wrong response from TDLib:" + newLine + ((TdApi.Error)object).message);
             }
         }
     }

@@ -4,12 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AirTableUser extends AirTable{
     Table group;
-    public AirTableUser(){
+    public AirTableUser() throws IOException {
         super();
         String response1 = Table.getListTables(baseId, personal_access_token);
         JsonObject jsonObject1 = new Gson().fromJson(response1, JsonObject.class);

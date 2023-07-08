@@ -67,13 +67,18 @@ public class GetCommand extends Base {
     private static class HelpCommand extends Command {
         @Override
         public void execute(String args) {
-            System.out.println("getallchat - Get All Administrated Chat Information");
-            System.out.println("me - Get My Information");
-            System.out.println("sm <ChatId> <Message> - Send Message To An Existing Chat");
-            System.out.println("add <ChatId> <UserId> - Add User To An Existing Chat");
-            System.out.println("getmember <ChatId> - Get Members Of A Chat Group");
-            System.out.println("lo - Logout");
-            System.out.println("q - Quit");
+            System.out.println("   Command    |     Arguments      |             Description              ");
+            System.out.println("getallchat    |                    |  Get All Administrated Chat Information");
+            System.out.println("me            |                    |  Get My Information");
+            System.out.println("sm            | <ChatId> <Message> |  Send Message To An Existing Chat");
+            System.out.println("add           | <ChatId> <UserId>  |  Add User To An Existing Chat");
+            System.out.println("getmember     | <ChatId>           |  Get Members Of A Chat Group");
+            System.out.println("kick          | <ChatId> <UserId>  |  Kick User Out Of An Existing Chat");
+            System.out.println("getmessage    | <ChatId>           |  Get Messages History Of An Existing Chat");
+            System.out.println("sync          |                    |  Sync To AirTable");
+            System.out.println("lo            |                    |  Logout");
+            System.out.println("help          |                    |  List Of Commands");
+            System.out.println("q             |                    |  Quit");
         }
     }
 
