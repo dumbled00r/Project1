@@ -8,8 +8,12 @@ import org.drinkless.tdlib.TdApi;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
-public class GetMessagesHistory extends Base {
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
+public class GetMessagesHistory extends Base {
+    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     public static CompletableFuture<List<TdApi.Message>> getMessages(Long chatId) {
         CompletableFuture<List<TdApi.Message>> future = new CompletableFuture<>();
 
@@ -49,12 +53,13 @@ public class GetMessagesHistory extends Base {
     }
 
     public static void printMessages(Long chatId) {
-        getMessages(chatId).thenAccept(messages -> {
+        getMessages(chatId).thenAcceptAsync(messages -> {
             System.out.println("Total messages: " + messages.size());
             for (TdApi.Message message : messages) {
                 System.out.println(message.content);
             }
             Print.print("");
-        });
+        }, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS, scheduler));
     }
+
 }
