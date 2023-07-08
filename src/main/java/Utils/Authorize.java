@@ -32,6 +32,7 @@ public class Authorize extends Base{
                 client.send(request, new Handler.AuthorizationRequestHandler());
                 break;
             case TdApi.AuthorizationStateWaitPhoneNumber.CONSTRUCTOR: {
+                System.out.println();
                 String phoneNumber = String.valueOf(PromptString.promptStringAsync("Please enter phone number: ").get());
                 client.send(new TdApi.SetAuthenticationPhoneNumber(phoneNumber, null), new Handler.AuthorizationRequestHandler());
                 break;

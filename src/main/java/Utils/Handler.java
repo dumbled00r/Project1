@@ -228,7 +228,10 @@ public class Handler extends Base {
                     break;
 
                 default:
-                    // print("Unsupported update:" + newLine + object);
+                     if (object instanceof TdApi.Error) {
+                         Print.print("Unsupported update:" + newLine + ((TdApi.Error)object).message);
+                     }
+
             }
         }
     }
@@ -245,7 +248,7 @@ public class Handler extends Base {
                     // result is already received through UpdateAuthorizationState, nothing to do
                     break;
                 default:
-                    System.err.println("Receive wrong response from TDLib:" + newLine + object);
+                    System.err.println("Receive wrong response from TDLib:" + newLine + ((TdApi.Error)object).message);
             }
         }
     }

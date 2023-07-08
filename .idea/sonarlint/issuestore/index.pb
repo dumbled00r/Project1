@@ -23,8 +23,6 @@ S
 #src/main/java/Models/GroupChat.java,3\7\3772025ad1ed822b8f07056d9387a6eb501da4bb
 N
 src/main/java/Models/User.java,d\0\d0cd9764143c90e2b3a8fa31f63a774496de9c6f
-\
-,src/main/java/org/drinkless/tdlib/TdApi.java,9\1\910c6d9a4554b49d738f32dc3557a756e0fa5db5
 ]
 -src/main/java/org/drinkless/tdlib/Client.java,d\a\da47fd15b7d5eef573f6597d32e66fe60bae5ba6
 U
