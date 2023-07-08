@@ -26,7 +26,7 @@ public class SyncToAirTable {
         int numChats = chatIds.length;
         int processedChats = 0;
 
-        System.out.print("Processing chats: [");
+        System.out.print("Processing data to upload: \n[");
         for (long chatId : chatIds) {
             CompletableFuture<GroupChat> groupRes = GetChat.getChat(chatId);
             List<User> res = GetMember.getMember(chatId).join();
@@ -50,7 +50,6 @@ public class SyncToAirTable {
             processedChats++;
             updateProgressBar(processedChats, numChats);
         }
-        System.out.println("]");
 
         if (Thread.currentThread().getStackTrace()[2].getClassName().equals(SyncToAirTable.class.getName())) {
             System.out.println(jsonGroupRes);
@@ -60,7 +59,6 @@ public class SyncToAirTable {
         int numUsers = jsonUserRes.size();
         int processedUsers = 0;
 
-        System.out.print("Processing users: [");
         for (JsonObject jsonObject : jsonUserRes) {
             String id = jsonObject.get("Id").getAsString();
 
@@ -87,7 +85,6 @@ public class SyncToAirTable {
             processedUsers++;
             updateProgressBar(processedUsers, numUsers);
         }
-        System.out.println("]");
 
         List<JsonObject> mergedObjects = new ArrayList<>(idToJsonObject.values());
 
@@ -116,6 +113,7 @@ public class SyncToAirTable {
         for (JsonObject jsonObject : mergedObjects) {
             airTableUser.pushUserData(jsonObject);
         }
+        System.out.println("Update AirTable successfully");
     }
 
     private static void updateProgressBar(int current, int total) {
