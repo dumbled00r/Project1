@@ -1,0 +1,21 @@
+
+ê
+java:S1192M"ÇDefine a constant instead of duplicating this literal "+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+" 3 times.(Ïùùÿÿÿÿ8áÆç®“1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–8Šó´ “1
+£
+java:S1130J"€Remove the declaration of thrown exception 'java.util.concurrent.ExecutionException', as it cannot be thrown from method's body.(İÏù£úÿÿÿÿ8Ší®“1
+™
+java:S1130J"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(İÏù£úÿÿÿÿ8Ší®“1
+U	java:S106L"9Replace this use of System.out or System.err by a logger.(Ñ°Ìª8…ˆä®“1
+Z	java:S106M"9Replace this use of System.out or System.err by a logger.(Ïùùÿÿÿÿ8†òæ®“1
+U	java:S106N"9Replace this use of System.out or System.err by a logger.(­õëú8†òæ®“1
+Z	java:S106O"9Replace this use of System.out or System.err by a logger.(Ïùùÿÿÿÿ8†òæ®“1
+s
+java:S3457W"Q%n should be used in place of \n to produce the platform-specific line separator.(ƒÙùüıÿÿÿÿ8‡òæ®“1
+Z	java:S106W"9Replace this use of System.out or System.err by a logger.(ƒÙùüıÿÿÿÿ8‡òæ®“1
+Z	java:S106Y"9Replace this use of System.out or System.err by a logger.(Ïùùÿÿÿÿ8‡òæ®“1
+U	java:S106["9Replace this use of System.out or System.err by a logger.(õ§®´8‡òæ®“1
+P
+java:S1128"3Remove this unused import 'AirTableUtils.AirTable'.(ÍòÈ÷8‡òæ®“1
+J
+java:S1128"-Remove this unused import 'Models.GroupChat'.(¼ˆöÑ8‡òæ®“1
