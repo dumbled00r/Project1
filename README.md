@@ -42,8 +42,8 @@ Link download: https://www.jetbrains.com/idea/download/?var=1&section=windows
     - Inside Utils file, there are some parameters you need to change to make the program works properly: 
         - In Authorize.java, we need to change 2 parameters which are request.apiId and request.apiHash to your own apiId and apiHash. You can find both of the parameters here: https://my.telegram.org/auth, after adding your phone number to the login interface, it will ask you to insert your confirmation code. The confirmation code will appear on your Telegram app.
     ```java
-    request.apiId = 21253741;
-    request.apiHash = "9df061bb226225982dad3aa34ae47647";
+    request.apiId = your_api_id;
+    request.apiHash = "your_api_hash";
     ```
     - Inside our AirTableUtils file at AirTable.java, we need to change some parameters too which are: personal_access_token, base_id, table_id. You can find your personal_access_token here: https://airtable.com/create/tokens. Create a new token with all scope and access (After creating your token, you should save it somewhere because it only appears once). And for base_id, table_id you only need to get to your table, take the parameters from the url. For example: https://airtable.com/base_id/table_id/viwq1XaqKB0szrjSf?blocks=hide. Then change it in the code:
     ```java
