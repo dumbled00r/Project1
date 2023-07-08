@@ -12,32 +12,30 @@ Link download: https://www.jetbrains.com/idea/download/?var=1&section=windows
 
     More information: https://tdlib.github.io/td/build.html?language=Java
 - After that, we need to set up our external libraries by pressing right click in project1 file:
-    - ![external_libraries_1](https://github.com/dumbled00r/Project1/blob/develop_2/img/external_lib_1.jpg)
+    - ![external_libraries_1](https://github.com/dumbled00r/Project1/blob/main/image/external_lib_1.jpg)
 - Then, you add a new project library by pressing the "+" button and choose Java
-    
 - After that, you find the lib file and press OK:
-    - ![lib_project]()
+    - ![lib_project](https://github.com/dumbled00r/Project1/blob/main/image/lib_project.png)
 - Then press apply to set up the libraries
-
 - After running MainApp.java, if you encounter this error
-    - ![error_1]()
+    - ![error_1](https://github.com/dumbled00r/Project1/blob/main/image/error_1.png)
       Move the tdjni.dll to your system32 file (system32 is located at C:\Windows\System32)
 
 ## Demo
 - First, we need to run the file MainApp.java   
     - Then the app will ask you to enter your phone number (Remember the format will be: +84xxxxxxxxx)
-    - ![enter_authentication]()
+    - ![enter_authentication](https://github.com/dumbled00r/Project1/blob/main/image/enter_authentication.png)
     - After that, it will ask you for your confimation code, this code will appear in your Telegram app
-    - ![login_code]()
+    - ![login_code](https://github.com/dumbled00r/Project1/blob/main/image/login_code.png)
 - After that, you need to input the command for it to work, just input "help" and the list of command will appear
-    - ![enter_command]()
+    - ![enter_command](https://github.com/dumbled00r/Project1/blob/main/image/enter_command.png)
 - For example, you want to send message to an existing chat
     - First, you need to find chatid by input command "getallchat"
-    - ![get_all_chat]()
+    - ![get_all_chat](https://github.com/dumbled00r/Project1/blob/main/image/get_all_chat.png)
     - Second, find the chatid you want to message to then input command "sm <chatid> <message>"
-    - ![sm]()
+    - ![sm](https://github.com/dumbled00r/Project1/blob/main/image/sm.png)
     - If it appears like this, then you are done!, you have sent a message to an existing chat
-    - ![test_a_b_c]()
+    - ![test_a_b_c](https://github.com/dumbled00r/Project1/blob/main/image/test_a_b_c.png)
 
 * NOTE: change the parameters down below if you want to use the program for your own use of telegram, if not it's better to just run the MainApp.java file without changing anything
 - Inside the project1 file, most of our commands stay at services file:
