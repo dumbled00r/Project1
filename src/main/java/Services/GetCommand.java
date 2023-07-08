@@ -30,7 +30,7 @@ public class GetCommand extends Base {
         commands.put("q", new QuitCommand());
     }
 
-    protected static CompletableFuture<Void> getCommand() {
+    public static CompletableFuture<Void> getCommand() {
         return PromptString.promptStringAsync(commandsLine).thenApply(command -> {
             String[] commandParts = command.split(" ", 2);
             Command cmd = commands.get(commandParts[0].toLowerCase());
@@ -170,7 +170,7 @@ public class GetCommand extends Base {
             } catch (Exception e) {
                 Thread.currentThread().interrupt();
                 System.err.println("Error executing SyncToAirTableCommand: " + e.getMessage());
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }

@@ -3,18 +3,12 @@ V
 &src/main/java/Utils/ConvertToLong.java,2\0\20c2b3bd5af67187dd7dc74f8b8cd15e8710adcf
 S
 #src/main/java/Utils/FileLogger.java,c\0\c09881272cdd96067b224d86e60e3c157cce6754
-^
-.src/main/java/Services/GetMessagesHistory.java,1\1\114549b85392cef65c7f46f149091ecac865fbf0
 V
 &src/main/java/AirTableUtils/Field.java,b\1\b194f9567c9c8703c26b217b6a394811550c20b0
-W
-'src/main/java/AirTableUtils/Record.java,d\1\d1cf40096f1582ee7431f49fdd9f5061d1afd9f5
 S
 #src/main/java/Models/GroupChat.java,3\7\3772025ad1ed822b8f07056d9387a6eb501da4bb
 N
 src/main/java/Models/User.java,d\0\d0cd9764143c90e2b3a8fa31f63a774496de9c6f
-]
--src/main/java/org/drinkless/tdlib/Client.java,d\a\da47fd15b7d5eef573f6597d32e66fe60bae5ba6
 U
 %src/main/java/Services/AddMember.java,a\d\adbe3ce0991c088ea3214fdffc1e368c345c80e4
 S
