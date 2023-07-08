@@ -14,6 +14,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 import static Services.GetMainChatList.chatIds;
+import static Utils.TruncateString.truncateStringIfNeeded;
 
 public class GetChat extends Base {
     /**
@@ -53,10 +54,7 @@ public class GetChat extends Base {
                             long id = result.getId();
                             String type = result.getType();
                             String title = result.getTitle();
-                            String description = result.getDescription();
-                            if (description.length() > 27) {
-                                description = description.substring(0, 24) + "...";
-                            }
+                            String description = truncateStringIfNeeded(result.getDescription());
                             String inviteLink = result.getInviteLink();
                             int memberCount = result.getMembersCount();
 
