@@ -8,13 +8,15 @@ public class User {
     private String firstName;
     private String lastName;
     private long chatId;
+    private String type;
 
-    public User(long id, String username, String firstName, String lastName, long chatId) {
+    public User(long id, String username, String firstName, String lastName, long chatId, String type) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.chatId = chatId;
+        this.type = type;
     }
 
     public long getId() {
@@ -37,12 +39,17 @@ public class User {
         return chatId;
     }
 
+    public String getType() {
+        return type;
+    }
+
     public static User fromJson(JsonObject json) {
         long id = json.get("Id").getAsLong();
         String username = json.get("Username").getAsString();
         String firstName = json.get("First Name").getAsString();
         String lastName = json.get("Last Name").getAsString();
         long chatId = json.get("Chat Id").getAsLong();
-        return new User(id, username, firstName, lastName, chatId);
+        String type = json.get("Type").getAsString(); // new field
+        return new User(id, username, firstName, lastName, chatId, type);
     }
 }

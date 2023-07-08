@@ -27,7 +27,11 @@ public class GetUser extends Base {
                 String firstName = tdUser.firstName;
                 String lastName = tdUser.lastName;
                 String username = tdUser.usernames != null ? tdUser.usernames.activeUsernames[0] : "";
-                User user = new User(id, username, firstName, lastName, chatId);
+                String type = "Regular"; // default to Regular
+                if (tdUser.type.getConstructor() == TdApi.UserTypeBot.CONSTRUCTOR) {
+                    type = "Bot"; // update to Bot if user is a bot
+                }
+                User user = new User(id, username, firstName, lastName, chatId, type); // pass in type
                 future.complete(user);
             } else {
                 String errorMessage = "Failed to get user: " + object;
@@ -61,18 +65,19 @@ public class GetUser extends Base {
                     }
                     if (!results.isEmpty()) {
                         System.out.println("\nUser information:");
-                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");
-                        System.out.println("|        ID       |     Username    |           First Name           |         Last Name              |     Chat ID     |");
-                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");
+                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
+                        System.out.println("|        ID       |     Username    |           First Name           |         Last Name              |     Chat ID     |  User Type |");
+                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
                         for (User user : results) {
                             long id = user.getId();
                             String username = user.getUsername();
                             String firstName = user.getFirstName();
                             String lastName = user.getLastName();
                             long chatIdValue = user.getChatId();
-                            System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-15d |\n", id, username != "" ? username : "N/A", firstName, lastName, chatIdValue);
+                            String type = user.getType(); // new field
+                            System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-15d | %-10s |\n", id, username != "" ? username : "", firstName, lastName, chatIdValue, type);
                         }
-                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");
+                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
                     } else {
                         System.out.println("No user information available");
                     }
