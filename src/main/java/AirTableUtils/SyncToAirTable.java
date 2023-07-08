@@ -17,13 +17,16 @@ import java.util.concurrent.ExecutionException;
 import static Services.GetMainChatList.chatIds;
 
 public class SyncToAirTable {
-    static Gson gson = new GsonBuilder().create();
     private static Set<JsonObject> jsonUserRes = new HashSet<>();
     private static Set<JsonObject> jsonGroupRes = new HashSet<>();
 
     public static void syncToAirTable() throws InterruptedException, ExecutionException {
-        GetMainChatList.loadChatIdsAsync(); // Wait for the CompletableFuture to complete
-        Thread.sleep(3000);
+        GetMainChatList.loadChatIdsAsync().join(); // Wait for the CompletableFuture to complete
+
+        int numChats = chatIds.length;
+        int processedChats = 0;
+
+        System.out.print("Processing chats: [");
         for (long chatId : chatIds) {
             CompletableFuture<GroupChat> groupRes = GetChat.getChat(chatId);
             List<User> res = GetMember.getMember(chatId).join();
@@ -43,12 +46,21 @@ public class SyncToAirTable {
                 }
             }
 
+            // Update the progress bar
+            processedChats++;
+            updateProgressBar(processedChats, numChats);
         }
+        System.out.println("]");
+
         if (Thread.currentThread().getStackTrace()[2].getClassName().equals(SyncToAirTable.class.getName())) {
             System.out.println(jsonGroupRes);
         }
         Map<String, JsonObject> idToJsonObject = new HashMap<>();
 
+        int numUsers = jsonUserRes.size();
+        int processedUsers = 0;
+
+        System.out.print("Processing users: [");
         for (JsonObject jsonObject : jsonUserRes) {
             String id = jsonObject.get("Id").getAsString();
 
@@ -70,7 +82,12 @@ public class SyncToAirTable {
                 newJsonObject.add("Chat Ids", chatIds);
                 idToJsonObject.put(id, newJsonObject);
             }
+
+            // Update the progress bar
+            processedUsers++;
+            updateProgressBar(processedUsers, numUsers);
         }
+        System.out.println("]");
 
         List<JsonObject> mergedObjects = new ArrayList<>(idToJsonObject.values());
 
@@ -99,5 +116,17 @@ public class SyncToAirTable {
         for (JsonObject jsonObject : mergedObjects) {
             airTableUser.pushUserData(jsonObject);
         }
+    }
+
+    private static void updateProgressBar(int current, int total) {
+        int progress = (int) ((double) current / total * 100);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("=".repeat(progress / 2));
+        sb.append(" ".repeat(50 - progress / 2));
+        sb.append(String.format("] %d%%", progress));
+
+        System.out.print("\r" + sb.toString());
+        System.out.flush();
     }
 }
