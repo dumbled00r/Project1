@@ -1,6 +1,7 @@
 package Services;
 
 import AirTableUtils.AirTable;
+import Models.User;
 import Utils.Base;
 import Utils.Print;
 import org.drinkless.tdlib.TdApi;
@@ -16,23 +17,18 @@ public class GetUser extends Base {
     /**
      * Get single user
      */
-    public static CompletableFuture<JsonObject> getUser(Long args, long chatId) {
-        CompletableFuture<JsonObject> future = new CompletableFuture<>();
+    public static CompletableFuture<User> getUser(Long args, long chatId) {
+        CompletableFuture<User> future = new CompletableFuture<>();
         TdApi.GetUser getUser = new TdApi.GetUser(args);
         client.send(getUser, object -> {
-            JsonObject jsonResults = new JsonObject();
             if (object.getConstructor() == TdApi.User.CONSTRUCTOR) {
-                TdApi.User user = (TdApi.User) object;
-                long id = user.id;
-                String firstName = user.firstName;
-                String lastName = user.lastName;
-                String userName = user.usernames != null ? user.usernames.activeUsernames[0] : "";
-                jsonResults.addProperty("Id", id);
-                jsonResults.addProperty("Username", userName);
-                jsonResults.addProperty("First Name", firstName);
-                jsonResults.addProperty("Last Name", lastName);
-                jsonResults.addProperty("Chat Id", chatId);
-                future.complete(jsonResults);
+                TdApi.User tdUser = (TdApi.User) object;
+                long id = tdUser.id;
+                String firstName = tdUser.firstName;
+                String lastName = tdUser.lastName;
+                String username = tdUser.usernames != null ? tdUser.usernames.activeUsernames[0] : "";
+                User user = new User(id, username, firstName, lastName, chatId);
+                future.complete(user);
             } else {
                 String errorMessage = "Failed to get user: " + object;
                 System.err.println(errorMessage);
@@ -43,19 +39,12 @@ public class GetUser extends Base {
     }
 
     /**
-     * Get multiple users
+     * Get multiple users of a group then print out!
      */
-    public static CompletableFuture<List<JsonObject>> getMassUser(List<Long> userIds, Long chatId) {
-        List<CompletableFuture<JsonObject>> futures = new ArrayList<>();
+    public static CompletableFuture<List<User>> getMassUser(List<Long> userIds, Long chatId) {
+        List<CompletableFuture<User>> futures = new ArrayList<>();
         for (Long userId : userIds) {
             futures.add(getUser(userId, chatId)
-                    .thenApplyAsync(data -> {
-                        if (data != null && data.has("Id") && data.has("Username") && data.has("First Name") && data.has("Last Name") && data.has("Chat Id")) {
-                            return data;
-                        } else {
-                            return null;
-                        }
-                    })
                     .exceptionally(throwable -> {
                         System.err.println("Failed to get user: " + throwable.getMessage());
                         return null;
@@ -63,11 +52,11 @@ public class GetUser extends Base {
         }
         return CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()]))
                 .thenApply(v -> {
-                    List<JsonObject> results = new ArrayList<>();
-                    for (CompletableFuture<JsonObject> future : futures) {
-                        JsonObject data = future.join();
-                        if (data != null) {
-                            results.add(data);
+                    List<User> results = new ArrayList<>();
+                    for (CompletableFuture<User> future : futures) {
+                        User user = future.join();
+                        if (user != null) {
+                            results.add(user);
                         }
                     }
                     if (!results.isEmpty()) {
@@ -75,12 +64,12 @@ public class GetUser extends Base {
                         System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");
                         System.out.println("|        ID       |     Username    |           First Name           |         Last Name              |     Chat ID     |");
                         System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");
-                        for (JsonObject result : results) {
-                            long id = result.get("Id").getAsLong();
-                            String username = result.get("Username").getAsString();
-                            String firstName = result.get("First Name").getAsString();
-                            String lastName = result.get("Last Name").getAsString();
-                            long chatIdValue = result.get("Chat Id").getAsLong();
+                        for (User user : results) {
+                            long id = user.getId();
+                            String username = user.getUsername();
+                            String firstName = user.getFirstName();
+                            String lastName = user.getLastName();
+                            long chatIdValue = user.getChatId();
                             System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-15d |\n", id, username != "" ? username : "N/A", firstName, lastName, chatIdValue);
                         }
                         System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+");

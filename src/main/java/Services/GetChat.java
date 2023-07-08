@@ -7,9 +7,13 @@ import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 
 import static Services.GetMainChatList.chatIds;
 
@@ -18,7 +22,7 @@ public class GetChat extends Base {
      * Get Information for Multiple Chats
      */
 
-    public static CompletableFuture<List<JsonObject>> getMassChat(){
+    public static CompletableFuture<List<JsonObject>> getMassChat() throws ExecutionException, InterruptedException {
         List<CompletableFuture<JsonObject>> futures = new ArrayList<>();
         for (Long chatId : chatIds){
             futures.add(getChat(chatId)
@@ -78,11 +82,12 @@ public class GetChat extends Base {
      * Get Chat's Information
      */
 
-    public static CompletableFuture<JsonObject> getChat(Long chatId){
+    public static CompletableFuture<JsonObject> getChat(Long chatId) throws ExecutionException, InterruptedException {
         CompletableFuture<JsonObject> future = new CompletableFuture<>();
+        Long myId = GetMe.getMe().get().get("Id").getAsLong();
         client.send(new TdApi.GetChat(chatId), new Client.ResultHandler() {
             @Override
-            public void onResult(TdApi.Object object) {
+            public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException {
                 JsonObject chatJson = new JsonObject();
                 if (object.getConstructor() == TdApi.Chat.CONSTRUCTOR){
                     TdApi.Chat chat = (TdApi.Chat) object;
@@ -90,6 +95,25 @@ public class GetChat extends Base {
                     chatJson.addProperty("type", chat.type.getClass().getSimpleName().substring(8));
                     chatJson.addProperty("title", chat.title);
                     if (chat.type instanceof TdApi.ChatTypeSupergroup){
+                        client.send(new TdApi.GetChatAdministrators(chat.id), new Client.ResultHandler() {
+                            @Override
+                            public void onResult(TdApi.Object object) throws IOException, InterruptedException, ExecutionException {
+                                if (object instanceof TdApi.ChatAdministrators) {
+                                    TdApi.ChatAdministrator[] chatAdmins = ((TdApi.ChatAdministrators) object).administrators;
+                                    boolean isAdmin = false;
+                                    for (TdApi.ChatAdministrator admin : chatAdmins) {
+                                        if (myId == admin.userId) {
+                                            isAdmin = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!isAdmin) {
+                                        System.out.println("You are not an administrator in this chat.");
+                                        return;
+                                    }
+                                }
+                            }
+                        });
                         client.send(new TdApi.GetSupergroupFullInfo(((TdApi.ChatTypeSupergroup) chat.type).supergroupId), new Client.ResultHandler() {
                             @Override
                             public void onResult(TdApi.Object object) {
@@ -109,6 +133,25 @@ public class GetChat extends Base {
                             }
                         });
                     } else if (chat.type instanceof TdApi.ChatTypeBasicGroup){
+                        client.send(new TdApi.GetChatAdministrators(chat.id), new Client.ResultHandler() {
+                            @Override
+                            public void onResult(TdApi.Object object) throws IOException, InterruptedException, ExecutionException {
+                                if (object instanceof TdApi.ChatAdministrators) {
+                                    TdApi.ChatAdministrator[] chatAdmins = ((TdApi.ChatAdministrators) object).administrators;
+                                    boolean isAdmin = false;
+                                    for (TdApi.ChatAdministrator admin : chatAdmins) {
+                                        if (myId == admin.userId) {
+                                            isAdmin = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!isAdmin) {
+                                        System.out.println("You are not an administrator in this chat.");
+                                        return;
+                                    }
+                                }
+                            }
+                        });
                         client.send(new TdApi.GetBasicGroupFullInfo(((TdApi.ChatTypeBasicGroup) chat.type).basicGroupId), new Client.ResultHandler() {
                             @Override
                             public void onResult(TdApi.Object object) {

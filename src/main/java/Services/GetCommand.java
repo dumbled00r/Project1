@@ -6,6 +6,7 @@ import org.drinkless.tdlib.TdApi;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class GetCommand extends Base {
@@ -29,7 +30,7 @@ public class GetCommand extends Base {
     private static final ReentrantLock lock = new ReentrantLock();
 
 
-    protected static void getCommand() throws InterruptedException {
+    protected static void getCommand() throws InterruptedException, ExecutionException {
         String command = PromptString.promptString(commandsLine);
         String[] commandParts = command.split(" ", 2);
         Command cmd = commands.get(commandParts[0].toLowerCase());
@@ -42,7 +43,7 @@ public class GetCommand extends Base {
     }
 
     private static abstract class Command {
-        public abstract void execute(String args) throws InterruptedException;
+        public abstract void execute(String args) throws InterruptedException, ExecutionException;
     }
 
     private static class EmptyCommand extends Command {
@@ -81,12 +82,13 @@ public class GetCommand extends Base {
 
     private static class GetChatCommand extends Command {
         @Override
-        public void execute(String args) throws InterruptedException {
+        public void execute(String args) throws InterruptedException, ExecutionException {
 //            String[] chatArgs = args.split(" ", 2);
 //            GetChat.getChat(Long.parseLong(chatArgs[0]));
             GetMainChatList.loadChatIds();
             Thread.sleep(3000);
             GetChat.getMassChat();
+//            GetChat.getChat()
         }
     }
 
