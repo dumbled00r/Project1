@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import static Utils.TruncateString.truncateStringIfNeeded;
+
 public class GetUser extends Base {
 
     /**
@@ -70,12 +72,12 @@ public class GetUser extends Base {
                         System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
                         for (User user : results) {
                             long id = user.getId();
-                            String username = user.getUsername();
-                            String firstName = user.getFirstName();
-                            String lastName = user.getLastName();
+                            String username = truncateStringIfNeeded(user.getUsername());
+                            String firstName = truncateStringIfNeeded(user.getFirstName());
+                            String lastName = truncateStringIfNeeded(user.getLastName());
                             long chatIdValue = user.getChatId();
                             String type = user.getType(); // new field
-                            System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-15d | %-10s |\n", id, username != "" ? username : "", firstName, lastName, chatIdValue, type);
+                            System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-15d | %-10s |\n", id, username, firstName, lastName, chatIdValue, type);
                         }
                         System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
                     } else {
