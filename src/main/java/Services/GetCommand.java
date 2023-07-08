@@ -88,6 +88,7 @@ public class GetCommand extends Base {
                 } catch (ExecutionException e) {
                     throw new RuntimeException(e);
                 } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                     throw new RuntimeException(e);
                 }
                 return massChatFuture.thenAcceptAsync(results -> {
@@ -96,6 +97,7 @@ public class GetCommand extends Base {
                     } catch (ExecutionException e) {
                         throw new RuntimeException(e);
                     } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
                         throw new RuntimeException(e);
                     }
                 });
@@ -161,6 +163,7 @@ public class GetCommand extends Base {
             try {
                 SyncToAirTable.syncToAirTable();
             } catch (Exception e) {
+                Thread.currentThread().interrupt();
                 System.err.println("Error executing SyncToAirTableCommand: " + e.getMessage());
                 e.printStackTrace();
             }

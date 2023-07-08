@@ -5,54 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
-      <change afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utils/FileLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messages.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/Record.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/Record.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/AddMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/AddMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMainChatList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetMainChatList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetMe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMessagesHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetMessagesHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/KickMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/KickMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/SendMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/SendMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/Field.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/Record.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/Record.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/Table.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/abc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Utils/Authorize.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Utils/Authorize.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/SetChatPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/SetChatPosition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Utils/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Utils/Base.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Utils/ConvertToLong.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Utils/ConvertToLong.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Utils/PromptString.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Utils/PromptString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$Handler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$ResponseReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$ResponseReceiver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$ResultHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$ResultHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/AddMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/AddMember.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat$1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMainChatList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMainChatList$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMainChatList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMainChatList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMember$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember$1$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMember$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMember$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMember.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/MainApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/PrivateChat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/SendMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/SendMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$AddMemberCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$AddMemberCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$GetChatCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$GetChatCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$GetMeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$GetMeCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$GetMemberCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$GetMemberCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$GetMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$GetMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$KickMemberCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$KickMemberCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$LogoutCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$LogoutCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$QuitCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$QuitCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$SendMessageCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$SendMessageCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand$SyncToAirTableCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand$SyncToAirTableCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMe.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-shm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-wal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/td.binlog" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/td.binlog" afterDir="false" />

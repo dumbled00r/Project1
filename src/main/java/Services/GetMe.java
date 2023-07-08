@@ -59,6 +59,7 @@ public class GetMe extends Base {
             System.out.println("-------------------------------------------------");
             Print.print("");
         } catch (InterruptedException | ExecutionException e) {
+            Thread.currentThread().interrupt();
             FileLogger.write(e.getMessage());
         }
     }
