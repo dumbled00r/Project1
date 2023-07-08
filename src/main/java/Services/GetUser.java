@@ -31,7 +31,7 @@ public class GetUser extends Base {
                 if (tdUser.type.getConstructor() == TdApi.UserTypeBot.CONSTRUCTOR) {
                     type = "Bot"; // update to Bot if user is a bot
                 }
-                User user = new User(id, username, firstName, lastName, chatId, type); // pass in type
+                User user = new User(id, username, firstName, lastName, chatId, type);
                 future.complete(user);
             } else {
                 String errorMessage = "Failed to get user: " + object;
