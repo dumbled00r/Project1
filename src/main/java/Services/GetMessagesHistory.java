@@ -1,15 +1,12 @@
 package Services;
 
 import Utils.Base;
+import Utils.Print;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
-
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-
 
 public class GetMessagesHistory extends Base {
     public static CompletableFuture<List<TdApi.Message>> getMessages(Long chatId) {
@@ -48,6 +45,13 @@ public class GetMessagesHistory extends Base {
             return future2;
         });
     }
-    public static void printMessages(Long chatId) throws ExecutionException, InterruptedException, IOException {
+    public static void printMessages(Long chatId) {
+        getMessages(chatId).thenAccept(messages -> {
+            System.out.println("Total messages: " + messages.size());
+            for (TdApi.Message message : messages) {
+                System.out.println(message);
+            }
+            Print.print("");
+        });
     }
 }

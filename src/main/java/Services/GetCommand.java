@@ -146,8 +146,7 @@ public class GetCommand extends Base {
         public void execute(String args) throws InterruptedException, ExecutionException, IOException {
             String[] getmsgArgs = args.split(" ", 2);
             Long chatId = ConvertToLong.toLong(getmsgArgs[0]);
-            CompletableFuture<List<TdApi.Message>> future = GetMessagesHistory.getMessages(chatId);
-            List<TdApi.Message> messages = future.join();
+            GetMessagesHistory.printMessages(chatId);
         }
     }
 
