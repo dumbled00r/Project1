@@ -7,10 +7,10 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class    AirTableGroup extends AirTable{
+public class AirTableGroup extends AirTable{
     public AirTableGroup(){
         super();
-        String response = Table.listTables(baseId, personal_access_token);
+        String response = Table.getListTables(baseId, personal_access_token);
         JsonObject jsonObject = new Gson().fromJson(response, JsonObject.class);
         JsonArray tables = jsonObject.get("tables").getAsJsonArray();
         for (var ele : tables){
@@ -24,6 +24,6 @@ public class    AirTableGroup extends AirTable{
     public void pushGroupData(JsonObject jsonObject){
         List<JsonObject> list = new ArrayList<>();
         list.add(jsonObject);
-        groupData.pullAllRecord(list, baseId, personal_access_token);
+        groupData.checkAllRecords(list, baseId, personal_access_token);
     }
 }

@@ -1,7 +1,5 @@
 package AirTableUtils;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
@@ -17,6 +15,6 @@ public class AirTable {
     public void pushUserData(JsonObject jsonObject) {
         List<JsonObject> list = new ArrayList<>();
         list.add(jsonObject);
-        userData.pullAllRecord(list, baseId, personal_access_token);
+        userData.checkAllRecords(list, baseId, personal_access_token);
     }
 }

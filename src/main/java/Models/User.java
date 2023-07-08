@@ -52,4 +52,15 @@ public class User {
         String type = json.get("Type").getAsString();
         return new User(id, username, firstName, lastName, chatId, type);
     }
+
+    public JsonObject toJsonObject() {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("Id", id);
+        jsonObject.addProperty("Username", username);
+        jsonObject.addProperty("First Name", firstName);
+        jsonObject.addProperty("Last Name", lastName);
+        jsonObject.addProperty("Chat Id", chatId);
+        jsonObject.addProperty("Type", type);
+        return jsonObject;
+    }
 }

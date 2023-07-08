@@ -2,12 +2,11 @@ package Services;
 
 import Models.GroupChat;
 import Utils.Base;
+import Utils.FileLogger;
 import Utils.Print;
-import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -33,7 +32,7 @@ public class GetChat extends Base {
                         }
                     })
                     .exceptionally(throwable -> {
-                        System.err.println("Failed to get chat: " + throwable.getMessage());
+                        FileLogger.write("Failed to get chat: " + throwable.getMessage());
                         return null;
                     }));
         }
@@ -46,29 +45,6 @@ public class GetChat extends Base {
                             results.add(data);
                         }
                     }
-                    if (!results.isEmpty()) {
-                        System.out.println("\n+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
-                        System.out.println("|        ID       |      Type       |             Title              |           Description          |          Invite Link           |    Members      |");
-                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
-                        for (GroupChat result : results) {
-                            long id = result.getId();
-                            String type = result.getType();
-                            String title = result.getTitle();
-                            String description = truncateStringIfNeeded(result.getDescription());
-                            String inviteLink = result.getInviteLink();
-                            int memberCount = result.getMembersCount();
-
-                            // Restretch the table to fit the result
-                            System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-30s | %-15d |\n", id, type, title, description, inviteLink, memberCount);
-                            if (title.length() > 30 || description.length() > 30 || inviteLink.length() > 30) {
-                                System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
-                            }
-                        }
-                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
-                    } else {
-                        System.out.println("No chat information available");
-                    }
-                    System.out.println("You can use the command getmem + <ChatID> to get members of a group \nOr use help for more commands");
                     Print.print("");
                     return results;
                 });
@@ -100,7 +76,7 @@ public class GetChat extends Base {
                                         }
                                     }
                                     if (!isAdmin) {
-                                        System.out.println("You are not an administrator in this chat.");
+                                        FileLogger.write("You are not an administrator in this chat.");
                                         future.complete(null);
                                     }
                                 }
@@ -117,7 +93,7 @@ public class GetChat extends Base {
                                     future.complete(groupChat);
                                 } else {
                                     String errorMessage = "Failed to get supergroup full info: " + ((TdApi.Error) object).message;
-                                    System.err.println(errorMessage);
+                                    FileLogger.write(errorMessage);
                                     future.completeExceptionally(new RuntimeException(errorMessage));
                                 }
                             }
@@ -153,7 +129,7 @@ public class GetChat extends Base {
                                     future.complete(groupChat);
                                 } else {
                                     String errorMessage = "Failed to get basic group full info: " + ((TdApi.Error) object).message;
-                                    System.err.println(errorMessage);
+                                    FileLogger.write(errorMessage);
                                     future.completeExceptionally(new RuntimeException(errorMessage));
                                 }
                             }
@@ -164,11 +140,39 @@ public class GetChat extends Base {
                     }
                 } else {
                     String errorMessage = "Failed to get chat: " + ((TdApi.Error) object).message;
-                    System.err.println(errorMessage);
+                    FileLogger.write(errorMessage);
                     future.completeExceptionally(new RuntimeException(errorMessage));
                 }
             }
         }, null);
         return future;
+    }
+
+    public static void printChatInfo() throws ExecutionException, InterruptedException {
+        List<GroupChat> results = getMassChat().get();
+        if (!results.isEmpty()) {
+            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
+            System.out.println("|        ID       |      Type       |             Title              |           Description          |          Invite Link           |    Members      |");
+            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
+            for (GroupChat result : results) {
+                long id = result.getId();
+                String type = result.getType();
+                String title = result.getTitle();
+                String description = truncateStringIfNeeded(result.getDescription());
+                String inviteLink = result.getInviteLink();
+                int memberCount = result.getMembersCount();
+
+                // Restretch the table to fit the result
+                System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-30s | %-15d |\n", id, type, title, description, inviteLink, memberCount);
+                if (title.length() > 30 || description.length() > 30 || inviteLink.length() > 30) {
+                    System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
+                }
+            }
+            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
+        } else {
+            System.out.println("No chat information available");
+        }
+        System.out.println("You can use the command getmember + <ChatID> to get members of a group \nOr use help for more commands");
+        Print.print("");
     }
 }

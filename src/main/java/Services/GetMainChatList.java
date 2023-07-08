@@ -2,6 +2,7 @@ package Services;
 
 import Utils.Base;
 import Utils.ChatOrder;
+import Utils.FileLogger;
 import Utils.Print;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
@@ -32,7 +33,7 @@ public class GetMainChatList extends Base {
                                     haveFullMainChatList = true;
                                 }
                             } else {
-                                System.err.println("\nReceive an error for LoadChats:" + ((TdApi.Error) object).message);
+                                FileLogger.write("Receive an error for LoadChats:" + ((TdApi.Error) object).message);
                             }
                             future.completeExceptionally(new RuntimeException("Error loading chats"));
                             break;
@@ -41,7 +42,7 @@ public class GetMainChatList extends Base {
                             getMainChatListAsync(limit).thenAccept((Void v) -> future.complete(null));
                             break;
                         default:
-                            System.err.println("\nReceive wrong response from TDLib:" + ((TdApi.Error) object).message);
+                            FileLogger.write("Receive wrong response from TDLib:" + ((TdApi.Error) object).message);
                             future.completeExceptionally(new RuntimeException("Error loading chats"));
                     }
                 }
@@ -82,7 +83,7 @@ public class GetMainChatList extends Base {
                     // Get the list of chat IDs and print them to the console
                     chatIds = ((TdApi.Chats) object).chatIds;
                     future.complete(null);
-                } else {
+                } else if (object instanceof TdApi.Error) {
                     future.completeExceptionally(new RuntimeException("Error loading chat IDs: " + ((TdApi.Error) object).message));
                 }
             }

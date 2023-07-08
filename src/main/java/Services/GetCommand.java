@@ -2,6 +2,7 @@ package Services;
 
 import AirTableUtils.SyncToAirTable;
 import Models.GroupChat;
+import Models.User;
 import Utils.*;
 import org.drinkless.tdlib.TdApi;
 
@@ -81,16 +82,26 @@ public class GetCommand extends Base {
         public void execute(String args) throws InterruptedException, ExecutionException {
             CompletableFuture<Void> chatIdsFuture = GetMainChatList.loadChatIdsAsync();
             chatIdsFuture.thenComposeAsync((Void v) -> {
+                CompletableFuture<List<GroupChat>> massChatFuture = null;
                 try {
-                    return GetChat.getMassChat();
+                    massChatFuture = GetChat.getMassChat();
                 } catch (ExecutionException e) {
                     throw new RuntimeException(e);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException(e);
                 }
-            });
-            chatIdsFuture.get();
+                return massChatFuture.thenAcceptAsync(results -> {
+                    try {
+                        GetChat.printChatInfo();
+                    } catch (ExecutionException e) {
+                        throw new RuntimeException(e);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        throw new RuntimeException(e);
+                    }
+                });
+            }).join();
         }
     }
 
@@ -132,7 +143,8 @@ public class GetCommand extends Base {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
             long chatId = ConvertToLong.toLong(args);
-            GetMember.getMember(chatId);
+            List<User> res = GetMember.getMember(chatId).get();
+            GetUser.printUserInfo(res);
         }
     }
 
@@ -148,7 +160,13 @@ public class GetCommand extends Base {
     private static class SyncToAirTableCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
-//            SyncToAirTable.sync();
+            try {
+                SyncToAirTable.syncToAirTable();
+            } catch (Exception e) {
+                Thread.currentThread().interrupt();
+                System.err.println("Error executing SyncToAirTableCommand: " + e.getMessage());
+                e.printStackTrace();
+            }
         }
     }
 
