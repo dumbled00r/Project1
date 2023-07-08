@@ -25,7 +25,6 @@ public class Field {
         this.name = field.get("name").getAsString();
         this.type = field.get("type").getAsString();
     }
-
     protected String getId() {
         return this.id;
     }
@@ -35,5 +34,4 @@ public class Field {
     protected String getType() {
         return this.type;
     }
-
 }

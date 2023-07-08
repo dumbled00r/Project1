@@ -1,5 +1,6 @@
 package AirTableUtils;
 
+import Utils.FileLogger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.apache.hc.client5.http.classic.methods.HttpDelete;
@@ -20,15 +21,15 @@ import java.util.List;
 public class Record{
     private final String id;
     private final JsonObject fields;
-    private final long IdFieldVal;
+    private final long idOfField;
 
     Record(JsonObject record) {
         this.id = record.get("id").getAsString();
         this.fields = record.get("fields").getAsJsonObject();
         if (this.fields.has("Id"))
-            this.IdFieldVal = this.fields.get("Id").getAsLong();
+            this.idOfField = this.fields.get("Id").getAsLong();
         else
-            this.IdFieldVal = 0;
+            this.idOfField = 0;
     }
     protected String getId() {
         return this.id;
@@ -56,13 +57,9 @@ public class Record{
         return true;
     }
     protected long getValOfId() {
-        return this.IdFieldVal;
+        return this.idOfField;
     }
 
-    protected JsonObject getFields() {
-        return this.fields;
-    }
-    // API Methods
     protected static String listRecords(String tableId, String baseId, String token) {
 
         String url = "https://api.airtable.com/v0/" + baseId + "/" + tableId;
@@ -127,17 +124,16 @@ public class Record{
             if (response.getCode() == 200) {
                 return EntityUtils.toString(response.getEntity());
             } else {
-                System.out.println("Error creating record: " + response.getCode());
-                System.out.println(url);
-                System.out.println("fullBody: " + fullBody);
+                FileLogger.write("Error creating record: " + response.getCode());
+                FileLogger.write("fullBody: " + fullBody);
                 return null;
             }
         } catch (IOException | ParseException e) {
-            System.out.println("Error creating record: " + e.getMessage());
+            FileLogger.write("Error creating record: " + e.getMessage());
             return null;
         }
     }
-    protected static boolean dropRecord(String recordId, String tableId, String baseId, String Token){
+    protected static boolean deleteRecord(String recordId, String tableId, String baseId, String Token){
         String url = "https://api.airtable.com/v0/" + baseId + "/" + tableId + "/" + recordId;
 
         try (CloseableHttpClient client = HttpClientBuilder.create().build()) {
@@ -147,7 +143,7 @@ public class Record{
             ClassicHttpResponse response = client.execute(delete);
 
             if (response.getCode() == 200) {
-                System.out.println("Record " + recordId + " deleted");
+                FileLogger.write("Record " + recordId + " deleted");
                 return true;
             } else {
                 return false;

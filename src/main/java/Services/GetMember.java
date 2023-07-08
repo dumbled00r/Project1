@@ -2,6 +2,7 @@ package Services;
 
 import Utils.Base;
 import Models.User;
+import Utils.FileLogger;
 import Utils.Print;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
@@ -28,7 +29,7 @@ public class GetMember extends Base {
                 if (object instanceof TdApi.Chat chat) {
                     if (chat.type instanceof TdApi.ChatTypeSupergroup) {
                         if (((TdApi.ChatTypeSupergroup) chat.type).isChannel) {
-                            System.err.println("\nThis chat group is a channel, please provide a chat group");
+                            FileLogger.write("This chat group is a channel, please provide a chat group");
                             future.complete(lstUsers);
                             return;
                         }
@@ -42,7 +43,7 @@ public class GetMember extends Base {
                                         getSupergroupMembers(chatId, supergroupId)
                                                 .thenAccept(result -> future.complete(lstUsers));
                                     } else {
-                                        System.err.println("\nGroup does not allow us to get members");
+                                        FileLogger.write("Group does not allow us to get members");
                                         future.complete(lstUsers);
                                     }
                                 }
@@ -64,12 +65,12 @@ public class GetMember extends Base {
                             }
                         });
                     } else if (chat.type instanceof TdApi.ChatTypePrivate) {
-                        System.err.println("\nThis is not a chat group");
+                        FileLogger.write("This is not a chat group");
                         Print.print("");
                         future.complete(lstUsers);
                     }
                 } else {
-                    System.err.println("\nInvalid Chat ID: " + ((TdApi.Error) object).message);
+                    FileLogger.write("Invalid Chat ID: " + ((TdApi.Error) object).message);
                     Print.print("");
                     future.complete(lstUsers);
                 }
@@ -98,7 +99,7 @@ public class GetMember extends Base {
                             }
                         }
                     } else {
-                        System.out.println("Failed to get member: " + ((TdApi.Error) object).message);
+                        FileLogger.write("Failed to get member: " + ((TdApi.Error) object).message);
                     }
                     // if we have received all members, call the getMassUser method
                     if (memberIds.size() == numOfMembers) {

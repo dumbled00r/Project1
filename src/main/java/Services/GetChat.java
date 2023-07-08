@@ -2,6 +2,7 @@ package Services;
 
 import Models.GroupChat;
 import Utils.Base;
+import Utils.FileLogger;
 import Utils.Print;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
@@ -31,7 +32,7 @@ public class GetChat extends Base {
                         }
                     })
                     .exceptionally(throwable -> {
-                        System.err.println("Failed to get chat: " + throwable.getMessage());
+                        FileLogger.write("Failed to get chat: " + throwable.getMessage());
                         return null;
                     }));
         }
@@ -75,7 +76,7 @@ public class GetChat extends Base {
                                         }
                                     }
                                     if (!isAdmin) {
-                                        System.out.println("You are not an administrator in this chat.");
+                                        FileLogger.write("You are not an administrator in this chat.");
                                         future.complete(null);
                                     }
                                 }
@@ -92,7 +93,7 @@ public class GetChat extends Base {
                                     future.complete(groupChat);
                                 } else {
                                     String errorMessage = "Failed to get supergroup full info: " + ((TdApi.Error) object).message;
-                                    System.err.println(errorMessage);
+                                    FileLogger.write(errorMessage);
                                     future.completeExceptionally(new RuntimeException(errorMessage));
                                 }
                             }
@@ -128,7 +129,7 @@ public class GetChat extends Base {
                                     future.complete(groupChat);
                                 } else {
                                     String errorMessage = "Failed to get basic group full info: " + ((TdApi.Error) object).message;
-                                    System.err.println(errorMessage);
+                                    FileLogger.write(errorMessage);
                                     future.completeExceptionally(new RuntimeException(errorMessage));
                                 }
                             }
@@ -139,7 +140,7 @@ public class GetChat extends Base {
                     }
                 } else {
                     String errorMessage = "Failed to get chat: " + ((TdApi.Error) object).message;
-                    System.err.println(errorMessage);
+                    FileLogger.write(errorMessage);
                     future.completeExceptionally(new RuntimeException(errorMessage));
                 }
             }

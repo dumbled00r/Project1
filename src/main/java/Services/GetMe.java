@@ -1,6 +1,7 @@
 package Services;
 
 import Utils.Base;
+import Utils.FileLogger;
 import Utils.Print;
 import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
@@ -34,8 +35,8 @@ public class GetMe extends Base {
                 future.complete(userJson);
             } else {
                 // If the result is not a TdApi.User object, complete the future exceptionally with an error message
-                String errorMessage = "Failed to get user: " + ((TdApi.Error) object).message;
-                System.err.println(errorMessage);
+                String errorMessage = "Failed to get your infomation: " + ((TdApi.Error) object).message;
+                FileLogger.write(errorMessage);
                 future.completeExceptionally(new RuntimeException(errorMessage));
             }
         }, null);
@@ -58,7 +59,7 @@ public class GetMe extends Base {
             System.out.println("-------------------------------------------------");
             Print.print("");
         } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            FileLogger.write(e.getMessage());
         }
     }
 }

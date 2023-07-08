@@ -2,6 +2,7 @@ package Services;
 
 import AirTableUtils.SyncToAirTable;
 import Models.GroupChat;
+import Models.User;
 import Utils.*;
 import org.drinkless.tdlib.TdApi;
 
@@ -140,7 +141,8 @@ public class GetCommand extends Base {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
             long chatId = ConvertToLong.toLong(args);
-            GetMember.getMember(chatId);
+            List<User> res = GetMember.getMember(chatId).get();
+            GetUser.printUserInfo(res);
         }
     }
 

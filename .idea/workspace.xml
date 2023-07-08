@@ -5,174 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_10_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utils/FileLogger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/httpcore5-5.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/httpcore5-h2-5.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/log4j-api-2.19.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/log4j-api-2.20.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/log4j-core-2.19.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/slf4j-api-1.7.25.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/slf4j-api-1.7.36.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/Record.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/Record.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/abc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/abc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/AddMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/AddMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMainChatList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetMainChatList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetMe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMessagesHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetMessagesHistory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/drinkless/tdlib/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/drinkless/tdlib/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/libraries/apache_httpcomponents_client5_httpclient5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/libraries/apache_httpcomponents_core5_httpcore5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/libraries/apache_logging_log4j_1_2_api.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/libraries/apache_logging_log4j_core.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/libraries/apache_logging_log4j_slf4j_impl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/libraries/google_code_gson.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/libraries/slf4j_api.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/libraries/slf4j_simple.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/KickMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/KickMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/SendMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/SendMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/AirTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/Field.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/Record.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/Record.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/Table.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/abc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/abc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Project1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/abc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Utils/Authorize.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Utils/Authorize.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Utils/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Utils/Base.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Utils/ConvertToLong.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Utils/ConvertToLong.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Utils/PromptString.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Utils/PromptString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$ResponseReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$ResponseReceiver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$ResultHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client$ResultHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/drinkless/tdlib/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/AddMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/AddMember.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat$1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/services/GetCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/services/GetMainChatList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMainChatList$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/services/GetMainChatList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMainChatList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMember$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMember$1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember$1$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMember$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMember$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/services/GetMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMember.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/services/GetUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/java/dylib/libtdjni.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/java/otherlibs/gson-2.10.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/java/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/java/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/java/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/java/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/src/main/java/tdlib/thumbnails/6303207167960811786_109.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/libraries/apache_httpcomponents_client5_httpclient5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/libraries/apache_httpcomponents_core5_httpcore5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/libraries/apache_logging_log4j_1_2_api.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/libraries/apache_logging_log4j_core.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/libraries/apache_logging_log4j_slf4j_impl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/libraries/google_code_gson.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/libraries/slf4j_api.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/libraries/slf4j_simple.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/Project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/src/main/java/dylib/libtdjni.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/src/main/java/otherlibs/gson-2.10.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/src/main/java/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/src/main/java/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/src/main/java/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/src/main/java/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/src/main/java/tdlib/thumbnails/6303207167960811786_109.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_client5_httpclient5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_core5_httpcore5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/libraries/google_code_gson.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/libraries/slf4j_api.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/libraries/slf4j_simple.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/Project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/src/main/java/dylib/libtdjni.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/src/main/java/otherlibs/gson-2.10.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/src/main/java/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/src/main/java/tdlib/thumbnails/6303207167960811786_109.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_client5_httpclient5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_core5_httpcore5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/libraries/google_code_gson.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/libraries/slf4j_api.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/libraries/slf4j_simple.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/Project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/src/main/java/dylib/libtdjni.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/src/main/java/otherlibs/gson-2.10.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/thumbnails/6303207167960811786_109.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_client5_httpclient5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_core5_httpcore5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/libraries/google_code_gson.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/Project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/dylib/libtdjni.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/otherlibs/gson-2.10.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/thumbnails/6303207167960811786_109.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_client5_httpclient5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_core5_httpcore5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/libraries/google_code_gson.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/Project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/dylib/libtdjni.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/otherlibs/gson-2.10.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/thumbnails/6303207167960811786_109.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_client5_httpclient5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/libraries/apache_httpcomponents_core5_httpcore5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/libraries/google_code_gson.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/Project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/dylib/libtdjni.dylib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/otherlibs/gson-2.10.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/src/main/java/tdlib/thumbnails/6303207167960811786_109.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/tdlib.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/users.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/tdlib.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/target/classes/users.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/tdlib.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/classes/users.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/tdlib.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/users.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/tdlib.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/users.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/tdlib.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/users.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tdlib.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tdlib/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tdlib/db.sqlite-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tdlib/db.sqlite-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tdlib/td.binlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/users.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/MainApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/PrivateChat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/SendMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/SendMessage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-shm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-wal" afterDir="false" />
@@ -214,27 +93,33 @@
     </option>
   </component>
   <component name="ProjectId" id="2RkYd3sZWjNvzG1UbffkE1Fi4Lv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dumbled00r/TelegramServices/Test1/Project1&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "duyanh__develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "20",
+    "last_opened_file_path": "D:/Project1/lib",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.16308594",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java" />
@@ -258,7 +143,6 @@
     <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Services.MainApp" />
       <module name="Project1" />
-      <option name="VM_PARAMETERS" value="-Djava.library.path=&quot;$PROJECT_DIR$/src/main/java/dylib&quot;  " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Utils.*" />
@@ -318,6 +202,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Update syncing data on Airtable" />
     <option name="LAST_COMMIT_MESSAGE" value="Update syncing data on Airtable" />
   </component>
@@ -330,5 +215,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Project1$MainApp.ic" NAME="MainApp Coverage Results" MODIFIED="1688821245016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Utils.*</FILTER>
+    </SUITE>
   </component>
 </project>

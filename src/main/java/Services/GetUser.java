@@ -1,14 +1,17 @@
 package Services;
 
 import AirTableUtils.AirTable;
+import Models.GroupChat;
 import Models.User;
 import Utils.Base;
+import Utils.FileLogger;
 import Utils.Print;
 import org.drinkless.tdlib.TdApi;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import static Utils.TruncateString.truncateStringIfNeeded;
 
@@ -35,7 +38,7 @@ public class GetUser extends Base {
                 future.complete(user);
             } else {
                 String errorMessage = "Failed to get user: " + ((TdApi.Error) object).message;
-                System.err.println(errorMessage);
+                FileLogger.write(errorMessage);
                 future.completeExceptionally(new RuntimeException(errorMessage));
             }
         });
@@ -50,7 +53,7 @@ public class GetUser extends Base {
         for (Long userId : userIds) {
             futures.add(getUser(userId, chatId)
                     .exceptionally(throwable -> {
-                        System.err.println("Failed to get user: " + throwable.getMessage());
+                        FileLogger.write("Failed to get user: " + throwable.getMessage());
                         return null;
                     }));
         }
@@ -63,26 +66,30 @@ public class GetUser extends Base {
                             results.add(user);
                         }
                     }
-                    if (!results.isEmpty()) {
-                        System.out.println("\nUser information:");
-                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
-                        System.out.println("|        ID       |     Username    |           First Name           |         Last Name              |     Chat ID     |  User Type |");
-                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
-                        for (User user : results) {
-                            long id = user.getId();
-                            String username = truncateStringIfNeeded(user.getUsername());
-                            String firstName = truncateStringIfNeeded(user.getFirstName());
-                            String lastName = truncateStringIfNeeded(user.getLastName());
-                            long chatIdValue = user.getChatId();
-                            String type = user.getType(); // new field
-                            System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-15d | %-10s |\n", id, username, firstName, lastName, chatIdValue, type);
-                        }
-                        System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
-                    } else {
-                        System.out.println("No user information available");
-                    }
                     Print.print("");
                     return results;
                 });
+    }
+
+    public static void printUserInfo(List<User> results) throws ExecutionException, InterruptedException {
+        if (!results.isEmpty()) {
+            System.out.println("User information:");
+            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
+            System.out.println("|        ID       |     Username    |           First Name           |         Last Name              |     Chat ID     |  User Type |");
+            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
+            for (User user : results) {
+                long id = user.getId();
+                String username = truncateStringIfNeeded(user.getUsername());
+                String firstName = truncateStringIfNeeded(user.getFirstName());
+                String lastName = truncateStringIfNeeded(user.getLastName());
+                long chatIdValue = user.getChatId();
+                String type = user.getType(); // new field
+                System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-15d | %-10s |\n", id, username, firstName, lastName, chatIdValue, type);
+            }
+            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
+        } else {
+            System.out.println("No user information available");
+        }
+        Print.print("");
     }
 }
