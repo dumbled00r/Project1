@@ -37,6 +37,19 @@ Link download: https://www.jetbrains.com/idea/download/?var=1&section=windows
     - If it appears like this, then you are done!, you have sent a message to an existing chat
     - ![test_a_b_c](https://github.com/dumbled00r/Project1/blob/main/image/test_a_b_c.png)
 
+## Task Scheduler
+Task Scheduler is used to rerun the program once a day, this is how you do it
+- First you need to extract ScheduledUpdate.rar file 
+- After that, we need to create task ( It's located on the right hand side)
+    - ![create_task](https://github.com/dumbled00r/Project1/blob/main/image/create_task.png)
+- Second, enter task name and task description as you please (NOTE: Remember to tick on the "Run with highest privileges" box)
+    - ![run_with](https://github.com/dumbled00r/Project1/blob/main/image/run_with.png)
+- Third, you need to switch to triggers tab, add a new trigger
+    - ![daily](https://github.com/dumbled00r/Project1/blob/main/image/daily.png)
+- Then you create a new action
+    - ![run_bat_file](https://github.com/dumbled00r/Project1/blob/main/image/run_bat_file.png)
+You are done! Now the program will be running daily!
+
 * NOTE: change the parameters down below if you want to use the program for your own use of telegram, if not it's better to just run the MainApp.java file without changing anything
 - Inside the project1 file, most of our commands stay at services file:
     - Inside Utils file, there are some parameters you need to change to make the program works properly: 
