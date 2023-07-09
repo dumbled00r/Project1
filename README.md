@@ -65,7 +65,6 @@ You are done! Now the program will be running daily!
     ```java
     static String personal_access_token = "your personal_access_token";
     static String baseId = "your base_id";
-    static String tableId = "your table_id";
     ```
       
 ## Features
