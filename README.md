@@ -48,6 +48,8 @@ Task Scheduler is used to rerun the program once a day, this is how you do it
     - ![daily](https://github.com/dumbled00r/Project1/blob/main/image/daily.png)
 - Then you create a new action
     - ![run_bat_file](https://github.com/dumbled00r/Project1/blob/main/image/run_bat_file.png)
+
+
 You are done! Now the program will be running daily!
 
 * NOTE: change the parameters down below if you want to use the program for your own use of telegram, if not it's better to just run the MainApp.java file without changing anything
