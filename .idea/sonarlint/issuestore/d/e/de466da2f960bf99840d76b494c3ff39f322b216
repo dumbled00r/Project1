@@ -1,0 +1,24 @@
+
+J
+java:S1604%"(Make this anonymous inner class a lambda(‹­Ÿøÿÿÿÿ8¿÷Ô¡“1
+J
+java:S1604"(Make this anonymous inner class a lambda(ªÉ½çüÿÿÿÿ8¿÷Ô¡“1
+J
+java:S1604X"(Make this anonymous inner class a lambda(…¡Ğüÿÿÿÿ8¿÷Ô¡“1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–8À÷Ô¡“1
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 42 to the 15 allowed.(ˆ–Ÿëşÿÿÿÿ8È÷Ô¡“1
+€
+java:S6201"^Replace this instanceof check and cast with 'instanceof ChatTypeSupergroup chattypesupergroup'(ığËÿùÿÿÿÿ8Ê÷Ô¡“1
+€
+java:S6201"^Replace this instanceof check and cast with 'instanceof ChatTypeSupergroup chattypesupergroup'(ığËÿùÿÿÿÿ8Ê÷Ô¡“1
+€
+java:S62016"^Replace this instanceof check and cast with 'instanceof BasicGroupFullInfo basicgroupfullinfo'(ÜÔ™íûÿÿÿÿ8•ƒ—«“1
+~
+java:S62019"\Replace this instanceof check and cast with 'instanceof MessageSenderUser messagesenderuser'(ËˆÀÃûÿÿÿÿ8Í÷Ô¡“1
+t
+java:S3776R"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(ä–§ûùÿÿÿÿ8Ì÷Ô¡“1
+m
+java:S6201["PReplace this instanceof check and cast with 'instanceof ChatMembers chatmembers'(­•ì8Í÷Ô¡“1
+~
+java:S6201^"\Replace this instanceof check and cast with 'instanceof MessageSenderUser messagesenderuser'(ËˆÀÃûÿÿÿÿ8–ƒ—«“1

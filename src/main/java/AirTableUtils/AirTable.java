@@ -28,7 +28,7 @@ public class AirTable {
         String jsonString = new String(Files.readAllBytes(filePath));
         JsonObject json = gson.fromJson(jsonString, JsonObject.class);
         personal_access_token = json.get("token").getAsString();
-        baseId = json.get("tableId").getAsString();
+        baseId = json.get("baseId").getAsString();
     }
 
     public AirTable() throws IOException {

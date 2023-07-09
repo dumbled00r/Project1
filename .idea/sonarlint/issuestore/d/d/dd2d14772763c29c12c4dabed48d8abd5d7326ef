@@ -1,0 +1,10 @@
+
+7
+java:S1220""Move this file to a named package.8…áÿµ“1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(»Ø“øüÿÿÿÿ8áÿµ“1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(çø‹õøÿÿÿÿ8áÿµ“1
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Õıå8áÿµ“1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ˆºçüÿÿÿÿ8áÿµ“1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(üˆÄöøÿÿÿÿ8áÿµ“1
+M
+java:S1128"0Remove this unused import 'Services.GetCommand'.(‘×ïİ8áÿµ“1
