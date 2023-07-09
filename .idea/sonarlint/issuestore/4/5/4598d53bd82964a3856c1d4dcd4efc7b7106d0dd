@@ -1,0 +1,14 @@
+
+l	java:S117g"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·ı8Àì‰°“1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÚâĞûÿÿÿÿ8Áì‰°“1
+b
+java:S1858"@"toJson" returns a string, there's no need to call "toString()".(æôÙÿÿÿÿÿ8•í‰°“1
+o
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(†Ô¬²8•í‰°“1
+g
+java:S6201è"DReplace this instanceof check and cast with 'instanceof Error error'(ú³ÚÈøÿÿÿÿ8÷˜°“1
+[	java:S106õ"9Replace this use of System.out or System.err by a logger.(óíá™ùÿÿÿÿ8›í‰°“1
+V	java:S106ü"9Replace this use of System.out or System.err by a logger.(Û‰­É8œí‰°“1
+[	java:S106‡"9Replace this use of System.out or System.err by a logger.(õ¿ˆ‹ÿÿÿÿÿ8œí‰°“1
+ä
+java:S6541"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 209 to 64, Complexity from 36 to 14, Nesting Level from 3 to 2, Number of Variables from 49 to 6.(†Ô¬²8œí‰°“1

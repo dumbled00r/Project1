@@ -12,7 +12,7 @@ public class SendMessage extends Base {
         client.send(new TdApi.SendMessage(chatId, 0, 0, null, null, messageContent), object -> {
             if (object instanceof TdApi.Message) {
                 // The message was sent successfully
-                System.err.println("Message sent successfully");
+                System.out.println("\nMessage sent successfully");
             } else if (object instanceof TdApi.Error) {
                 // Failed to send the message
                 System.err.println("Failed to send message: " + ((TdApi.Error) object).message);
