@@ -43,7 +43,7 @@ public class GetMember extends Base {
                                         getSupergroupMembers(chatId, supergroupId)
                                                 .thenAccept(result -> future.complete(lstUsers));
                                     } else {
-                                        FileLogger.write("Group does not allow us to get members");
+                                        FileLogger.write("Group " + chatId + " does not allow us to get members");
                                         future.complete(lstUsers);
                                     }
                                 }
@@ -65,12 +65,12 @@ public class GetMember extends Base {
                             }
                         });
                     } else if (chat.type instanceof TdApi.ChatTypePrivate) {
-                        FileLogger.write("This is not a chat group");
+                        FileLogger.write(chatId + " is not a chat group");
                         Print.print("");
                         future.complete(lstUsers);
                     }
                 } else {
-                    FileLogger.write("Invalid Chat ID: " + ((TdApi.Error) object).message);
+                    FileLogger.write("Invalid Chat ID: " + chatId + ((TdApi.Error) object).message);
                     Print.print("");
                     future.complete(lstUsers);
                 }

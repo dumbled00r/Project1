@@ -32,7 +32,7 @@ public class GetChat extends Base {
                         }
                     })
                     .exceptionally(throwable -> {
-                        FileLogger.write("Failed to get chat: " + throwable.getMessage());
+                        FileLogger.write("Failed to get chat: " + chatId + " " + throwable.getMessage());
                         return null;
                     }));
         }
@@ -76,7 +76,7 @@ public class GetChat extends Base {
                                         }
                                     }
                                     if (!isAdmin) {
-                                        FileLogger.write("You are not an administrator in this chat.");
+                                        FileLogger.write("You are not an administrator of chat: "+ chat.id);
                                         future.complete(null);
                                     }
                                 }
@@ -112,7 +112,7 @@ public class GetChat extends Base {
                                         }
                                     }
                                     if (!isAdmin) {
-                                        System.out.println("You are not an administrator in this chat.");
+                                        FileLogger.write("You are not an administrator of chat: "+ chat.id);
                                         future.complete(null);
                                     }
                                 }
@@ -139,7 +139,7 @@ public class GetChat extends Base {
                         future.complete(null);
                     }
                 } else {
-                    String errorMessage = "Failed to get chat: " + ((TdApi.Error) object).message;
+                    String errorMessage = "Failed to get chat: " + chatId + " " + ((TdApi.Error) object).message;
                     FileLogger.write(errorMessage);
                     future.completeExceptionally(new RuntimeException(errorMessage));
                 }

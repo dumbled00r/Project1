@@ -5,8 +5,10 @@ import com.google.gson.JsonObject;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicLong;
@@ -20,7 +22,11 @@ public class Authorize extends Base{
         switch (Authorize.authorizationState.getConstructor()) {
             case TdApi.AuthorizationStateWaitTdlibParameters.CONSTRUCTOR:
                 Gson gson = new Gson();
-                String jsonString = new String(Files.readAllBytes(Paths.get("td.json")));
+                Path filePath = Paths.get("td.json");
+                if (!Files.exists(filePath)) {
+                    throw new FileNotFoundException("File not found: " + filePath);
+                }
+                String jsonString = new String(Files.readAllBytes(filePath));
                 JsonObject json = gson.fromJson(jsonString, JsonObject.class);
                 TdApi.SetTdlibParameters request = new TdApi.SetTdlibParameters();
                 request.databaseDirectory = "tdlib";

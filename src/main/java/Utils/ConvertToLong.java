@@ -6,6 +6,7 @@ public class ConvertToLong extends Base{
         try {
             num = Long.parseLong(arg);
         } catch (NumberFormatException ignored) {
+            System.err.println("The input number is not of good format");
         }
         return num;
     }

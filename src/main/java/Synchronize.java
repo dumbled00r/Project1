@@ -42,11 +42,11 @@ public class Synchronize extends Base {
             } finally {
                 authorizationLock.unlock();
             }
-
-            while (haveAuthorization) {
-                SyncToAirTable.syncToAirTable();
-            }
+            SyncToAirTable.syncToAirTable();
+            canQuit = true;
+            needQuit = true;
         }
+
         while (!canQuit) {
             Thread.sleep(20);
         }

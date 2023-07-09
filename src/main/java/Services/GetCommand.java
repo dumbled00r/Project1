@@ -19,15 +19,15 @@ public class GetCommand extends Base {
         commands.put("", new EmptyCommand());
         commands.put("help", new HelpCommand());
         commands.put("getallchat", new GetChatCommand());
-        commands.put("me", new GetMeCommand());
-        commands.put("sm", new SendMessageCommand());
-        commands.put("add", new AddMemberCommand());
-        commands.put("kick", new KickMemberCommand());
+        commands.put("getme", new GetMeCommand());
+        commands.put("sendmsg", new SendMessageCommand());
+        commands.put("addmember", new AddMemberCommand());
         commands.put("getmember", new GetMemberCommand());
+        commands.put("kick", new KickMemberCommand());
         commands.put("getmessage", new GetMessage());
         commands.put("sync", new SyncToAirTableCommand());
-        commands.put("lo", new LogoutCommand());
-        commands.put("q", new QuitCommand());
+        commands.put("logout", new LogoutCommand());
+        commands.put("quit", new QuitCommand());
     }
 
     public static CompletableFuture<Void> getCommand() {
@@ -69,22 +69,24 @@ public class GetCommand extends Base {
         public void execute(String args) {
             System.out.println("   Command    |     Arguments      |             Description              ");
             System.out.println("getallchat    |                    |  Get All Administrated Chat Information");
-            System.out.println("me            |                    |  Get My Information");
-            System.out.println("sm            | <ChatId> <Message> |  Send Message To An Existing Chat");
-            System.out.println("add           | <ChatId> <UserId>  |  Add User To An Existing Chat");
+            System.out.println("getme         |                    |  Get My Information");
+            System.out.println("sendmsg       | <ChatId> <Message> |  Send Message To An Existing Chat");
+            System.out.println("addmember     | <ChatId> <UserId>  |  Add User To An Existing Chat");
             System.out.println("getmember     | <ChatId>           |  Get Members Of A Chat Group");
             System.out.println("kick          | <ChatId> <UserId>  |  Kick User Out Of An Existing Chat");
             System.out.println("getmessage    | <ChatId>           |  Get Messages History Of An Existing Chat");
             System.out.println("sync          |                    |  Sync To AirTable");
-            System.out.println("lo            |                    |  Logout");
+            System.out.println("logout        |                    |  Logout");
             System.out.println("help          |                    |  List Of Commands");
-            System.out.println("q             |                    |  Quit");
+            System.out.println("quit          |                    |  Quit");
         }
     }
 
     private static class GetChatCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
+            String[] getArgs = args.split(" ", 1);
+            if (!getArgs[0].equals("")) System.out.println("\nMaybe you mean getting all chats:");
             CompletableFuture<Void> chatIdsFuture = GetMainChatList.loadChatIdsAsync();
             chatIdsFuture.thenComposeAsync((Void v) -> {
                 CompletableFuture<List<GroupChat>> massChatFuture = null;
@@ -113,6 +115,8 @@ public class GetCommand extends Base {
     private static class GetMeCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
+            String[] getArgs = args.split(" ", 1);
+            if (!getArgs[0].equals("")) System.out.println("\nMaybe you mean getting your user information:");
             GetMe.printMyInfo();
         }
     }
@@ -156,7 +160,7 @@ public class GetCommand extends Base {
     private static class GetMessage extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException, IOException {
-            String[] getmsgArgs = args.split(" ", 2);
+            String[] getmsgArgs = args.split(" ", 1);
             Long chatId = ConvertToLong.toLong(getmsgArgs[0]);
             GetMessagesHistory.printMessages(chatId);
         }
@@ -165,12 +169,13 @@ public class GetCommand extends Base {
     private static class SyncToAirTableCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
+            String[] getArgs = args.split(" ", 1);
+            if (!getArgs[0].equals("")) System.out.println("\nMaybe you mean synchronize your data to airtable:");
             try {
                 SyncToAirTable.syncToAirTable();
             } catch (Exception e) {
                 Thread.currentThread().interrupt();
                 System.err.println("Error executing SyncToAirTableCommand: " + e.getMessage());
-//                e.printStackTrace();
             }
         }
     }
@@ -178,6 +183,8 @@ public class GetCommand extends Base {
     private static class LogoutCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
+            String[] getArgs = args.split(" ", 1);
+            if (!getArgs[0].equals("")) System.out.println("\nMaybe you mean logging out:");
             client.send(new TdApi.LogOut(), defaultHandler);
         }
     }
@@ -185,6 +192,8 @@ public class GetCommand extends Base {
     private static class QuitCommand extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
+            String[] getArgs = args.split(" ", 1);
+            if (!getArgs[0].equals("")) System.out.println("\nMaybe you mean quitting the application:");
             System.out.println("Goodbye!");
             System.exit(0);
         }
