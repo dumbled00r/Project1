@@ -27,7 +27,8 @@ Link download: https://www.jetbrains.com/idea/download/?var=1&section=windows
     - ![enter_authentication](https://github.com/dumbled00r/Project1/blob/main/image/enter_authentication.png)
     - After that, it will ask you for your confimation code, this code will appear in your Telegram app
     - ![login_code](https://github.com/dumbled00r/Project1/blob/main/image/login_code.png)
-- After that, you need to input the command for it to work, just input "help" and the list of command will appear
+- After that, you need to input the command for it to work, just input "help" and the list of command will appear 
+    **Note: We have just updated the commands list, this is old message!**
     - ![enter_command](https://github.com/dumbled00r/Project1/blob/main/image/enter_command.png)
 - For example, you want to send message to an existing chat
     - First, you need to find chatid by input command "getallchat"
