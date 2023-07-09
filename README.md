@@ -39,7 +39,8 @@ Link download: https://www.jetbrains.com/idea/download/?var=1&section=windows
 
 ## Task Scheduler
 Task Scheduler is used to rerun the program once a day, this is how you do it
-- First you need to extract ScheduledUpdate.rar file 
+- First you need to extract ScheduledUpdate.rar file
+- Modify the run.bat files **(cd path/to/run.bat)** to your extracted path where it contains **run.bat** 
 - After that, we need to create task ( It's located on the right hand side)
     - ![create_task](https://github.com/dumbled00r/Project1/blob/main/image/create_task.png)
 - Second, enter task name and task description as you please (NOTE: Remember to tick on the "Run with highest privileges" box)
