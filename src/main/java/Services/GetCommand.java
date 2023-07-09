@@ -170,7 +170,6 @@ public class GetCommand extends Base {
             } catch (Exception e) {
                 Thread.currentThread().interrupt();
                 System.err.println("Error executing SyncToAirTableCommand: " + e.getMessage());
-//                e.printStackTrace();
             }
         }
     }

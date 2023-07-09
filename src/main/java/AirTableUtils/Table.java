@@ -24,12 +24,11 @@ public class Table{
         this.id = table.get("id").getAsString();
         this.name = table.get("name").getAsString();
         table.get("fields").getAsJsonArray().forEach(field -> this.fields.add(new Field(field.getAsJsonObject())));
-        // Get Records
+        // SYNC
         syncRecord(baseId, token);
     }
 
     protected void syncRecord(String baseId, String token) {
-//        records.clear();
         String records = Record.listRecords(id, baseId, token);
         if (records == null) {
             FileLogger.write("Error: Could not get records for table: " + name);

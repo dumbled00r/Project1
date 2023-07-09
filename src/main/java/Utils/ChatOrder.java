@@ -26,8 +26,19 @@ public class ChatOrder extends Base {
 
         @Override
         public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null || getClass() != obj.getClass()) {
+                return false;
+            }
             OrderedChat o = (OrderedChat) obj;
             return this.chatId == o.chatId && this.position.order == o.position.order;
+        }
+
+        @Override
+        public int hashCode() {
+            return 0;
         }
     }
 }
