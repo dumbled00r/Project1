@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Project1_TEST_2:jar" />
+      <artifact name="DataSynchronization:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,9 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/DataSynchronization_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/dylib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/DataSynchronizing.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/airtablecfg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/app.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/run.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/td.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib/db.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib/db.sqlite-shm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib/db.sqlite-wal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib/td.binlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Project1_TEST_2_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Synchronize.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Synchronize.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-shm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-wal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/td.binlog" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/td.binlog" afterDir="false" />
@@ -76,8 +91,8 @@
     "git-widget-placeholder": "duyanh__develop",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "20",
-    "last_opened_file_path": "D:/Project1",
-    "project.structure.last.edited": "Modules",
+    "last_opened_file_path": "D:/Project1/lib/log4j-slf4j-impl-2.19.0.jar",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.16308594",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "project.propCompiler"

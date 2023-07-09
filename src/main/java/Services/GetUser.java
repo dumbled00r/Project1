@@ -88,7 +88,7 @@ public class GetUser extends Base {
             }
             System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
         } else {
-            System.out.println("No user information available");
+            System.err.println("\nNo user information available, may be the chat Id is wrong");
         }
         Print.print("");
     }
