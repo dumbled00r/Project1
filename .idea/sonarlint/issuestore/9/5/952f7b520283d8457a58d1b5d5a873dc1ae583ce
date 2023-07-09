@@ -1,0 +1,21 @@
+
+n
+java:S1192C"LDefine a constant instead of duplicating this literal " in table: " 9 times.(¤Ä˜ışÿÿÿÿ8®Ü®“1
+Q
+java:S1066^"/Merge this if statement with the enclosing one.(‰¸­øùÿÿÿÿ8®Ü®“1
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ğãışÿÿÿÿ
+V
+java:S1117 ";Rename "records" which hides the field declared at line 21.(õÖÏÅùÿÿÿÿ
+W
+java:S6213&":Rename this variable to not match a restricted identifier.(åÌâÚ8–®Ü®“1
+W
+java:S6213@":Rename this variable to not match a restricted identifier.(”¶µæ8–®Ü®“1
+W
+java:S6213V":Rename this variable to not match a restricted identifier.(åÌâÚ8—®Ü®“1
+V
+java:S6213\":Rename this variable to not match a restricted identifier.(óÕ®!8—®Ü®“1
+F	java:S108…")Either remove or fill this block of code.(ÖÑµ8˜®Ü®“1
+W
+java:S6213":Rename this variable to not match a restricted identifier.(óÕ®!8˜®Ü®“1
+M
+java:S1874¦"/Remove this use of "execute"; it is deprecated.(ÇïÕÎ8ò€èÖ“1

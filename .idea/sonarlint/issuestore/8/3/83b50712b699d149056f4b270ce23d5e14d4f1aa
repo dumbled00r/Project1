@@ -1,0 +1,13 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÚâĞûÿÿÿÿ8Á’°Ø“1
+_
+java:S3252"=Use static access with "Utils.Base" for "authorizationState".(šé¡ûÿÿÿÿ8Õ’°Ø“1
+_
+java:S3252"=Use static access with "Utils.Base" for "authorizationState".(İñÈòıÿÿÿÿ8Ö’°Ø“1
+Z	java:S106-"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8Ú’°Ø“1
+Z
+java:S32523"=Use static access with "Utils.Base" for "authorizationState".(¯óæ8Û’°Ø“1
+Z	java:S1064"9Replace this use of System.out or System.err by a logger.(Ô°¾Âûÿÿÿÿ8Û’°Ø“1
+U	java:S106k"9Replace this use of System.out or System.err by a logger.(ƒÌœ—8á’°Ø“1
+Z
+java:S3252k"=Use static access with "Utils.Base" for "authorizationState".(ƒÌœ—8â’°Ø“1

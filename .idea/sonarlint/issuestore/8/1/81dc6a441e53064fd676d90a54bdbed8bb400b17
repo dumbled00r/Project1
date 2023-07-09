@@ -1,0 +1,10 @@
+
+7
+java:S1220""Move this file to a named package.8Šâ‡±“1
+£
+java:S1130"€Remove the declaration of thrown exception 'java.util.concurrent.ExecutionException', as it cannot be thrown from method's body.(àÜÕúÿÿÿÿÿ8’äÔ³“1
+S	java:S106"9Replace this use of System.out or System.err by a logger.(»Ø“øüÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(çø‹õøÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Õıå
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ˆºçüÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(üˆÄöøÿÿÿÿ

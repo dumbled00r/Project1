@@ -1,0 +1,24 @@
+
+J
+java:S1604"(Make this anonymous inner class a lambda(ÓÞíîûÿÿÿÿ8šý…¯“1
+J
+java:S1604O"(Make this anonymous inner class a lambda(«ÜÙ­ýÿÿÿÿ8šý…¯“1
+p
+java:S1104"SMake chatIds a static final constant or non-public and provide accessors if needed.(êÒö‰8šý…¯“1
+J
+java:S1444"-Make this "public static chatIds" field final(êÒö‰8šý…¯“1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–8šý…¯“1
+Z	java:S106:"9Replace this use of System.out or System.err by a logger.(ªÓ¼áþÿÿÿÿ8£ý…¯“1
+Z	java:S106>"9Replace this use of System.out or System.err by a logger.(é£˜–ùÿÿÿÿ8£ý…¯“1
+Z	java:S106C"9Replace this use of System.out or System.err by a logger.(½ˆü¬ÿÿÿÿÿ8£ý…¯“1
+f
+java:S6201R"DReplace this instanceof check and cast with 'instanceof Chats chats'(©ê¤ãøÿÿÿÿ8¤ý…¯“1
+D
+java:S2386T""Make member "chatIds" "protected".(ò“ßãùÿÿÿÿ8¤ý…¯“1
+a
+java:S6201V"DReplace this instanceof check and cast with 'instanceof Error error'(®®°à8¤ý…¯“1
+M
+java:S1128
+"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8¤ý…¯“1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¤ý…¯“1

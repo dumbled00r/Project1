@@ -1,0 +1,7 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ğãışÿÿÿÿ8¯Œ¿Ø“1
+{	java:S116"`Rename this field "personal_access_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒìúY8±Œ¿Ø“1
+
+java:S1186""€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(©šü8±Œ¿Ø“1
+{
+java:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(ÒÌâ–øÿÿÿÿ8²Œ¿Ø“1

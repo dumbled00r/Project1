@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="DataSynchronization:jar" />
+      <artifact name="DataSynchronizing:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,27 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/DataSynchronization_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/dylib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/DataSynchronizing.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/airtablecfg.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/app.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/run.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/td.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib/db.sqlite" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib/db.sqlite-shm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib/db.sqlite-wal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronization_jar/tdlib/td.binlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Project1_TEST_2_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronizing_jar/Project1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/DataSynchronization_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-wal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdlib/td.binlog" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/td.binlog" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
