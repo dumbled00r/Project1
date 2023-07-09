@@ -10,9 +10,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
-      <change afterPath="$PROJECT_DIR$/out/artifacts/DataSynchronizing_jar/Project1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/DataSynchronization_jar.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/httpcore5-h2-5.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/log4j-1.2-api-2.19.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/slf4j-api-1.7.36.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b3611009bce293a322f5331aba6e3e0dc0ea35d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/307f74901b2381b354fa9411ae517d6492abb01c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/5/4598d53bd82964a3856c1d4dcd4efc7b7106d0dd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55310a99ab2334e18f122d4bb059a7dc7cd09056" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/1/81dc6a441e53064fd676d90a54bdbed8bb400b17" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/f/afa7521f9350978e6d56279388658f251273238b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/e/be9733a6239c0c7a45b43e339644843faf7611c1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dcf35910691bd71781fdade9ca60c664dddbb799" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/dd2d14772763c29c12c4dabed48d8abd5d7326ef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df59748c1126710c71ac02c726b3a92cddb20ded" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/b/1b3611009bce293a322f5331aba6e3e0dc0ea35d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/0/307f74901b2381b354fa9411ae517d6492abb01c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/5/4598d53bd82964a3856c1d4dcd4efc7b7106d0dd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/5/55310a99ab2334e18f122d4bb059a7dc7cd09056" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/1/81dc6a441e53064fd676d90a54bdbed8bb400b17" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/f/afa7521f9350978e6d56279388658f251273238b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/e/be9733a6239c0c7a45b43e339644843faf7611c1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/c/dcf35910691bd71781fdade9ca60c664dddbb799" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/d/dd2d14772763c29c12c4dabed48d8abd5d7326ef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/f/df59748c1126710c71ac02c726b3a92cddb20ded" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSynchronizing/airtablecfg.json" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/airtablecfg.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSynchronizing/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSynchronizing/run.bat" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/run.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSynchronizing/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/tdlib/db.sqlite-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSynchronizing/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/tdlib/db.sqlite-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataSynchronizing/tdlib/td.binlog" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/tdlib/td.binlog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/airtablecfg.json" beforeDir="false" afterPath="$PROJECT_DIR$/airtablecfg.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdlib/td.binlog" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/td.binlog" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +107,7 @@
     "git-widget-placeholder": "duyanh__develop",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "20",
-    "last_opened_file_path": "D:/Project1/lib/log4j-slf4j-impl-2.19.0.jar",
+    "last_opened_file_path": "D:/Project1/lib",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.16308594",
     "project.structure.side.proportion": "0.2",
@@ -89,7 +123,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApp">
+  <component name="RunManager">
     <configuration name="AirTable" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AirTableUtils.AirTable" />
       <module name="Project1" />

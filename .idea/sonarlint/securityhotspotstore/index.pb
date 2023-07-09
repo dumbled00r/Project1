@@ -55,23 +55,3 @@ U
 %src/main/java/Utils/PromptString.java,7\3\7343789d0fdb96b5f362c860b8a5c39353b94a4e
 X
 (src/main/java/Utils/SetChatPosition.java,5\f\5fed68cd1725c515cfd79669f214252c96b2da19
-P
- src/main/java/Utils/Handler.java,4\5\4598d53bd82964a3856c1d4dcd4efc7b7106d0dd
-W
-'src/main/java/Utils/TruncateString.java,b\e\be9733a6239c0c7a45b43e339644843faf7611c1
-S
-#src/main/java/Services/GetUser.java,3\0\307f74901b2381b354fa9411ae517d6492abb01c
-Y
-)src/main/java/AirTableUtils/AirTable.java,d\c\dcf35910691bd71781fdade9ca60c664dddbb799
-W
-'src/main/java/Utils/PrettifiedJson.java,5\5\55310a99ab2334e18f122d4bb059a7dc7cd09056
-V
-&src/main/java/Services/GetCommand.java,1\b\1b3611009bce293a322f5331aba6e3e0dc0ea35d
-N
-src/main/java/Utils/Print.java,d\f\df59748c1126710c71ac02c726b3a92cddb20ded
-N
-src/main/java/Utils/ToInt.java,a\f\afa7521f9350978e6d56279388658f251273238b
-J
-src/main/java/MainApp.java,8\1\81dc6a441e53064fd676d90a54bdbed8bb400b17
-N
-src/main/java/Synchronize.java,d\d\dd2d14772763c29c12c4dabed48d8abd5d7326ef

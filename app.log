@@ -434,3 +434,29 @@
 [2023-07-09 21:43:20.411] Invalid Chat ID: -2139219312939213912Invalid chat identifier specified
 [2023-07-09 21:44:12.529] Invalid Chat ID: 0Invalid chat identifier specified
 [2023-07-09 21:44:19.543] Invalid Chat ID: -129321390123912321Invalid chat identifier specified
+[2023-07-09 22:11:22.895] 777000 is not a chat group
+[2023-07-09 22:11:23.909] 178220800 is not a chat group
+[2023-07-09 22:14:11.649] 777000 is not a chat group
+[2023-07-09 22:14:12.660] 178220800 is not a chat group
+[2023-07-09 22:14:39.616] 777000 is not a chat group
+[2023-07-09 22:14:40.627] 178220800 is not a chat group
+[2023-07-09 22:14:48.509] Checked all records in table: Group Data
+[2023-07-09 22:14:48.510] Checked all records in table: Group Data
+[2023-07-09 22:14:52.659] Checked all records in table: Users Data
+[2023-07-09 22:14:52.659] Checked all records in table: Users Data
+[2023-07-09 22:14:53.735] Updated record: 280713127 in table: Users Data
+[2023-07-09 22:14:53.736] Update record: 280713127 in table: Users Data
+[2023-07-09 22:14:53.736] Checked all records in table: Users Data
+[2023-07-09 22:14:54.801] Updated record: 806954250 in table: Users Data
+[2023-07-09 22:14:54.802] Update record: 806954250 in table: Users Data
+[2023-07-09 22:14:54.802] Checked all records in table: Users Data
+[2023-07-09 22:14:55.871] Updated record: 1555577176 in table: Users Data
+[2023-07-09 22:14:55.871] Update record: 1555577176 in table: Users Data
+[2023-07-09 22:14:55.872] Checked all records in table: Users Data
+[2023-07-09 22:14:56.889] Updated record: 841837857 in table: Users Data
+[2023-07-09 22:14:56.890] Update record: 841837857 in table: Users Data
+[2023-07-09 22:14:56.890] Checked all records in table: Users Data
+[2023-07-09 22:14:57.975] Updated record: 1285764044 in table: Users Data
+[2023-07-09 22:14:57.975] Update record: 1285764044 in table: Users Data
+[2023-07-09 22:14:57.975] Checked all records in table: Users Data
+[2023-07-09 22:14:57.976] Checked all records in table: Users Data
