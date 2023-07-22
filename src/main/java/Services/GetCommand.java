@@ -25,6 +25,8 @@ public class GetCommand extends Base {
         commands.put("getmember", new GetMemberCommand());
         commands.put("kick", new KickMemberCommand());
         commands.put("getmessage", new GetMessage());
+        commands.put("createbasic", new CreateBasicGroup());
+        commands.put("createsuper", new CreateSuperGroup());
         commands.put("sync", new SyncToAirTableCommand());
         commands.put("logout", new LogoutCommand());
         commands.put("quit", new QuitCommand());
@@ -75,6 +77,8 @@ public class GetCommand extends Base {
             System.out.println("getmember     | <ChatId>           |  Get Members Of A Chat Group");
             System.out.println("kick          | <ChatId> <UserId>  |  Kick User Out Of An Existing Chat");
             System.out.println("getmessage    | <ChatId>           |  Get Messages History Of An Existing Chat");
+            System.out.println("createbasic   | <GroupTitle>       |  Create Basic Group Chat");
+            System.out.println("createsuper   | <GroupTitle>       |  Create Super Group Chat");
             System.out.println("sync          |                    |  Sync To AirTable");
             System.out.println("logout        |                    |  Logout");
             System.out.println("help          |                    |  List Of Commands");
@@ -165,6 +169,23 @@ public class GetCommand extends Base {
             GetMessagesHistory.printMessages(chatId);
         }
     }
+
+    private static class CreateBasicGroup extends Command {
+        @Override
+        public void execute(String args) throws InterruptedException, ExecutionException, IOException {
+            String[] getGroupTitle = args.split(" ", 1);
+            CreateGroup.createBasicGroup(getGroupTitle[0]);
+        }
+    }
+
+    private static class CreateSuperGroup extends Command {
+        @Override
+        public void execute(String args) throws InterruptedException, ExecutionException, IOException {
+            String[] getGroupTitle = args.split(" ", 1);
+            CreateGroup.createSuperGroup(getGroupTitle[0]);
+        }
+    }
+
 
     private static class SyncToAirTableCommand extends Command {
         @Override
