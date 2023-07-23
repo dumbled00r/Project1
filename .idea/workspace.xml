@@ -10,8 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Services/CreateGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b3611009bce293a322f5331aba6e3e0dc0ea35d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/307f74901b2381b354fa9411ae517d6492abb01c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/7/3772025ad1ed822b8f07056d9387a6eb501da4bb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/5/4598d53bd82964a3856c1d4dcd4efc7b7106d0dd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/1/910c6d9a4554b49d738f32dc3557a756e0fa5db5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c5383cf5f80d80be0e37c2a5e6e4e808f333076" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da47fd15b7d5eef573f6597d32e66fe60bae5ba6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de466da2f960bf99840d76b494c3ff39f322b216" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/b/1b3611009bce293a322f5331aba6e3e0dc0ea35d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/0/307f74901b2381b354fa9411ae517d6492abb01c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/7/3772025ad1ed822b8f07056d9387a6eb501da4bb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/5/4598d53bd82964a3856c1d4dcd4efc7b7106d0dd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/1/910c6d9a4554b49d738f32dc3557a756e0fa5db5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/c/9c5383cf5f80d80be0e37c2a5e6e4e808f333076" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/a/da47fd15b7d5eef573f6597d32e66fe60bae5ba6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/e/de466da2f960bf99840d76b494c3ff39f322b216" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/SendMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/SendMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,11 +88,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "duyanh__develop",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "20",
-    "last_opened_file_path": "D:/Project1/lib",
-    "project.structure.last.edited": "Artifacts",
+    "last_opened_file_path": "/Users/dumbled00r/TelegramServices/Project1",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.16308594",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "project.propCompiler"
@@ -88,7 +107,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainApp">
     <configuration name="AirTable" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="AirTableUtils.AirTable" />
       <module name="Project1" />
@@ -105,6 +124,7 @@
     <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainApp" />
       <module name="Project1" />
+      <option name="VM_PARAMETERS" value="java -Djava.library.path=&quot;$PROJECT_DIR$/dylib&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Utils.*" />

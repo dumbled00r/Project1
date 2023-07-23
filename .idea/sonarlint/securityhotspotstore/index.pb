@@ -1,12 +1,8 @@
 
-]
--src/main/java/org/drinkless/tdlib/Client.java,d\a\da47fd15b7d5eef573f6597d32e66fe60bae5ba6
 7
 app.log,a\0\a04cdc1b813999384ef385ac5191cbe69e844545
 7
 td.json,b\d\bd864a5e90f9b52eb954f66c7adfe9d7a1a8c40f
-\
-,src/main/java/org/drinkless/tdlib/TdApi.java,9\1\910c6d9a4554b49d738f32dc3557a756e0fa5db5
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 ^
@@ -21,8 +17,6 @@ _
 /src/main/java/AirTableUtils/SyncToAirTable.java,0\f\0f6c0374d0ac55ac42c8d38ec933e679a2e493be
 V
 &src/main/java/AirTableUtils/Table.java,9\5\952f7b520283d8457a58d1b5d5a873dc1ae583ce
-S
-#src/main/java/Models/GroupChat.java,3\7\3772025ad1ed822b8f07056d9387a6eb501da4bb
 N
 src/main/java/Models/User.java,d\0\d0cd9764143c90e2b3a8fa31f63a774496de9c6f
 U
@@ -33,14 +27,10 @@ S
 +src/main/java/Services/GetMainChatList.java,7\4\74c91379d4bc08c5eb4bdc48e25e9c18ebcfd5c0
 Q
 !src/main/java/Services/GetMe.java,c\6\c662faf8371ce773decd92d5c2e601bf93fca5fa
-U
-%src/main/java/Services/GetMember.java,d\e\de466da2f960bf99840d76b494c3ff39f322b216
 ^
 .src/main/java/Services/GetMessagesHistory.java,1\1\114549b85392cef65c7f46f149091ecac865fbf0
 V
 &src/main/java/Services/KickMember.java,b\7\b7066255666e2fc5dbcb2d6d9ecddbda89dde9b8
-M
-src/main/java/Utils/Base.java,9\c\9c5383cf5f80d80be0e37c2a5e6e4e808f333076
 R
 "src/main/java/Utils/Authorize.java,8\3\83b50712b699d149056f4b270ce23d5e14d4f1aa
 R
@@ -53,18 +43,12 @@ U
 %src/main/java/Utils/PromptString.java,7\3\7343789d0fdb96b5f362c860b8a5c39353b94a4e
 X
 (src/main/java/Utils/SetChatPosition.java,5\f\5fed68cd1725c515cfd79669f214252c96b2da19
-P
- src/main/java/Utils/Handler.java,4\5\4598d53bd82964a3856c1d4dcd4efc7b7106d0dd
 W
 'src/main/java/Utils/TruncateString.java,b\e\be9733a6239c0c7a45b43e339644843faf7611c1
-S
-#src/main/java/Services/GetUser.java,3\0\307f74901b2381b354fa9411ae517d6492abb01c
 Y
 )src/main/java/AirTableUtils/AirTable.java,d\c\dcf35910691bd71781fdade9ca60c664dddbb799
 W
 'src/main/java/Utils/PrettifiedJson.java,5\5\55310a99ab2334e18f122d4bb059a7dc7cd09056
-V
-&src/main/java/Services/GetCommand.java,1\b\1b3611009bce293a322f5331aba6e3e0dc0ea35d
 N
 src/main/java/Utils/Print.java,d\f\df59748c1126710c71ac02c726b3a92cddb20ded
 N

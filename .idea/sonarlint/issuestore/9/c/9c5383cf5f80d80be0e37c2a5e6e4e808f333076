@@ -1,22 +1,0 @@
-
-t
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(›œ­©ýÿÿÿÿ
-t
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ƒÚçÝùÿÿÿÿ
-o
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(íÍ¡¬
-t
-java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(‚•ÿ×þÿÿÿÿ
-t
-java:S2293""YReplace the type specification in this constructor call with the diamond operator ("<>").(½¾£›ûÿÿÿÿ
-t
-java:S2293%"YReplace the type specification in this constructor call with the diamond operator ("<>").(Æ‡«êýÿÿÿÿ
-t
-java:S2293&"YReplace the type specification in this constructor call with the diamond operator ("<>").(µðùØýÿÿÿÿ
-t
-java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(‰¬­¼ùÿÿÿÿ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÚâÐžûÿÿÿÿ
-t	java:S115("ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(˜¯Šÿþÿÿÿÿ
-n	java:S115)"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ùñÚ,
-P
-java:S1118":Add a private constructor to hide the implicit public one.(¯å¥é
