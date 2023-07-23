@@ -38,6 +38,8 @@ public class MainApp extends Base {
             try {
                 while (!haveAuthorization) {
                     gotAuthorization.await();
+                    System.out.println("Trying to login, if this message persists, please double-check your telegram" +
+                            "credentials");
                 }
             } finally {
                 authorizationLock.unlock();

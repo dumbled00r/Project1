@@ -51,6 +51,6 @@ public class AirTableUser extends AirTable{
         List<JsonObject> list = new ArrayList<>();
         list.add(jsonObject);
 
-        userData.checkAllRecords(list, baseId, personal_access_token);
+        userData.processAllRecords(list, baseId, personal_access_token);
     }
 }

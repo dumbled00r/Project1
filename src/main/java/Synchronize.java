@@ -38,9 +38,12 @@ public class Synchronize extends Base {
             try {
                 while (!haveAuthorization) {
                     gotAuthorization.await();
+                    System.out.println("\nTrying to login, if this message persists, please double-check your telegram " +
+                            "credentials");
                 }
             } finally {
                 authorizationLock.unlock();
+                System.out.println("\nSuccessfully logged in!");
             }
             SyncToAirTable.syncToAirTable();
             canQuit = true;

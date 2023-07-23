@@ -98,7 +98,7 @@ public class Table{
         }
         return null;
     }
-    private boolean checkRecord(JsonObject fields, String baseId, String token) {
+    private boolean processRecord(JsonObject fields, String baseId, String token) {
         Record oldRecord = null;
         try {
             oldRecord = getRecord(fields.get("Id").getAsLong());
@@ -124,10 +124,10 @@ public class Table{
         }
     }
 
-    protected void checkAllRecords(List<JsonObject> fields, String baseId, String token) {
+    protected void processAllRecords(List<JsonObject> fields, String baseId, String token) {
         numChanges = 0;
         for (JsonObject field : fields) {
-            if (!checkRecord(field, baseId, token)) {
+            if (!processRecord(field, baseId, token)) {
                 try {
                     FileLogger.write("Error: Could not check record: " + field.get("Id").getAsString() + " in table: " + name);
                 } catch (NullPointerException e) {}

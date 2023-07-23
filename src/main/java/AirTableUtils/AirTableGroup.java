@@ -25,6 +25,6 @@ public class AirTableGroup extends AirTable{
     public void pushGroupData(JsonObject jsonObject){
         List<JsonObject> list = new ArrayList<>();
         list.add(jsonObject);
-        groupData.checkAllRecords(list, baseId, personal_access_token);
+        groupData.processAllRecords(list, baseId, personal_access_token);
     }
 }

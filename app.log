@@ -460,3 +460,98 @@
 [2023-07-09 22:14:57.975] Update record: 1285764044 in table: Users Data
 [2023-07-09 22:14:57.975] Checked all records in table: Users Data
 [2023-07-09 22:14:57.976] Checked all records in table: Users Data
+[2023-07-23 17:58:51.639] 777000 is not a chat group
+[2023-07-23 17:58:53.746] 178220800 is not a chat group
+[2023-07-23 17:58:54.758] 5416976809 is not a chat group
+[2023-07-23 17:58:55.769] 6254283420 is not a chat group
+[2023-07-23 18:02:58.100] 777000 is not a chat group
+[2023-07-23 18:03:00.242] 178220800 is not a chat group
+[2023-07-23 18:03:01.251] 5416976809 is not a chat group
+[2023-07-23 18:03:02.262] 6254283420 is not a chat group
+[2023-07-23 18:05:57.101] 777000 is not a chat group
+[2023-07-23 18:05:59.231] 178220800 is not a chat group
+[2023-07-23 18:06:00.246] 5416976809 is not a chat group
+[2023-07-23 18:06:01.256] 6254283420 is not a chat group
+[2023-07-23 18:16:28.776] 777000 is not a chat group
+[2023-07-23 18:16:30.905] 178220800 is not a chat group
+[2023-07-23 18:16:31.914] 5416976809 is not a chat group
+[2023-07-23 18:16:32.928] 6254283420 is not a chat group
+[2023-07-23 18:16:36.586] Error: Could not get the list of tables
+[2023-07-23 18:17:24.481] 777000 is not a chat group
+[2023-07-23 18:17:26.593] 178220800 is not a chat group
+[2023-07-23 18:17:27.596] 5416976809 is not a chat group
+[2023-07-23 18:17:28.606] 6254283420 is not a chat group
+[2023-07-23 18:17:32.175] Error: Could not get the list of tables
+[2023-07-23 18:18:05.041] 777000 is not a chat group
+[2023-07-23 18:18:07.159] 178220800 is not a chat group
+[2023-07-23 18:18:08.162] 5416976809 is not a chat group
+[2023-07-23 18:18:09.178] 6254283420 is not a chat group
+[2023-07-23 18:18:12.570] Error: Could not get the list of tables
+[2023-07-23 18:18:12.572] Error executing SyncToAirTableCommand: Cannot invoke "com.google.gson.JsonObject.get(String)" because "jsonObject" is null
+[2023-07-23 18:20:18.437] 777000 is not a chat group
+[2023-07-23 18:20:20.579] 178220800 is not a chat group
+[2023-07-23 18:20:21.592] 5416976809 is not a chat group
+[2023-07-23 18:20:22.607] 6254283420 is not a chat group
+[2023-07-23 18:20:26.224] Error: Could not get the list of tables
+[2023-07-23 18:20:26.225] Error executing SyncToAirTableCommand: Cannot invoke "com.google.gson.JsonObject.get(String)" because "jsonObject" is null
+[2023-07-23 18:21:16.698] 777000 is not a chat group
+[2023-07-23 18:21:18.833] 178220800 is not a chat group
+[2023-07-23 18:21:19.838] 5416976809 is not a chat group
+[2023-07-23 18:21:20.852] 6254283420 is not a chat group
+[2023-07-23 18:21:24.238] Error: Could not get the list of tables
+[2023-07-23 18:21:24.240] Error executing SyncToAirTableCommand: Cannot invoke "com.google.gson.JsonObject.get(String)" because "jsonObject" is null
+[2023-07-23 18:35:21.076] 777000 is not a chat group
+[2023-07-23 18:35:23.225] 178220800 is not a chat group
+[2023-07-23 18:35:24.227] 5416976809 is not a chat group
+[2023-07-23 18:35:25.233] 6254283420 is not a chat group
+[2023-07-23 18:35:30.701] Error executing SyncToAirTableCommand: Cannot invoke "AirTableUtils.Table.checkAllRecords(java.util.List, String, String)" because "this.groupData" is null
+[2023-07-23 18:36:39.288] 777000 is not a chat group
+[2023-07-23 18:36:41.407] 178220800 is not a chat group
+[2023-07-23 18:36:42.419] 5416976809 is not a chat group
+[2023-07-23 18:36:43.427] 6254283420 is not a chat group
+[2023-07-23 18:36:47.979] Checked all records in table: Group Data
+[2023-07-23 18:36:47.980] Checked all records in table: Group Data
+[2023-07-23 18:36:52.036] Checked all records in table: Users Data
+[2023-07-23 18:36:52.036] Checked all records in table: Users Data
+[2023-07-23 18:36:53.101] Updated record: 280713127 in table: Users Data
+[2023-07-23 18:36:53.102] Update record: 280713127 in table: Users Data
+[2023-07-23 18:36:53.102] Checked all records in table: Users Data
+[2023-07-23 18:36:54.181] Updated record: 806954250 in table: Users Data
+[2023-07-23 18:36:54.181] Update record: 806954250 in table: Users Data
+[2023-07-23 18:36:54.181] Checked all records in table: Users Data
+[2023-07-23 18:36:55.304] Updated record: 1555577176 in table: Users Data
+[2023-07-23 18:36:55.305] Update record: 1555577176 in table: Users Data
+[2023-07-23 18:36:55.305] Checked all records in table: Users Data
+[2023-07-23 18:36:56.371] Updated record: 841837857 in table: Users Data
+[2023-07-23 18:36:56.371] Update record: 841837857 in table: Users Data
+[2023-07-23 18:36:56.372] Checked all records in table: Users Data
+[2023-07-23 18:36:57.533] Updated record: 1285764044 in table: Users Data
+[2023-07-23 18:36:57.533] Update record: 1285764044 in table: Users Data
+[2023-07-23 18:36:57.533] Checked all records in table: Users Data
+[2023-07-23 18:36:58.688] Updated record: 1817109845 in table: Users Data
+[2023-07-23 18:36:58.688] Update record: 1817109845 in table: Users Data
+[2023-07-23 18:36:58.688] Checked all records in table: Users Data
+[2023-07-23 18:37:44.883] 777000 is not a chat group
+[2023-07-23 18:37:46.999] 178220800 is not a chat group
+[2023-07-23 18:37:48.006] 5416976809 is not a chat group
+[2023-07-23 18:37:49.016] 6254283420 is not a chat group
+[2023-07-23 18:37:53.754] Checked all records in table: Group Data
+[2023-07-23 18:37:53.754] Checked all records in table: Group Data
+[2023-07-23 18:37:57.894] Checked all records in table: Users Data
+[2023-07-23 18:37:57.895] Checked all records in table: Users Data
+[2023-07-23 18:37:58.949] Updated record: 280713127 in table: Users Data
+[2023-07-23 18:37:58.949] Update record: 280713127 in table: Users Data
+[2023-07-23 18:37:58.949] Checked all records in table: Users Data
+[2023-07-23 18:37:59.982] Updated record: 806954250 in table: Users Data
+[2023-07-23 18:37:59.982] Update record: 806954250 in table: Users Data
+[2023-07-23 18:37:59.982] Checked all records in table: Users Data
+[2023-07-23 18:38:01.090] Updated record: 1555577176 in table: Users Data
+[2023-07-23 18:38:01.091] Update record: 1555577176 in table: Users Data
+[2023-07-23 18:38:01.091] Checked all records in table: Users Data
+[2023-07-23 18:38:02.173] Updated record: 841837857 in table: Users Data
+[2023-07-23 18:38:02.174] Update record: 841837857 in table: Users Data
+[2023-07-23 18:38:02.174] Checked all records in table: Users Data
+[2023-07-23 18:38:03.267] Updated record: 1285764044 in table: Users Data
+[2023-07-23 18:38:03.267] Update record: 1285764044 in table: Users Data
+[2023-07-23 18:38:03.267] Checked all records in table: Users Data
+[2023-07-23 18:38:03.268] Checked all records in table: Users Data

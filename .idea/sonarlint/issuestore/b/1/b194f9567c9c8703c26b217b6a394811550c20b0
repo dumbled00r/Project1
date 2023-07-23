@@ -1,22 +1,0 @@
-
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ğãışÿÿÿÿ
-n
-java:S1128"QRemove this unused import 'org.apache.hc.client5.http.classic.methods.HttpPatch'.(©ÒÔ’8†Ø²®“1
-r
-java:S1128"PRemove this unused import 'org.apache.hc.client5.http.classic.methods.HttpPost'.(”áõÅûÿÿÿÿ8†Ø²®“1
-z
-java:S1128"XRemove this unused import 'org.apache.hc.client5.http.impl.classic.CloseableHttpClient'.(„âÄ¢üÿÿÿÿ8†Ø²®“1
-s
-java:S1128"VRemove this unused import 'org.apache.hc.client5.http.impl.classic.HttpClientBuilder'.(ÂµÁ»8†Ø²®“1
-f
-java:S1128	"DRemove this unused import 'org.apache.hc.core5.http.ParseException'.(²Á¯µùÿÿÿÿ8†Ø²®“1
-h
-java:S1128"KRemove this unused import 'org.apache.hc.core5.http.io.entity.EntityUtils'.(ßŸ°8†Ø²®“1
-n
-java:S1128"LRemove this unused import 'org.apache.hc.core5.http.io.entity.StringEntity'.(šÊŒ°ıÿÿÿÿ8†Ø²®“1
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8†Ø²®“1
-F
-java:S1128")Remove this unused import 'java.net.URI'.(Ö¦¨°8†Ø²®“1
-P
-java:S1068"3Remove this unused "responseHandler" private field.(ô¬‡˜8†Ø²®“1

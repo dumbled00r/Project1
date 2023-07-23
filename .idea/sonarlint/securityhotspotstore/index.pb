@@ -1,38 +1,16 @@
 
 7
-app.log,a\0\a04cdc1b813999384ef385ac5191cbe69e844545
-7
-td.json,b\d\bd864a5e90f9b52eb954f66c7adfe9d7a1a8c40f
-7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-^
-.src/main/java/AirTableUtils/AirTableGroup.java,f\7\f73e1256f91ac7be06b8543e84cb7198e00d6c9c
 ]
 -src/main/java/AirTableUtils/AirTableUser.java,7\c\7c14936ea8a50965e98236bfd3d8bce4c31471b0
-W
-'src/main/java/AirTableUtils/Record.java,d\1\d1cf40096f1582ee7431f49fdd9f5061d1afd9f5
-V
-&src/main/java/AirTableUtils/Field.java,b\1\b194f9567c9c8703c26b217b6a394811550c20b0
-_
-/src/main/java/AirTableUtils/SyncToAirTable.java,0\f\0f6c0374d0ac55ac42c8d38ec933e679a2e493be
-V
-&src/main/java/AirTableUtils/Table.java,9\5\952f7b520283d8457a58d1b5d5a873dc1ae583ce
 N
 src/main/java/Models/User.java,d\0\d0cd9764143c90e2b3a8fa31f63a774496de9c6f
 U
 %src/main/java/Services/AddMember.java,a\d\adbe3ce0991c088ea3214fdffc1e368c345c80e4
-S
-#src/main/java/Services/GetChat.java,9\1\91e35944a477d98065801697e18d8024189c8f0d
-[
-+src/main/java/Services/GetMainChatList.java,7\4\74c91379d4bc08c5eb4bdc48e25e9c18ebcfd5c0
-Q
-!src/main/java/Services/GetMe.java,c\6\c662faf8371ce773decd92d5c2e601bf93fca5fa
 ^
 .src/main/java/Services/GetMessagesHistory.java,1\1\114549b85392cef65c7f46f149091ecac865fbf0
 V
 &src/main/java/Services/KickMember.java,b\7\b7066255666e2fc5dbcb2d6d9ecddbda89dde9b8
-R
-"src/main/java/Utils/Authorize.java,8\3\83b50712b699d149056f4b270ce23d5e14d4f1aa
 R
 "src/main/java/Utils/ChatOrder.java,2\4\2488618a998a7709138338184bab113361321e40
 V
@@ -45,17 +23,9 @@ X
 (src/main/java/Utils/SetChatPosition.java,5\f\5fed68cd1725c515cfd79669f214252c96b2da19
 W
 'src/main/java/Utils/TruncateString.java,b\e\be9733a6239c0c7a45b43e339644843faf7611c1
-Y
-)src/main/java/AirTableUtils/AirTable.java,d\c\dcf35910691bd71781fdade9ca60c664dddbb799
 W
 'src/main/java/Utils/PrettifiedJson.java,5\5\55310a99ab2334e18f122d4bb059a7dc7cd09056
 N
 src/main/java/Utils/Print.java,d\f\df59748c1126710c71ac02c726b3a92cddb20ded
 N
 src/main/java/Utils/ToInt.java,a\f\afa7521f9350978e6d56279388658f251273238b
-J
-src/main/java/MainApp.java,8\1\81dc6a441e53064fd676d90a54bdbed8bb400b17
-N
-src/main/java/Synchronize.java,d\d\dd2d14772763c29c12c4dabed48d8abd5d7326ef
-W
-'src/main/java/Services/SendMessage.java,d\8\d8ea050a91ce632a018372ce0d077e7c0e7c67d1

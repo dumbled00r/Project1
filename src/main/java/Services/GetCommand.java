@@ -196,7 +196,7 @@ public class GetCommand extends Base {
                 SyncToAirTable.syncToAirTable();
             } catch (Exception e) {
                 Thread.currentThread().interrupt();
-                System.err.println("Error executing SyncToAirTableCommand: " + e.getMessage());
+                FileLogger.write("Error executing SyncToAirTableCommand: " + e.getMessage());
             }
         }
     }
