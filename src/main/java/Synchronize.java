@@ -33,13 +33,14 @@ public class Synchronize extends Base {
         client = Client.create(new Handler.UpdateHandler(), null, null);
 //         main loop
         while (!needQuit) {
+            System.out.println("\nTrying to login, if the screen is freezing, please double-check your telegram " +
+                    "credentials");
             // await authorization
             authorizationLock.lock();
             try {
                 while (!haveAuthorization) {
                     gotAuthorization.await();
-                    System.out.println("\nTrying to login, if this message persists, please double-check your telegram " +
-                            "credentials");
+
                 }
             } finally {
                 authorizationLock.unlock();

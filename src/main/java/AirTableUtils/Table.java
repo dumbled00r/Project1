@@ -33,6 +33,7 @@ public class Table{
         if (records == null) {
             FileLogger.write("Error: Could not get records for table: " + name);
         } else {
+            this.records.clear();
             JsonObject recordsJson = new Gson().fromJson(records, JsonObject.class);
             JsonArray listRecords = recordsJson.get("records").getAsJsonArray();
             listRecords.forEach(record -> this.records.add(new Record(record.getAsJsonObject())));
@@ -82,7 +83,6 @@ public class Table{
         JsonObject recordJson = new Gson().fromJson(recordCreate, JsonObject.class);
         JsonArray listRecords = recordJson.get("records").getAsJsonArray();
 
-        records.clear();
         listRecords.forEach(record -> this.records.add(new Record(record.getAsJsonObject())));
 
         FileLogger.write("Created record: " + fields.get("Id").getAsString() + " in table: " + name);

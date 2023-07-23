@@ -5,6 +5,7 @@ import Models.User;
 import Services.GetChat;
 import Services.GetMainChatList;
 import Services.GetMember;
+import Utils.FileLogger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.Gson;
@@ -43,7 +44,7 @@ public class SyncToAirTable {
                 jsonGroupRes.add(groupJson);
             } catch (NullPointerException e) {
                 if (Thread.currentThread().getStackTrace()[2].getClassName().equals(SyncToAirTable.class.getName())) {
-                    System.out.println("Not a group chat");
+                    FileLogger.write(chatId + " is not a group chat");
                 }
             }
 

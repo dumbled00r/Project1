@@ -157,16 +157,13 @@ public class GetChat extends Base {
             for (GroupChat result : results) {
                 long id = result.getId();
                 String type = result.getType();
-                String title = result.getTitle();
+                String title = truncateStringIfNeeded(result.getTitle());
                 String description = truncateStringIfNeeded(result.getDescription());
-                String inviteLink = result.getInviteLink();
+                String inviteLink = truncateStringIfNeeded(result.getInviteLink());
                 int memberCount = result.getMembersCount();
 
                 // Restretch the table to fit the result
                 System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-30s | %-15d |\n", id, type, title, description, inviteLink, memberCount);
-                if (title.length() > 30 || description.length() > 30 || inviteLink.length() > 30) {
-                    System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
-                }
             }
             System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
         } else {
