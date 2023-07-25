@@ -72,7 +72,6 @@ public class Record{
             ClassicHttpResponse response = client.execute(get);
             return EntityUtils.toString(response.getEntity());
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
             return null;
         }
     }
@@ -96,7 +95,6 @@ public class Record{
                 return null;
             }
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
             return null;
         }
     }
@@ -149,7 +147,6 @@ public class Record{
                 return false;
             }
         } catch (IOException e) {
-//            e.printStackTrace();
             return false;
         }
     }

@@ -72,7 +72,8 @@ public class GetMessagesHistory extends Base {
                         throw new RuntimeException(e);
                     }
                 }
-            }, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS, scheduler)).join();
+            }, CompletableFuture.delayedExecutor(5, TimeUnit.SECONDS, scheduler)).join();
+            System.out.println("Message retrieved successfully, saved in file: "+ fileName);
         } catch (IOException e) {
 //            e.printStackTrace();
         }

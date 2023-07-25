@@ -5,6 +5,7 @@ import Models.User;
 import Services.GetChat;
 import Services.GetMainChatList;
 import Services.GetMember;
+import Utils.FileLogger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.Gson;
@@ -15,8 +16,6 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import static Services.GetMainChatList.chatIds;
-
 public class SyncToAirTable {
     private static Set<JsonObject> jsonUserRes = new HashSet<>();
     private static Set<JsonObject> jsonGroupRes = new HashSet<>();
@@ -24,39 +23,41 @@ public class SyncToAirTable {
     public static void syncToAirTable() throws InterruptedException, ExecutionException, IOException {
         GetMainChatList.loadChatIdsAsync().join(); // Wait for the CompletableFuture to complete
 
-        int numChats = chatIds.length;
+        List<Long> groupIds = new ArrayList<>();
+        List<GroupChat> groupRes = GetChat.getMassChat().get();
+        for (GroupChat groupResult : groupRes) {
+            try {
+                JsonObject groupJson = groupResult.toJsonObject();
+                jsonGroupRes.add(groupJson);
+            } catch (NullPointerException e) {
+                FileLogger.write(groupResult.getId() + " is not a group chat");
+            }
+        }
+
+        for (JsonObject jsonObject : jsonGroupRes) {
+            Long groupId = jsonObject.get("Id").getAsLong();
+            groupIds.add(groupId);
+        }
+
+        int numChats = groupIds.size();
         int processedChats = 0;
 
-        System.out.print("Processing data to upload: \n[");
-        for (long chatId : chatIds) {
-            CompletableFuture<GroupChat> groupRes = GetChat.getChat(chatId);
-            List<User> res = GetMember.getMember(chatId).join();
-            Thread.sleep(1000);
+        for (long groupId : groupIds) {
+            List<User> res = GetMember.getMember(groupId).join();
+            Thread.sleep(5000);
             for (User user : res) {
                 if (!user.toJsonObject().isJsonNull() && !user.toJsonObject().isEmpty()) {
                     JsonObject userJson = user.toJsonObject();
                     jsonUserRes.add(userJson);
                 }
             }
-            try {
-                JsonObject groupJson = groupRes.get().toJsonObject();
-                jsonGroupRes.add(groupJson);
-            } catch (NullPointerException e) {
-                if (Thread.currentThread().getStackTrace()[2].getClassName().equals(SyncToAirTable.class.getName())) {
-                    System.out.println("Not a group chat");
-                }
-            }
-
-            // Update the progress bar
             processedChats++;
             updateProgressBar(processedChats, numChats);
         }
 
-        if (Thread.currentThread().getStackTrace()[2].getClassName().equals(SyncToAirTable.class.getName())) {
-            System.out.println(jsonGroupRes);
-        }
-        Map<String, JsonObject> idToJsonObject = new HashMap<>();
+        System.out.println("\nGroup Data processing completed!\n");
 
+        Map<String, JsonObject> idToJsonObject = new HashMap<>();
         int numUsers = jsonUserRes.size();
         int processedUsers = 0;
 
@@ -82,10 +83,10 @@ public class SyncToAirTable {
                 idToJsonObject.put(id, newJsonObject);
             }
 
-            // Update the progress bar
             processedUsers++;
             updateProgressBar(processedUsers, numUsers);
         }
+        System.out.println("\nUsers Data processing completed!");
 
         List<JsonObject> mergedObjects = new ArrayList<>(idToJsonObject.values());
 
@@ -106,26 +107,34 @@ public class SyncToAirTable {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String mergedJson = gson.toJson(mergedObjects);
         System.out.println("\nUploading...");
-        AirTableGroup airTableGroup = new AirTableGroup();
-        for (JsonObject jsonObject : jsonGroupRes) {
-            airTableGroup.pushGroupData(jsonObject);
+        try {
+            AirTableGroup airTableGroup = new AirTableGroup();
+            for (JsonObject jsonObject : jsonGroupRes) {
+                airTableGroup.pushGroupData(jsonObject);
+            }
+            AirTableUser airTableUser = new AirTableUser();
+            for (JsonObject jsonObject : mergedObjects) {
+                airTableUser.pushUserData(jsonObject);
+            }
+            System.out.println("Update AirTable successfully");
+        } catch (Exception e) {
+            System.err.println("Failed to update AirTable, check logs for more information");
+            FileLogger.write(e.getMessage());
         }
-        AirTableUser airTableUser = new AirTableUser();
-        for (JsonObject jsonObject : mergedObjects) {
-            airTableUser.pushUserData(jsonObject);
-        }
-        System.out.println("Update AirTable successfully");
     }
 
     private static void updateProgressBar(int current, int total) {
         int progress = (int) ((double) current / total * 100);
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("=".repeat(progress / 2));
-        sb.append(" ".repeat(50 - progress / 2));
-        sb.append(String.format("] %d%%", progress));
+        StringBuilder progressBar = new StringBuilder("[");
+        int completeBars = progress / 2;
+        int remainingBars = 50 - completeBars;
 
-        System.out.print("\r" + sb.toString());
+        progressBar.append("=".repeat(completeBars));
+        progressBar.append(" ".repeat(remainingBars));
+        progressBar.append(String.format("] %d%%", progress));
+
+        System.out.print("\rProcessing data to upload: " + progressBar.toString());
         System.out.flush();
     }
 }

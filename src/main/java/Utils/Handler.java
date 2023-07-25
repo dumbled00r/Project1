@@ -242,7 +242,7 @@ public class Handler extends Base {
         public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException, IOException {
             switch (object.getConstructor()) {
                 case TdApi.Error.CONSTRUCTOR:
-                    System.err.println("Receive an error:" + newLine + object);
+                    System.err.println("Receive an error:" + newLine + ((TdApi.Error)object).message);
                     Authorize.onAuthorizationStateUpdated(null); // repeat last action
                     break;
                 case TdApi.Ok.CONSTRUCTOR:

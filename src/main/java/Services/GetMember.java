@@ -65,7 +65,7 @@ public class GetMember extends Base {
                             }
                         });
                     } else if (chat.type instanceof TdApi.ChatTypePrivate) {
-                        FileLogger.write(chatId + " is not a chat group");
+                        FileLogger.write(chat.id + " is not a chat group");
                         Print.print("");
                         future.complete(lstUsers);
                     }

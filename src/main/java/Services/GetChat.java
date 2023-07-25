@@ -45,7 +45,6 @@ public class GetChat extends Base {
                             results.add(data);
                         }
                     }
-                    Print.print("");
                     return results;
                 });
     }
@@ -57,96 +56,109 @@ public class GetChat extends Base {
     public static CompletableFuture<GroupChat> getChat(Long chatId) throws ExecutionException, InterruptedException {
         CompletableFuture<GroupChat> future = new CompletableFuture<>();
         Long myId = GetMe.getMe().get().get("Id").getAsLong();
-        client.send(new TdApi.GetChat(chatId), new Client.ResultHandler() {
-            @Override
-            public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException {
-                if (object.getConstructor() == TdApi.Chat.CONSTRUCTOR){
-                    TdApi.Chat chat = (TdApi.Chat) object;
-                    if (chat.type instanceof TdApi.ChatTypeSupergroup){
-                        client.send(new TdApi.GetChatAdministrators(chat.id), new Client.ResultHandler() {
-                            @Override
-                            public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException {
-                                if (object instanceof TdApi.ChatAdministrators) {
-                                    TdApi.ChatAdministrator[] chatAdmins = ((TdApi.ChatAdministrators) object).administrators;
-                                    boolean isAdmin = false;
-                                    for (TdApi.ChatAdministrator admin : chatAdmins) {
-                                        if (myId == admin.userId) {
-                                            isAdmin = true;
-                                            break;
-                                        }
-                                    }
-                                    if (!isAdmin) {
-                                        FileLogger.write("You are not an administrator of chat: "+ chat.id);
-                                        future.complete(null);
-                                    }
-                                }
-                            }
-                        });
-                        client.send(new TdApi.GetSupergroupFullInfo(((TdApi.ChatTypeSupergroup) chat.type).supergroupId), new Client.ResultHandler() {
-                            @Override
-                            public void onResult(TdApi.Object object) {
-                                if (object.getConstructor() == TdApi.SupergroupFullInfo.CONSTRUCTOR){
-                                    TdApi.SupergroupFullInfo supergroupFullInfo = (TdApi.SupergroupFullInfo) object;
-                                    String description = supergroupFullInfo.description;
-                                    String inviteLink = (supergroupFullInfo.inviteLink == null) ? "" : supergroupFullInfo.inviteLink.inviteLink;
-                                    GroupChat groupChat = new GroupChat(chat.id, chat.type.getClass().getSimpleName().substring(8), chat.title, supergroupFullInfo.memberCount, description, inviteLink);
-                                    future.complete(groupChat);
-                                } else {
-                                    String errorMessage = "Failed to get supergroup full info: " + ((TdApi.Error) object).message;
-                                    FileLogger.write(errorMessage);
-                                    future.completeExceptionally(new RuntimeException(errorMessage));
-                                }
-                            }
-                        });
-                    } else if (chat.type instanceof TdApi.ChatTypeBasicGroup){
-                        client.send(new TdApi.GetChatAdministrators(chat.id), new Client.ResultHandler() {
-                            @Override
-                            public void onResult(TdApi.Object object) throws ExecutionException, InterruptedException {
-                                if (object instanceof TdApi.ChatAdministrators) {
-                                    TdApi.ChatAdministrator[] chatAdmins = ((TdApi.ChatAdministrators) object).administrators;
-                                    boolean isAdmin = false;
-                                    for (TdApi.ChatAdministrator admin : chatAdmins) {
-                                        if (myId == admin.userId) {
-                                            isAdmin = true;
-                                            break;
-                                        }
-                                    }
-                                    if (!isAdmin) {
-                                        FileLogger.write("You are not an administrator of chat: "+ chat.id);
-                                        future.complete(null);
-                                    }
-                                }
-                            }
-                        });
-                        client.send(new TdApi.GetBasicGroupFullInfo(((TdApi.ChatTypeBasicGroup) chat.type).basicGroupId), new Client.ResultHandler() {
-                            @Override
-                            public void onResult(TdApi.Object object) {
-                                if (object.getConstructor() == TdApi.BasicGroupFullInfo.CONSTRUCTOR){
-                                    TdApi.BasicGroupFullInfo basicGroupFullInfo = (TdApi.BasicGroupFullInfo) object;
-                                    String description = basicGroupFullInfo.description;
-                                    String inviteLink = basicGroupFullInfo.inviteLink.inviteLink;
-                                    GroupChat groupChat = new GroupChat(chat.id, chat.type.getClass().getSimpleName().substring(8), chat.title, basicGroupFullInfo.members.length, description, inviteLink);
-                                    future.complete(groupChat);
-                                } else {
-                                    String errorMessage = "Failed to get basic group full info: " + ((TdApi.Error) object).message;
-                                    FileLogger.write(errorMessage);
-                                    future.completeExceptionally(new RuntimeException(errorMessage));
-                                }
-                            }
-                        });
 
+        // Send the GetChat request
+        client.send(new TdApi.GetChat(chatId), new Client.ResultHandler() {
+            boolean isAdmin = false;
+
+            @Override
+            public void onResult(TdApi.Object object) {
+                try {
+                    if (object.getConstructor() == TdApi.Chat.CONSTRUCTOR) {
+                        TdApi.Chat chat = (TdApi.Chat) object;
+                        if (chat.type instanceof TdApi.ChatTypeSupergroup) {
+                            // Send the GetChatAdministrators request
+                            client.send(new TdApi.GetChatAdministrators(chat.id), new Client.ResultHandler() {
+                                @Override
+                                public void onResult(TdApi.Object object) {
+                                    if (object instanceof TdApi.ChatAdministrators) {
+                                        TdApi.ChatAdministrator[] chatAdmins = ((TdApi.ChatAdministrators) object).administrators;
+                                        for (TdApi.ChatAdministrator admin : chatAdmins) {
+                                            if (myId == admin.userId) {
+                                                isAdmin = true;
+                                                break;
+                                            }
+                                        }
+                                        if (!isAdmin) {
+                                            FileLogger.write("You are not an administrator of chat: " + chat.id);
+                                            future.complete(null);
+                                        } else {
+                                            // Send the GetSupergroupFullInfo request only if the user is an administrator
+                                            client.send(new TdApi.GetSupergroupFullInfo(((TdApi.ChatTypeSupergroup) chat.type).supergroupId), new Client.ResultHandler() {
+                                                @Override
+                                                public void onResult(TdApi.Object object) {
+                                                    if (object.getConstructor() == TdApi.SupergroupFullInfo.CONSTRUCTOR) {
+                                                        TdApi.SupergroupFullInfo supergroupFullInfo = (TdApi.SupergroupFullInfo) object;
+                                                        String description = supergroupFullInfo.description;
+                                                        String inviteLink = (supergroupFullInfo.inviteLink == null) ? "" : supergroupFullInfo.inviteLink.inviteLink;
+                                                        GroupChat groupChat = new GroupChat(chat.id, chat.type.getClass().getSimpleName().substring(8), chat.title, supergroupFullInfo.memberCount, description, inviteLink);
+                                                        future.complete(groupChat);
+                                                    } else {
+                                                        String errorMessage = "Failed to get supergroup full info: " + ((TdApi.Error) object).message;
+                                                        FileLogger.write(errorMessage);
+                                                        future.completeExceptionally(new RuntimeException(errorMessage));
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+                            });
+                        } else if (chat.type instanceof TdApi.ChatTypeBasicGroup) {
+                            // Send the GetChatAdministrators request
+                            client.send(new TdApi.GetChatAdministrators(chat.id), new Client.ResultHandler() {
+                                @Override
+                                public void onResult(TdApi.Object object) {
+                                    if (object instanceof TdApi.ChatAdministrators) {
+                                        TdApi.ChatAdministrator[] chatAdmins = ((TdApi.ChatAdministrators) object).administrators;
+                                        for (TdApi.ChatAdministrator admin : chatAdmins) {
+                                            if (myId == admin.userId) {
+                                                isAdmin = true;
+                                                break;
+                                            }
+                                        }
+                                        if (!isAdmin) {
+                                            FileLogger.write("You are not an administrator of chat: " + chat.id);
+                                            future.complete(null);
+                                        } else {
+                                            // Send the GetBasicGroupFullInfo request only if the user is an administrator
+                                            client.send(new TdApi.GetBasicGroupFullInfo(((TdApi.ChatTypeBasicGroup) chat.type).basicGroupId), new Client.ResultHandler() {
+                                                @Override
+                                                public void onResult(TdApi.Object object) {
+                                                    if (object.getConstructor() == TdApi.BasicGroupFullInfo.CONSTRUCTOR) {
+                                                        TdApi.BasicGroupFullInfo basicGroupFullInfo = (TdApi.BasicGroupFullInfo) object;
+                                                        String description = basicGroupFullInfo.description;
+                                                        String inviteLink = basicGroupFullInfo.inviteLink.inviteLink;
+                                                        GroupChat groupChat = new GroupChat(chat.id, chat.type.getClass().getSimpleName().substring(8), chat.title, basicGroupFullInfo.members.length, description, inviteLink);
+                                                        future.complete(groupChat);
+                                                    } else {
+                                                        String errorMessage = "Failed to get basic group full info: " + ((TdApi.Error) object).message;
+                                                        FileLogger.write(errorMessage);
+                                                        future.completeExceptionally(new RuntimeException(errorMessage));
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                            future.complete(null);
+                        }
                     } else {
-                        future.complete(null);
+                        String errorMessage = "Failed to get chat: " + chatId + " " + ((TdApi.Error) object).message;
+                        FileLogger.write(errorMessage);
+                        future.completeExceptionally(new RuntimeException(errorMessage));
                     }
-                } else {
-                    String errorMessage = "Failed to get chat: " + chatId + " " + ((TdApi.Error) object).message;
-                    FileLogger.write(errorMessage);
-                    future.completeExceptionally(new RuntimeException(errorMessage));
+                } catch (Exception e) {
+                    future.completeExceptionally(e);
                 }
             }
-        }, null);
+        });
+
         return future;
     }
+
 
     public static void printChatInfo() throws ExecutionException, InterruptedException {
         List<GroupChat> results = getMassChat().get();
@@ -157,16 +169,13 @@ public class GetChat extends Base {
             for (GroupChat result : results) {
                 long id = result.getId();
                 String type = result.getType();
-                String title = result.getTitle();
+                String title = truncateStringIfNeeded(result.getTitle());
                 String description = truncateStringIfNeeded(result.getDescription());
-                String inviteLink = result.getInviteLink();
+                String inviteLink = truncateStringIfNeeded(result.getInviteLink());
                 int memberCount = result.getMembersCount();
 
                 // Restretch the table to fit the result
                 System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-30s | %-15d |\n", id, type, title, description, inviteLink, memberCount);
-                if (title.length() > 30 || description.length() > 30 || inviteLink.length() > 30) {
-                    System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
-                }
             }
             System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
         } else {

@@ -29,6 +29,9 @@ public class AirTable {
         JsonObject json = gson.fromJson(jsonString, JsonObject.class);
         personal_access_token = json.get("token").getAsString();
         baseId = json.get("baseId").getAsString();
+        if (personal_access_token.isBlank() || personal_access_token.isEmpty() || baseId.isBlank() || baseId.isEmpty()) {
+            System.err.println("Personal access token or baseId cannot be empty or null");
+        }
     }
 
     public AirTable() throws IOException {
@@ -37,6 +40,6 @@ public class AirTable {
     public void pushUserData(JsonObject jsonObject) {
         List<JsonObject> list = new ArrayList<>();
         list.add(jsonObject);
-        userData.checkAllRecords(list, baseId, personal_access_token);
+        userData.processAllRecords(list, baseId, personal_access_token);
     }
 }

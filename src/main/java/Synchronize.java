@@ -20,6 +20,7 @@ public class Synchronize extends Base {
             throw new IOError(new IOException("Write access to the current directory is required"));
         }
         String blue = "\033[34m";
+        String yellow = "\033[33m";
         String reset = "\033[0m";
 
         System.out.println(blue + "  ______     __   ______            __    " + reset);
@@ -32,15 +33,20 @@ public class Synchronize extends Base {
         // create client
         client = Client.create(new Handler.UpdateHandler(), null, null);
 //         main loop
+        System.out.println("\n"+yellow+"Trying to login, if this screen is freezing, please double-check your telegram " +
+                "credentials" + reset);
         while (!needQuit) {
+
             // await authorization
             authorizationLock.lock();
             try {
                 while (!haveAuthorization) {
                     gotAuthorization.await();
+
                 }
             } finally {
                 authorizationLock.unlock();
+                System.out.println("Successfully logged in!\n");
             }
             SyncToAirTable.syncToAirTable();
             canQuit = true;

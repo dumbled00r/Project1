@@ -1,5 +1,6 @@
 package AirTableUtils;
 
+import Utils.FileLogger;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -14,23 +15,29 @@ public class AirTableUser extends AirTable{
         super();
         String response1 = Table.getListTables(baseId, personal_access_token);
         JsonObject jsonObject1 = new Gson().fromJson(response1, JsonObject.class);
-        JsonArray tables1 = jsonObject1.get("tables").getAsJsonArray();
-        for (var ele : tables1){
-            JsonObject table = ele.getAsJsonObject();
-            if (table.has("name") && table.get("name").isJsonPrimitive() && table.get("name").getAsString().equals("Group Data")){
-                group = new Table(table, baseId, personal_access_token);
-                break;
+        if (jsonObject1 != null) {
+            JsonArray tables1 = jsonObject1.get("tables").getAsJsonArray();
+            for (var ele : tables1) {
+                JsonObject table = ele.getAsJsonObject();
+                if (table.has("name") && table.get("name").isJsonPrimitive() && table.get("name").getAsString().equals("Group Data")) {
+                    group = new Table(table, baseId, personal_access_token);
+                    break;
+                }
+            }
+            String response = Table.getListTables(baseId, personal_access_token);
+            JsonObject jsonObject = new Gson().fromJson(response, JsonObject.class);
+            JsonArray tables = jsonObject.get("tables").getAsJsonArray();
+            for (var ele : tables) {
+                JsonObject table = ele.getAsJsonObject();
+                if (table.has("name") && table.get("name").isJsonPrimitive() && table.get("name").getAsString().equals("Users Data")) {
+                    userData = new Table(table, baseId, personal_access_token);
+                    break;
+                }
             }
         }
-        String response = Table.getListTables(baseId, personal_access_token);
-        JsonObject jsonObject = new Gson().fromJson(response, JsonObject.class);
-        JsonArray tables = jsonObject.get("tables").getAsJsonArray();
-        for (var ele : tables){
-            JsonObject table = ele.getAsJsonObject();
-            if (table.has("name") && table.get("name").isJsonPrimitive() && table.get("name").getAsString().equals("Users Data")){
-                userData = new Table(table, baseId, personal_access_token);
-                break;
-            }
+        else {
+            FileLogger.write("Can't get Users Data tables, try double-checking your base ID or your table's name");
+            System.err.println("Can't get Users Data tables, try double-checking your base ID or your table's name");
         }
     }
     @Override
@@ -50,7 +57,7 @@ public class AirTableUser extends AirTable{
 
         List<JsonObject> list = new ArrayList<>();
         list.add(jsonObject);
-
-        userData.checkAllRecords(list, baseId, personal_access_token);
+        if (userData != null) userData.processAllRecords(list, baseId, personal_access_token);
+        else FileLogger.write("Users Data is null");
     }
 }

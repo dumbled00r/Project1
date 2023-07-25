@@ -33,6 +33,7 @@ public class Table{
         if (records == null) {
             FileLogger.write("Error: Could not get records for table: " + name);
         } else {
+            this.records.clear();
             JsonObject recordsJson = new Gson().fromJson(records, JsonObject.class);
             JsonArray listRecords = recordsJson.get("records").getAsJsonArray();
             listRecords.forEach(record -> this.records.add(new Record(record.getAsJsonObject())));
@@ -82,7 +83,6 @@ public class Table{
         JsonObject recordJson = new Gson().fromJson(recordCreate, JsonObject.class);
         JsonArray listRecords = recordJson.get("records").getAsJsonArray();
 
-        records.clear();
         listRecords.forEach(record -> this.records.add(new Record(record.getAsJsonObject())));
 
         FileLogger.write("Created record: " + fields.get("Id").getAsString() + " in table: " + name);
@@ -98,7 +98,7 @@ public class Table{
         }
         return null;
     }
-    private boolean checkRecord(JsonObject fields, String baseId, String token) {
+    private boolean processRecord(JsonObject fields, String baseId, String token) {
         Record oldRecord = null;
         try {
             oldRecord = getRecord(fields.get("Id").getAsLong());
@@ -124,10 +124,10 @@ public class Table{
         }
     }
 
-    protected void checkAllRecords(List<JsonObject> fields, String baseId, String token) {
+    protected void processAllRecords(List<JsonObject> fields, String baseId, String token) {
         numChanges = 0;
         for (JsonObject field : fields) {
-            if (!checkRecord(field, baseId, token)) {
+            if (!processRecord(field, baseId, token)) {
                 try {
                     FileLogger.write("Error: Could not check record: " + field.get("Id").getAsString() + " in table: " + name);
                 } catch (NullPointerException e) {}
@@ -169,7 +169,7 @@ public class Table{
                 return null;
             }
             return EntityUtils.toString(response.getEntity());
-        } catch (IOException | ParseException e) {
+        } catch (IOException | ParseException | IllegalArgumentException e) {
             FileLogger.write("Error: Could not get the list tables: " + e.getMessage());
             return null;
         }
