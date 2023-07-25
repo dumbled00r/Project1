@@ -1,10 +1,0 @@
-
-J
-java:S1604"(Make this anonymous inner class a lambda(Ãúâµÿÿÿÿÿ8ÀÕé©“1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ñ¶‘–8ÀÕé©“1
-f
-java:S6201"DReplace this instanceof check and cast with 'instanceof Error error'(Š÷Ê²şÿÿÿÿ8ÈçÉª“1
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(Š÷Ê²şÿÿÿÿ8¼•‘¯“1
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(±Õçşÿÿÿÿ8ûÈª“1
-Y
-java:S1128"7Remove this unused import 'Utils.ConvertToLong.toLong'.(ı‘çùÿÿÿÿ8ûÈª“1

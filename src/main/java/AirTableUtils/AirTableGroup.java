@@ -1,5 +1,6 @@
 package AirTableUtils;
 
+import Utils.FileLogger;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -13,18 +14,29 @@ public class AirTableGroup extends AirTable{
         super();
         String response = Table.getListTables(baseId, personal_access_token);
         JsonObject jsonObject = new Gson().fromJson(response, JsonObject.class);
-        JsonArray tables = jsonObject.get("tables").getAsJsonArray();
-        for (var ele : tables){
-            JsonObject table = ele.getAsJsonObject();
-            if (table.has("name") && table.get("name").isJsonPrimitive() && table.get("name").getAsString().equals("Group Data")){
-                groupData = new Table(table, baseId, personal_access_token);
-                break;
+        if (jsonObject != null) {
+            JsonArray tables = jsonObject.get("tables").getAsJsonArray();
+            for (var ele : tables) {
+                JsonObject table = ele.getAsJsonObject();
+                if (table.has("name") && table.get("name").isJsonPrimitive() && table.get("name").getAsString().equals("Group Data")) {
+                    groupData = new Table(table, baseId, personal_access_token);
+                    break;
+                }
             }
+        } else {
+            FileLogger.write("Can't get Group Data tables, try double-checking your base ID or your table's name");
+            System.err.println("Can't get Group Data tables, try double-checking your base ID or your table's name");
         }
     }
     public void pushGroupData(JsonObject jsonObject){
         List<JsonObject> list = new ArrayList<>();
         list.add(jsonObject);
-        groupData.processAllRecords(list, baseId, personal_access_token);
+        if (groupData != null) {
+            groupData.processAllRecords(list, baseId, personal_access_token);
+        }
+        else {
+            FileLogger.write("Group data is null");
+        }
+
     }
 }

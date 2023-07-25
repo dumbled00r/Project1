@@ -169,7 +169,7 @@ public class Table{
                 return null;
             }
             return EntityUtils.toString(response.getEntity());
-        } catch (IOException | ParseException e) {
+        } catch (IOException | ParseException | IllegalArgumentException e) {
             FileLogger.write("Error: Could not get the list tables: " + e.getMessage());
             return null;
         }

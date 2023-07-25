@@ -191,7 +191,7 @@ public class GetCommand extends Base {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
             String[] getArgs = args.split(" ", 1);
-            if (!getArgs[0].equals("")) System.out.println("\nMaybe you mean synchronize your data to airtable:");
+            if (!getArgs[0].equals("")) System.out.println("\nMaybe you mean synchronize your data to AirTable:");
             try {
                 SyncToAirTable.syncToAirTable();
             } catch (Exception e) {

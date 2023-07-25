@@ -1,11 +1,15 @@
+
 ## Telegram Management Service
-A Java project about Telegram on managing services that helps user to do automatical actions such as adding user to a existing chat, sending messages to a chat, creating groups, etc
+
+A Java project about Telegram on managing services for user to do automatical actions such as adding user to a existing chat or get chat information
+
 
 ## Presequites
 We are using IntelliJ IDEA Community Edition for this project
 Link download: https://www.jetbrains.com/idea/download/?var=1&section=windows
 
 - First, we are going to build the libraries required for this project
+
     More information: https://tdlib.github.io/td/build.html?language=Java
 - After that, we need to set up our external libraries by pressing right click in project1 file:
     - ![external_libraries_1](https://github.com/dumbled00r/Project1/blob/main/image/external_lib_1.jpg)
@@ -34,14 +38,6 @@ Link download: https://www.jetbrains.com/idea/download/?var=1&section=windows
     - If it appears like this, then you are done!, you have sent a message to an existing chat
     - ![test_a_b_c](https://github.com/dumbled00r/Project1/blob/main/image/test_a_b_c.png)
 
-## AirTable
-In order to synchronize data your base should have the same tables' format as us. To do that follow the this instruction video for more informations
-https://www.youtube.com/watch?v=6ZCMQynNnJY 
-So our tables' format have 2 kinds which are Group data and Users data are provided here: 
-- Group data: https://airtable.com/apphDXbOWUoH9LMZp/shr232QaAAbhWrqJR/tblOhFjRbCA6fUk48fbclid=IwAR3r6SLRRyXiuOfkI9RkQRlQGEGXatMMNpnB83nnn3ACHXfwsLvqthceAmc
-- Users data:
-https://airtable.com/apphDXbOWUoH9LMZp/shrLBS06iiXWUu1c6/tblCPMFRc2Qu6aN7s
-
 ## Task Scheduler
 Task Scheduler is used to rerun the program once a day, this is how you do it
 - First you need to extract ScheduledUpdate.rar file
@@ -54,21 +50,26 @@ Task Scheduler is used to rerun the program once a day, this is how you do it
     - ![daily](https://github.com/dumbled00r/Project1/blob/main/image/daily.png)
 - Then you create a new action
     - ![run_bat_file](https://github.com/dumbled00r/Project1/blob/main/image/run_bat_file.png)
+
+
 You are done! Now the program will be running daily!
 
 * NOTE: change the parameters down below if you want to use the program for your own use of telegram, if not it's better to just run the MainApp.java file without changing anything
-- There are some parameters you need to change to make the program works properly: 
-    - In td.json file, we need to change 2 parameters which are request.apiId and request.apiHash to your own apiId and apiHash. You can find both of the parameters here: https://my.telegram.org/auth, after adding your phone number to the login interface, it will ask you to insert your confirmation code. The confirmation code will appear on your Telegram app.
+- Inside the project1 file, most of our commands stay at services file:
+    - Inside Utils file, there are some parameters you need to change to make the program works properly: 
+        - In Authorize.java, we need to change 2 parameters which are request.apiId and request.apiHash to your own apiId and apiHash. You can find both of the parameters here: https://my.telegram.org/auth, after adding your phone number to the login interface, it will ask you to insert your confirmation code. The confirmation code will appear on your Telegram app.
     ```java
-    "apiId": "your_api_id",
-    "apiHash": "your_api_hash"
+    request.apiId = "your_api_id";
+    request.apiHash = "your_api_hash";
     ```
-    - In airtablecfg.json file, we need to change some parameters too which are: personal_access_token, base_id. You can find your personal_access_token here: https://airtable.com/create/tokens. Create a new token with all scope and access (After creating your token, you should save it somewhere because it only appears once). And for base_id, you only need to get to your table, take the parameters from the url. For example: https://airtable.com/base_id/table_id/viwq1XaqKB0szrjSf?blocks=hide. Then change it in the code:
+    - Inside our AirTableUtils file at AirTable.java, we need to change some parameters too which are: personal_access_token, base_id, table_id. You can find your personal_access_token here: https://airtable.com/create/tokens. Create a new token with all scope and access (After creating your token, you should save it somewhere because it only appears once). And for base_id, table_id you only need to get to your table, take the parameters from the url. For example: https://airtable.com/base_id/table_id/viwq1XaqKB0szrjSf?blocks=hide. Then change it in the code:
     ```java
-    "token": "your personal_access_token",
-    "baseId": "your base_id"
+    static String personal_access_token = "your personal_access_token";
+    static String baseId = "your base_id";
     ```
+      
 ## Features
+
 - Get Members Of A Chat Group
 - Get All Administrated Chat Information
 - Get My Information
@@ -77,4 +78,8 @@ You are done! Now the program will be running daily!
 - Kick User Out Of An Existing Chat
 - Sync To AirTable
 - Get Messages History Of An Existing Chat
-- Create Basic Group And Super Group
+
+
+
+
+

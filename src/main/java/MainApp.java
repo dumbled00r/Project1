@@ -19,6 +19,7 @@ public class MainApp extends Base {
             throw new IOError(new IOException("Write access to the current directory is required"));
         }
         String blue = "\033[34m";
+        String yellow = "\033[33m";
         String reset = "\033[0m";
 
         System.out.println(blue + "  ______     __   ______            __    " + reset);
@@ -30,11 +31,10 @@ public class MainApp extends Base {
 
         // create client
         client = Client.create(new Handler.UpdateHandler(), null, null);
-
+        System.out.println("\n"+yellow+"Trying to login, if this screen is freezing, please double-check your telegram " +
+                "credentials" + reset);
         // main loop
         while (!needQuit) {
-            System.out.println("\nTrying to login, if this screen is freezing, please double-check your telegram " +
-                    "credentials");
             // await authorization
             authorizationLock.lock();
             try {
@@ -43,7 +43,7 @@ public class MainApp extends Base {
                 }
             } finally {
                 authorizationLock.unlock();
-                System.out.println("\nSuccessfully logged in!\n");
+                System.out.println("Successfully logged in!\n");
             }
 
             while (haveAuthorization) {
