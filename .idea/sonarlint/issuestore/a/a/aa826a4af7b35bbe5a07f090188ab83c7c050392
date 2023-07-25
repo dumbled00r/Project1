@@ -1,0 +1,27 @@
+
+k
+java:S1192K"IDefine a constant instead of duplicating this literal "Username" 3 times.(»Ÿùÿÿÿÿ8¸õ±ğ˜1
+h
+java:S1192L"KDefine a constant instead of duplicating this literal "First Name" 3 times.(§Ù¸é8¸õ±ğ˜1
+l
+java:S1192M"JDefine a constant instead of duplicating this literal "Last Name" 3 times.(²å–¬üÿÿÿÿ8¹õ±ğ˜1
+f
+java:S1192E"IDefine a constant instead of duplicating this literal "Chat Ids" 4 times.(­•Îù8¹õ±ğ˜1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ğãışÿÿÿÿ8½õ±ğ˜1
+W
+java:S1118":Add a private constructor to hide the implicit public one.(ÍçÛ8Šö±ğ˜1
+o
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed.(˜¡ˆ‡8“ö±ğ˜1
+[
+java:S1854k">Remove this useless assignment to local variable "mergedJson".(ªî›¼8˜ö±ğ˜1
+U	java:S1069"9Replace this use of System.out or System.err by a logger.(¡Å¸8¬ö±ğ˜1
+Z	java:S106X"9Replace this use of System.out or System.err by a logger.(”Äš‰şÿÿÿÿ8ºö±ğ˜1
+L
+java:S1481k"/Remove this unused "mergedJson" local variable.(ªî›¼8Ôö±ğ˜1
+Z	java:S106l"9Replace this use of System.out or System.err by a logger.(‚ĞØáıÿÿÿÿ8×ö±ğ˜1
+Z	java:S106v"9Replace this use of System.out or System.err by a logger.(à¤°­ûÿÿÿÿ8Ûö±ğ˜1
+U	java:S106x"9Replace this use of System.out or System.err by a logger.(òÄÒ8Ûö±ğ˜1
+V	java:S106ˆ"9Replace this use of System.out or System.err by a logger.(ÒÓÿÅ8äö±ğ˜1
+V	java:S106‰"9Replace this use of System.out or System.err by a logger.(ÚÂâ8åö±ğ˜1
+ã
+java:S6541"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 86 to 64, Complexity from 18 to 14, Nesting Level from 3 to 2, Number of Variables from 34 to 6.(˜¡ˆ‡8¸û±ğ˜1

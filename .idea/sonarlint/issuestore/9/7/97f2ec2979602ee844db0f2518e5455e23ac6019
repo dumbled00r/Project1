@@ -1,0 +1,30 @@
+
+ÿ
+java:S1192¦"ÛDefine a constant instead of duplicating this literal "+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+" 3 times.(ßóõĞüÿÿÿÿ8™ú±ğ˜1
+J
+java:S1604W"(Make this anonymous inner class a lambda(Æ™«µøÿÿÿÿ8™ú±ğ˜1
+J
+java:S1604G"(Make this anonymous inner class a lambda(ß³ÖÅıÿÿÿÿ8™ú±ğ˜1
+E
+java:S1604}"(Make this anonymous inner class a lambda(µï°ı8™ú±ğ˜1
+J
+java:S1604m"(Make this anonymous inner class a lambda(ß³ÖÅıÿÿÿÿ8™ú±ğ˜1
+o
+java:S37768"RRefactor this method to reduce its Cognitive Complexity from 87 to the 15 allowed.(Ï‹·¤8Âú±ğ˜1
+€
+java:S6201E"^Replace this instanceof check and cast with 'instanceof ChatTypeSupergroup chattypesupergroup'(ığËÿùÿÿÿÿ8Ìú±ğ˜1
+€
+java:S6201J"^Replace this instanceof check and cast with 'instanceof ChatAdministrators chatadministrators'(…ˆÄûÿÿÿÿ8Íú±ğ˜1
+€
+java:S6201k"^Replace this instanceof check and cast with 'instanceof ChatTypeBasicGroup chattypebasicgroup'(œÖ–»ùÿÿÿÿ8Òú±ğ˜1
+€
+java:S6201p"^Replace this instanceof check and cast with 'instanceof ChatAdministrators chatadministrators'(…ˆÄûÿÿÿÿ8Óú±ğ˜1
+[	java:S106¦"9Replace this use of System.out or System.err by a logger.(ßóõĞüÿÿÿÿ8Ùú±ğ˜1
+[	java:S106§"9Replace this use of System.out or System.err by a logger.(ùô”ùÿÿÿÿ8Ùú±ğ˜1
+[	java:S106¨"9Replace this use of System.out or System.err by a logger.(ßóõĞüÿÿÿÿ8Ùú±ğ˜1
+o
+java:S3457²"Q%n should be used in place of \n to produce the platform-specific line separator.(’ôù8Ûú±ğ˜1
+V	java:S106²"9Replace this use of System.out or System.err by a logger.(’ôù8Ûú±ğ˜1
+[	java:S106´"9Replace this use of System.out or System.err by a logger.(ßóõĞüÿÿÿÿ8Ûú±ğ˜1
+[	java:S106¶"9Replace this use of System.out or System.err by a logger.(°üÅÎùÿÿÿÿ8Ûú±ğ˜1
+[	java:S106¸"9Replace this use of System.out or System.err by a logger.(Í¡òüÿÿÿÿ8Üú±ğ˜1

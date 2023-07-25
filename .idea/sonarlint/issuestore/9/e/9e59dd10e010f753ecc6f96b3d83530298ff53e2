@@ -1,0 +1,7 @@
+
+~
+java:S1488"cImmediately return this expression instead of assigning it to the temporary variable "jsonElement".(ì¾ÃÂÿÿÿÿÿ
+M
+java:S1874"2Remove this use of "JsonParser"; it is deprecated.(˜‡ü¹øÿÿÿÿ
+H
+java:S1874"-Remove this use of "parse"; it is deprecated.(ì¾ÃÂÿÿÿÿÿ
