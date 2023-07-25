@@ -1,7 +1,6 @@
-import AirTableUtils.SyncToAirTable;
-import Services.GetCommand;
-import Utils.Base;
-import Utils.Handler;
+import airtableutils.SyncToAirTable;
+import utils.Base;
+import utils.Handler;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 

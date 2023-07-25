@@ -1,6 +1,6 @@
-import Services.GetCommand;
-import Utils.Base;
-import Utils.Handler;
+import services.GetCommand;
+import utils.Base;
+import utils.Handler;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
 

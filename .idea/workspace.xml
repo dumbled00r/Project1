@@ -10,15 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
-      <change afterPath="$PROJECT_DIR$/DataSynchronizing/Project1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/DataSynchronizing_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Project1_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/74c91379d4bc08c5eb4bdc48e25e9c18ebcfd5c0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c5383cf5f80d80be0e37c2a5e6e4e808f333076" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/d/adbe3ce0991c088ea3214fdffc1e368c345c80e4" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/4/74c91379d4bc08c5eb4bdc48e25e9c18ebcfd5c0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/c/9c5383cf5f80d80be0e37c2a5e6e4e808f333076" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/d/adbe3ce0991c088ea3214fdffc1e368c345c80e4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataSynchronizing/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/app.log" afterDir="false" />
@@ -26,27 +19,43 @@
       <change beforePath="$PROJECT_DIR$/DataSynchronizing/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/tdlib/db.sqlite-shm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataSynchronizing/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/tdlib/db.sqlite-wal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataSynchronizing/tdlib/td.binlog" beforeDir="false" afterPath="$PROJECT_DIR$/DataSynchronizing/tdlib/td.binlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/airtablecfg.json" beforeDir="false" afterPath="$PROJECT_DIR$/airtablecfg.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Project1_jar/Project1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Project1_jar/Project1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/SyncToAirTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AirTableUtils/SyncToAirTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/AddMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/AddMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMessagesHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/GetMessagesHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/KickMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/KickMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AirTableUtils/SyncToAirTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AirTableUtils/SyncToAirTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/AddMember$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/AddMember$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/AddMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/AddMember.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat$1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetChat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetChat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/GetMessagesHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/GetMessagesHistory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/KickMember$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/KickMember$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/KickMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/KickMember.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project1_jar/Project1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/airtableutils/AirTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTableGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/airtableutils/AirTableGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/AirTableUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/airtableutils/AirTableUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/airtableutils/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/Record.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/airtableutils/Record.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/SyncToAirTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/airtableutils/SyncToAirTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AirTableUtils/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/airtableutils/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/GroupChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/GroupChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/AddMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/AddMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/CreateGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/CreateGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMainChatList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetMainChatList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetMe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetMessagesHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetMessagesHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/GetUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/KickMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/KickMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/SendMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SendMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Synchronize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Synchronize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Authorize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Authorize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/ChatOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ChatOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/ConvertToLong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ConvertToLong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/FileLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/FileLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/PrettifiedJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/PrettifiedJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/Print.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Print.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/PromptString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/PromptString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/SetChatPosition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/SetChatPosition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/ToInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ToInt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/TruncateString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TruncateString.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-shm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-wal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdlib/td.binlog" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/td.binlog" afterDir="false" />
@@ -110,8 +119,8 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Test1/Project1&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Latest Test/Project1/lib&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.16308594&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
@@ -126,13 +135,13 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApp">
+  <component name="RunManager" selected="Application.AirTable">
     <configuration name="AirTable" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AirTableUtils.AirTable" />
+      <option name="MAIN_CLASS_NAME" value="airtableutils.AirTable" />
       <module name="Project1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="AirTableUtils.*" />
+          <option name="PATTERN" value="airtableutils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -145,7 +154,7 @@
       <module name="Project1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Utils.*" />
+          <option name="PATTERN" value="utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

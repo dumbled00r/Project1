@@ -56,13 +56,13 @@ You are done! Now the program will be running daily!
 
 * NOTE: change the parameters down below if you want to use the program for your own use of telegram, if not it's better to just run the MainApp.java file without changing anything
 - Inside the project1 file, most of our commands stay at services file:
-    - Inside Utils file, there are some parameters you need to change to make the program works properly: 
+    - Inside utils file, there are some parameters you need to change to make the program works properly: 
         - In Authorize.java, we need to change 2 parameters which are request.apiId and request.apiHash to your own apiId and apiHash. You can find both of the parameters here: https://my.telegram.org/auth, after adding your phone number to the login interface, it will ask you to insert your confirmation code. The confirmation code will appear on your Telegram app.
     ```java
     request.apiId = "your_api_id";
     request.apiHash = "your_api_hash";
     ```
-    - Inside our AirTableUtils file at AirTable.java, we need to change some parameters too which are: personal_access_token, base_id, table_id. You can find your personal_access_token here: https://airtable.com/create/tokens. Create a new token with all scope and access (After creating your token, you should save it somewhere because it only appears once). And for base_id, table_id you only need to get to your table, take the parameters from the url. For example: https://airtable.com/base_id/table_id/viwq1XaqKB0szrjSf?blocks=hide. Then change it in the code:
+    - Inside our airtableutils file at AirTable.java, we need to change some parameters too which are: personal_access_token, base_id, table_id. You can find your personal_access_token here: https://airtable.com/create/tokens. Create a new token with all scope and access (After creating your token, you should save it somewhere because it only appears once). And for base_id, table_id you only need to get to your table, take the parameters from the url. For example: https://airtable.com/base_id/table_id/viwq1XaqKB0szrjSf?blocks=hide. Then change it in the code:
     ```java
     static String personal_access_token = "your personal_access_token";
     static String baseId = "your base_id";

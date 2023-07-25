@@ -195,7 +195,7 @@
 [2023-07-25 20:08:46.859] Group data is null
 [2023-07-25 20:08:46.860] Error: Could not get the list tables: Illegal character in path at index 43: https://api.airtable.com/v0/meta/bases/your base_id/tables
 [2023-07-25 20:08:46.861] Can't get Users Data tables, try double-checking your base ID or your table's name
-[2023-07-25 20:08:46.861] Cannot invoke "AirTableUtils.Table.getRecord(long)" because "this.group" is null
+[2023-07-25 20:08:46.861] Cannot invoke "airtableutils.Table.getRecord(long)" because "this.group" is null
 [2023-07-25 20:09:54.330] You are not an administrator of chat: -1001661077536
 [2023-07-25 20:09:56.760] 777000 is not a chat group
 [2023-07-25 20:09:57.769] 178220800 is not a chat group
@@ -306,3 +306,58 @@
 [2023-07-26 00:02:27.793] Created record: 1817109845 in table: Users Data
 [2023-07-26 00:02:27.793] Add record: 1817109845 in table: Users Data
 [2023-07-26 00:02:27.794] Checked all records in table: Users Data
+[2023-07-26 00:09:23.604] You are not an administrator of chat: -1001115770280
+[2023-07-26 00:09:23.609] You are not an administrator of chat: -1001162852517
+[2023-07-26 00:09:23.609] You are not an administrator of chat: -1001418173835
+[2023-07-26 00:09:23.610] You are not an administrator of chat: -1001661077536
+[2023-07-26 00:09:23.614] You are not an administrator of chat: -1001674237057
+[2023-07-26 00:09:36.176] Checked all records in table: Group Data
+[2023-07-26 00:09:36.176] Checked all records in table: Group Data
+[2023-07-26 00:09:40.401] Checked all records in table: Users Data
+[2023-07-26 00:09:40.402] Checked all records in table: Users Data
+[2023-07-26 00:09:41.522] Updated record: 280713127 in table: Users Data
+[2023-07-26 00:09:41.523] Update record: 280713127 in table: Users Data
+[2023-07-26 00:09:41.523] Checked all records in table: Users Data
+[2023-07-26 00:09:42.720] Updated record: 806954250 in table: Users Data
+[2023-07-26 00:09:42.720] Update record: 806954250 in table: Users Data
+[2023-07-26 00:09:42.720] Checked all records in table: Users Data
+[2023-07-26 00:09:43.779] Updated record: 1555577176 in table: Users Data
+[2023-07-26 00:09:43.779] Update record: 1555577176 in table: Users Data
+[2023-07-26 00:09:43.779] Checked all records in table: Users Data
+[2023-07-26 00:09:44.856] Updated record: 841837857 in table: Users Data
+[2023-07-26 00:09:44.856] Update record: 841837857 in table: Users Data
+[2023-07-26 00:09:44.857] Checked all records in table: Users Data
+[2023-07-26 00:09:45.913] Updated record: 1285764044 in table: Users Data
+[2023-07-26 00:09:45.913] Update record: 1285764044 in table: Users Data
+[2023-07-26 00:09:45.914] Checked all records in table: Users Data
+[2023-07-26 00:09:45.914] Checked all records in table: Users Data
+[2023-07-26 00:11:34.426] You are not an administrator of chat: -1001115770280
+[2023-07-26 00:11:34.430] You are not an administrator of chat: -1001418173835
+[2023-07-26 00:11:34.430] You are not an administrator of chat: -1001162852517
+[2023-07-26 00:11:34.431] You are not an administrator of chat: -1001661077536
+[2023-07-26 00:11:34.435] You are not an administrator of chat: -1001674237057
+[2023-07-26 00:14:52.576] You are not an administrator of chat: -1001115770280
+[2023-07-26 00:14:52.579] You are not an administrator of chat: -1001418173835
+[2023-07-26 00:14:52.579] You are not an administrator of chat: -1001162852517
+[2023-07-26 00:14:52.580] You are not an administrator of chat: -1001661077536
+[2023-07-26 00:14:52.585] You are not an administrator of chat: -1001674237057
+[2023-07-26 00:15:05.254] Checked all records in table: Group Data
+[2023-07-26 00:15:05.255] Checked all records in table: Group Data
+[2023-07-26 00:15:09.471] Checked all records in table: Users Data
+[2023-07-26 00:15:09.471] Checked all records in table: Users Data
+[2023-07-26 00:15:10.549] Updated record: 280713127 in table: Users Data
+[2023-07-26 00:15:10.549] Update record: 280713127 in table: Users Data
+[2023-07-26 00:15:10.549] Checked all records in table: Users Data
+[2023-07-26 00:15:11.636] Updated record: 806954250 in table: Users Data
+[2023-07-26 00:15:11.637] Update record: 806954250 in table: Users Data
+[2023-07-26 00:15:11.637] Checked all records in table: Users Data
+[2023-07-26 00:15:12.724] Updated record: 1555577176 in table: Users Data
+[2023-07-26 00:15:12.724] Update record: 1555577176 in table: Users Data
+[2023-07-26 00:15:12.724] Checked all records in table: Users Data
+[2023-07-26 00:15:13.737] Updated record: 841837857 in table: Users Data
+[2023-07-26 00:15:13.738] Update record: 841837857 in table: Users Data
+[2023-07-26 00:15:13.738] Checked all records in table: Users Data
+[2023-07-26 00:15:14.811] Updated record: 1285764044 in table: Users Data
+[2023-07-26 00:15:14.812] Update record: 1285764044 in table: Users Data
+[2023-07-26 00:15:14.812] Checked all records in table: Users Data
+[2023-07-26 00:15:14.812] Checked all records in table: Users Data
