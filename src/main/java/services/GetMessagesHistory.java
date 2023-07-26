@@ -3,6 +3,7 @@ package services;
 import utils.Base;
 import org.drinkless.tdlib.Client;
 import org.drinkless.tdlib.TdApi;
+import utils.FileLogger;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -28,26 +29,23 @@ public class GetMessagesHistory extends Base {
 
         while(!reachedEnd[0]) {
             TdApi.GetChatHistory getChatHistory = new TdApi.GetChatHistory(chatId, 0, offset[0], limit, false);
-            client.send(getChatHistory, new Client.ResultHandler() {
-                @Override
-                public void onResult(TdApi.Object object) {
-                    if (object instanceof TdApi.Messages) {
-                        TdApi.Messages messages = (TdApi.Messages) object;
-                        for (TdApi.Message message : messages.messages) {
-                            if (!receivedMessageIds.contains(message.id)) {
-                                messagesList.add(message);
-                                receivedMessageIds.add(message.id);
-                            }
+            client.send(getChatHistory, object -> {
+                if (object instanceof TdApi.Messages) {
+                    TdApi.Messages messages = (TdApi.Messages) object;
+                    for (TdApi.Message message : messages.messages) {
+                        if (!receivedMessageIds.contains(message.id)) {
+                            messagesList.add(message);
+                            receivedMessageIds.add(message.id);
                         }
-                        if (messages.messages.length < limit) {
-                            reachedEnd[0] = true;
-                            future.complete(messagesList);
-                        } else {
-                            offset[0] += limit;
-                        }
-                    } else if (object instanceof TdApi.Error) {
-                        future.completeExceptionally(new RuntimeException("Failed to get messages: " + ((TdApi.Error) object).message));
                     }
+                    if (messages.messages.length < limit) {
+                        reachedEnd[0] = true;
+                        future.complete(messagesList);
+                    } else {
+                        offset[0] += limit;
+                    }
+                } else if (object instanceof TdApi.Error) {
+                    future.completeExceptionally(new RuntimeException("Failed to get messages: " + ((TdApi.Error) object).message));
                 }
             });
         }
@@ -74,7 +72,7 @@ public class GetMessagesHistory extends Base {
             }, CompletableFuture.delayedExecutor(5, TimeUnit.SECONDS, scheduler)).join();
             System.out.println("Message retrieved successfully, saved in file: "+ fileName);
         } catch (IOException e) {
-//            e.printStackTrace();
+            FileLogger.write(e.getMessage());
         }
     }
 }

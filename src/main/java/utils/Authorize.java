@@ -17,9 +17,9 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Authorize extends Base{
     public static void onAuthorizationStateUpdated(TdApi.AuthorizationState authorizationState) throws ExecutionException, InterruptedException, IOException {
         if (authorizationState != null) {
-            Authorize.authorizationState = authorizationState;
+            Base.authorizationState = authorizationState;
         }
-        switch (Authorize.authorizationState.getConstructor()) {
+        switch (Base.authorizationState.getConstructor()) {
             case TdApi.AuthorizationStateWaitTdlibParameters.CONSTRUCTOR:
                 Gson gson = new Gson();
                 Path filePath = Paths.get("td.json");
@@ -48,7 +48,7 @@ public class Authorize extends Base{
                 break;
             }
             case TdApi.AuthorizationStateWaitOtherDeviceConfirmation.CONSTRUCTOR: {
-                String link = ((TdApi.AuthorizationStateWaitOtherDeviceConfirmation) Authorize.authorizationState).link;
+                String link = ((TdApi.AuthorizationStateWaitOtherDeviceConfirmation) Base.authorizationState).link;
                 System.out.println("Please confirm this login link on another device: " + link);
                 break;
             }
@@ -101,7 +101,7 @@ public class Authorize extends Base{
                 }
                 break;
             default:
-                System.err.println("Unsupported authorization state:" + newLine + Authorize.authorizationState);
+                System.err.println("Unsupported authorization state:" + newLine + Base.authorizationState);
         }
     }
     protected static void onFatalError(String errorMessage) {

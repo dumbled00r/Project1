@@ -69,7 +69,7 @@ public class GetUser extends Base {
                 });
     }
 
-    public static void printUserInfo(List<User> results) throws ExecutionException, InterruptedException {
+    public static void printUserInfo(List<User> results){
         if (!results.isEmpty()) {
             System.out.println("User information:");
             System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
