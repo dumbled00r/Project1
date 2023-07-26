@@ -7,7 +7,6 @@ l
 java:S1192M"JDefine a constant instead of duplicating this literal "Last Name" 3 times.(²å–¬üÿÿÿÿ8¹õ±ğ˜1
 f
 java:S1192E"IDefine a constant instead of duplicating this literal "Chat Ids" 4 times.(­•Îù8¹õ±ğ˜1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ğãışÿÿÿÿ8½õ±ğ˜1
 W
 java:S1118":Add a private constructor to hide the implicit public one.(ÍçÛ8Šö±ğ˜1
 o

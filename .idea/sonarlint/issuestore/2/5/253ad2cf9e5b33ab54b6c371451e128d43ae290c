@@ -11,9 +11,13 @@ java:S3776"RRefactor this method to reduce its Cognitive Complexity from 42 to
 java:S6201"^Replace this instanceof check and cast with 'instanceof ChatTypeSupergroup chattypesupergroup'(ýðËÿùÿÿÿÿ8¼­·ð˜1
 €
 java:S6201"^Replace this instanceof check and cast with 'instanceof ChatTypeSupergroup chattypesupergroup'(ýðËÿùÿÿÿÿ8¼­·ð˜1
+€
+java:S62016"^Replace this instanceof check and cast with 'instanceof BasicGroupFullInfo basicgroupfullinfo'(ÜÔ™íûÿÿÿÿ8ˆ½°†™1
+~
+java:S62019"\Replace this instanceof check and cast with 'instanceof MessageSenderUser messagesenderuser'(ËˆÀÃûÿÿÿÿ8Â­·ð˜1
 t
 java:S3776R"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(ä–§ûùÿÿÿÿ8Á­·ð˜1
 m
 java:S6201["PReplace this instanceof check and cast with 'instanceof ChatMembers chatmembers'(ž­•ì8Â­·ð˜1
 ~
-java:S6201^"\Replace this instanceof check and cast with 'instanceof MessageSenderUser messagesenderuser'(ËˆÀÃûÿÿÿÿ8Â­·ð˜1
+java:S6201^"\Replace this instanceof check and cast with 'instanceof MessageSenderUser messagesenderuser'(ËˆÀÃûÿÿÿÿ8Ž½°†™1

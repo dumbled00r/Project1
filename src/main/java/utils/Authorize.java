@@ -89,14 +89,11 @@ public class Authorize extends Base{
                 break;
             case TdApi.AuthorizationStateLoggingOut.CONSTRUCTOR:
                 haveAuthorization = false;
-                Print.print("Logging out");
                 break;
             case TdApi.AuthorizationStateClosing.CONSTRUCTOR:
                 haveAuthorization = false;
-                Print.print("Closing");
                 break;
             case TdApi.AuthorizationStateClosed.CONSTRUCTOR:
-                Print.print("Closed");
                 if (!needQuit) {
                     client = Client.create(new Handler.UpdateHandler(), null, null); // recreate client after previous has closed
                 } else {

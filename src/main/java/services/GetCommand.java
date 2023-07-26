@@ -3,6 +3,7 @@ package services;
 import airtableutils.SyncToAirTable;
 import models.GroupChat;
 import models.User;
+import org.drinkless.tdlib.Client;
 import utils.*;
 import org.drinkless.tdlib.TdApi;
 
@@ -206,7 +207,14 @@ public class GetCommand extends Base {
         public void execute(String args) throws InterruptedException, ExecutionException {
             String[] getArgs = args.split(" ", 1);
             if (!getArgs[0].equals("")) System.out.println("\nMaybe you mean logging out:");
-            client.send(new TdApi.LogOut(), defaultHandler);
+            CompletableFuture<Void> logoutFuture = new CompletableFuture<>();
+            client.send(new TdApi.LogOut(), new Client.ResultHandler() {
+                @Override
+                public void onResult(TdApi.Object object) throws IOException, InterruptedException, ExecutionException {
+                    logoutFuture.complete(null);
+                }
+            });
+            logoutFuture.thenAccept((Void v) -> System.out.println("Logged out, please wait for new session to be created"));
         }
     }
 
