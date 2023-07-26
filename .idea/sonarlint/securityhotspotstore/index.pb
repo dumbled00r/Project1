@@ -17,7 +17,5 @@ S
 #src/main/java/models/GroupChat.java,c\c\ccdfdaa74c99bd28be4ad40ae6cfde2e959703fd
 Y
 )src/main/java/airtableutils/AirTable.java,6\e\6e62b668af580b3715f76c80958f3dcb778ed6e1
-N
-src/main/java/Synchronize.java,d\d\dd2d14772763c29c12c4dabed48d8abd5d7326ef
 _
 /src/main/java/airtableutils/SyncToAirTable.java,a\a\aa826a4af7b35bbe5a07f090188ab83c7c050392

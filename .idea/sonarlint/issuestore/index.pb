@@ -17,7 +17,5 @@ Y
 )src/main/java/airtableutils/AirTable.java,6\e\6e62b668af580b3715f76c80958f3dcb778ed6e1
 J
 src/main/java/MainApp.java,8\1\81dc6a441e53064fd676d90a54bdbed8bb400b17
-N
-src/main/java/Synchronize.java,d\d\dd2d14772763c29c12c4dabed48d8abd5d7326ef
 _
 /src/main/java/airtableutils/SyncToAirTable.java,a\a\aa826a4af7b35bbe5a07f090188ab83c7c050392

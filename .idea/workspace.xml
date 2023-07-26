@@ -9,36 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/143d0a3538190046ee527485f8dd77db0114a5bc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4fa9dc974aa5b878b11f756c1a0074476c7832be" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80ee1307704fd0ced67a4704c69dae5f7f77ebf7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/7/97f2ec2979602ee844db0f2518e5455e23ac6019" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/a/baeaa142440107d1928d5a3606a5717ab70f4548" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/0/c0f1f0f4bd9d84d32be4875c03a35be1ed09a6be" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/4/143d0a3538190046ee527485f8dd77db0114a5bc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/f/4fa9dc974aa5b878b11f756c1a0074476c7832be" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/0/80ee1307704fd0ced67a4704c69dae5f7f77ebf7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/7/97f2ec2979602ee844db0f2518e5455e23ac6019" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/a/baeaa142440107d1928d5a3606a5717ab70f4548" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/0/c0f1f0f4bd9d84d32be4875c03a35be1ed09a6be" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/AddMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/AddMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/GetChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetChat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/GetMainChatList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetMainChatList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/GetMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/GetMessagesHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetMessagesHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/GetUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/GetUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/KickMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/KickMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/SendMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SendMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Authorize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Authorize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ToInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ToInt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-shm" afterDir="false" />
-    </list>
+    <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,32 +56,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;20&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Downloads/ass.uml&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.16308594&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "20",
+    "last_opened_file_path": "C:/Users/PC/Downloads/ass.uml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.16308594",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java" />
@@ -168,7 +139,7 @@
       <updated>1687795630172</updated>
       <workItem from="1690369260380" duration="2938000" />
       <workItem from="1690374689163" duration="3506000" />
-      <workItem from="1690380767670" duration="552000" />
+      <workItem from="1690380767670" duration="761000" />
     </task>
     <task id="LOCAL-00001" summary="Update syncing data on Airtable">
       <created>1687974185011</created>
