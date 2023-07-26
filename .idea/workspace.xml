@@ -9,7 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable" />
+    <list default="true" id="a5fab5ae-0e94-41ee-9313-3eb2556b2d88" name="Changes" comment="Update syncing data on Airtable">
+      <change afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/CreateGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/CreateGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-shm" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdlib/db.sqlite-wal" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/db.sqlite-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdlib/td.binlog" beforeDir="false" afterPath="$PROJECT_DIR$/tdlib/td.binlog" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +147,7 @@
       <updated>1687795630172</updated>
       <workItem from="1690369260380" duration="2938000" />
       <workItem from="1690374689163" duration="3506000" />
-      <workItem from="1690380767670" duration="761000" />
+      <workItem from="1690380767670" duration="1325000" />
     </task>
     <task id="LOCAL-00001" summary="Update syncing data on Airtable">
       <created>1687974185011</created>

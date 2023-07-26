@@ -26,7 +26,7 @@ public class CreateGroup extends Base {
                 else {
                     TdApi.Chat chat = (TdApi.Chat) object;
                     GroupChat groupChat = new GroupChat(chat.id, "BasicGroup", chat.title, 0, "", "");
-                    System.out.println("\nBasic Group with title " + chat.title + " has successfully been created");
+                    System.out.println("Basic Group with title: " + chat.title + ", ID: " + chat.id +" has successfully been created");
                     future.complete(groupChat);
                 }
             }
@@ -47,8 +47,7 @@ public class CreateGroup extends Base {
                 else {
                     TdApi.Chat chat = (TdApi.Chat) object;
                     GroupChat groupChat = new GroupChat(chat.id, "SuperGroup", chat.title, 0, "", "");
-                    System.out.println("\nSuper Group with title " + chat.title + " has successfully been created");
-                    Print.print("");
+                    System.out.println("Super Group with title: " + chat.title + ", ID: " + chat.id +" has successfully been created");
                     future.complete(groupChat);
                 }
             }
