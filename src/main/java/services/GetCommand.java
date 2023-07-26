@@ -127,10 +127,17 @@ public class GetCommand extends Base {
     }
 
     private static class SendMessageCommand extends Command {
-        @Override
         public void execute(String args) throws InterruptedException, ExecutionException {
             String[] sendArgs = args.split(" ", 2);
-            SendMessage.sendMessage(ConvertToLong.toLong(sendArgs[0]), sendArgs[1]);
+            if (sendArgs.length == 1) {
+                System.err.println("Message cannot be empty");
+                Print.print("");
+                return;
+            }
+            CompletableFuture<Void> future = SendMessage.sendMessage(ConvertToLong.toLong(sendArgs[0]), sendArgs[1]);
+            future.thenRun(() -> {
+            });
+            future.get();
         }
     }
 
@@ -140,7 +147,10 @@ public class GetCommand extends Base {
             String[] addArgs = args.split(" ", 2);
             Long longChatId = ConvertToLong.toLong(addArgs[0]);
             Long longUserId = ConvertToLong.toLong(addArgs[1]);
-            AddMember.addMember(longChatId, longUserId);
+            CompletableFuture<Void> future = AddMember.addMember(longChatId, longUserId);;
+            future.thenRun(() -> {
+            });
+            future.get();
         }
     }
 
@@ -150,7 +160,10 @@ public class GetCommand extends Base {
             String[] kickArgs = args.split(" ", 2);
             Long longChatId = ConvertToLong.toLong(kickArgs[0]);
             Long longUserId = ConvertToLong.toLong(kickArgs[1]);
-            KickMember.kickMember(longChatId, longUserId);
+            CompletableFuture<Void> future = KickMember.kickMember(longChatId, longUserId);
+            future.thenRun(() -> {
+            });
+            future.get();
         }
     }
     private static class GetMemberCommand extends Command {
@@ -175,15 +188,22 @@ public class GetCommand extends Base {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException, IOException {
             String[] getGroupTitle = args.split(" ", 1);
-            CreateGroup.createBasicGroup(getGroupTitle[0]);
+            CompletableFuture<GroupChat> future = CreateGroup.createBasicGroup(getGroupTitle[0]);
+            CompletableFuture<Void> printFuture = future.thenAccept((GroupChat groupChat) -> {
+            }).thenRun(() -> {
+            });
+            printFuture.get();
         }
     }
-
     private static class CreateSuperGroup extends Command {
         @Override
         public void execute(String args) throws InterruptedException, ExecutionException, IOException {
             String[] getGroupTitle = args.split(" ", 1);
-            CreateGroup.createSuperGroup(getGroupTitle[0]);
+            CompletableFuture<GroupChat> future = CreateGroup.createSuperGroup(getGroupTitle[0]);
+            CompletableFuture<Void> printFuture = future.thenAccept((GroupChat groupChat) -> {
+            }).thenRun(() -> {
+            });
+            printFuture.get();
         }
     }
 
