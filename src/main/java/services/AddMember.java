@@ -26,7 +26,7 @@ public class AddMember extends Base {
                     FileLogger.write("\nFailed to add member: " + ((TdApi.Error) object).message);
                 }
                 else {
-                    System.out.println("Added successfully");
+                    System.out.println("\033[0;92mAdded successfully\033[0m");
                 }
                 future.complete(null);
             }

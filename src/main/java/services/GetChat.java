@@ -151,9 +151,9 @@ public class GetChat extends Base {
     public static void printChatInfo() throws ExecutionException, InterruptedException {
         List<GroupChat> results = getMassChat().get();
         if (!results.isEmpty()) {
-            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
-            System.out.println("|        ID       |      Type       |             Title              |           Description          |          Invite Link           |    Members      |");
-            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
+            System.out.println("\033[34m+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
+            System.out.println("\033[34m|        ID       |      Type       |             Title              |           Description          |          Invite Link           |    Members      |");
+            System.out.println("\033[34m+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
             for (GroupChat result : results) {
                 long id = result.getId();
                 String type = result.getType();
@@ -163,9 +163,9 @@ public class GetChat extends Base {
                 int memberCount = result.getMembersCount();
 
                 // Restretch the table to fit the result
-                System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-30s | %-15d |\n", id, type, title, description, inviteLink, memberCount);
+                System.out.printf("\033[34m| %-15d | %-15s | %-30s | %-30s | %-30s | %-15d |\n", id, type, title, description, inviteLink, memberCount);
             }
-            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+");
+            System.out.println("\033[34m+-----------------+-----------------+--------------------------------+--------------------------------+--------------------------------+-----------------+\033[0m");
         } else {
             System.out.println("No chat information available");
         }

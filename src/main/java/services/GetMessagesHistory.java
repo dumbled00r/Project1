@@ -70,7 +70,7 @@ public class GetMessagesHistory extends Base {
                     }
                 }
             }, CompletableFuture.delayedExecutor(5, TimeUnit.SECONDS, scheduler)).join();
-            System.out.println("Message retrieved successfully, saved in file: "+ fileName);
+            System.out.println("\033[0;92mMessage retrieved successfully, saved in file: \033[0m"+ fileName);
         } catch (IOException e) {
             FileLogger.write(e.getMessage());
         }

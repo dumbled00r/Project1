@@ -15,7 +15,7 @@ public class KickMember extends Base {
                 FileLogger.write("Failed to kick member: " + ((TdApi.Error) object).message);
             }
             else {
-                System.out.println("Member kicked successfully");
+                System.out.println("\033[0;92mMember kicked successfully\033[0m");
             }
             future.complete(null);
         });

@@ -70,20 +70,20 @@ public class GetCommand extends Base {
     private static class HelpCommand extends Command {
         @Override
         public void execute(String args) {
-            System.out.println("   Command    |     Arguments      |             Description              ");
-            System.out.println("getallchat    |                    |  Get All Administrated Chat Information");
-            System.out.println("getme         |                    |  Get My Information");
-            System.out.println("sendmsg       | <ChatId> <Message> |  Send Message To An Existing Chat");
-            System.out.println("addmember     | <ChatId> <UserId>  |  Add User To An Existing Chat");
-            System.out.println("getmember     | <ChatId>           |  Get Members Of A Chat Group");
-            System.out.println("kick          | <ChatId> <UserId>  |  Kick User Out Of An Existing Chat");
-            System.out.println("getmessage    | <ChatId>           |  Get Messages History Of An Existing Chat");
-            System.out.println("createbasic   | <GroupTitle>       |  Create Basic Group Chat");
-            System.out.println("createsuper   | <GroupTitle>       |  Create Super Group Chat");
-            System.out.println("sync          |                    |  Sync To AirTable");
-            System.out.println("logout        |                    |  Logout");
-            System.out.println("help          |                    |  List Of Commands");
-            System.out.println("quit          |                    |  Quit");
+            System.out.println("\033[0;96m  Command     |     Arguments      |             Description              \033[0m");
+            System.out.println("\033[0;96mgetallchat    |                    |  Get All Administrated Chat Information\033[m");
+            System.out.println("\033[0;96mgetme         |                    |  Get My Information\033[0m");
+            System.out.println("\033[0;96msendmsg       | <ChatId> <Message> |  Send Message To An Existing Chat\033[0m");
+            System.out.println("\033[0;96maddmember     | <ChatId> <UserId>  |  Add User To An Existing Chat\033[0m");
+            System.out.println("\033[0;96mgetmember     | <ChatId>           |  Get Members Of A Chat Group\033[0m");
+            System.out.println("\033[0;96mkick          | <ChatId> <UserId>  |  Kick User Out Of An Existing Chat\033[0m");
+            System.out.println("\033[0;96mgetmessage    | <ChatId>           |  Get Messages History Of An Existing Chat\033[0m");
+            System.out.println("\033[0;96mcreatebasic   | <GroupTitle>       |  Create Basic Group Chat\033[0m");
+            System.out.println("\033[0;96mcreatesuper   | <GroupTitle>       |  Create Super Group Chat\033[0m");
+            System.out.println("\033[0;96msync          |                    |  Sync To AirTable\033[0m");
+            System.out.println("\033[0;96mlogout        |                    |  Logout\033[0m");
+            System.out.println("\033[0;96mhelp          |                    |  List Of Commands\033[0m");
+            System.out.println("\033[0;96mquit          |                    |  Quit\033[0m");
         }
     }
 

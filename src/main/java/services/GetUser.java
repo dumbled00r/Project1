@@ -71,10 +71,10 @@ public class GetUser extends Base {
 
     public static void printUserInfo(List<User> results){
         if (!results.isEmpty()) {
-            System.out.println("User information:");
-            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
-            System.out.println("|        ID       |     Username    |           First Name           |         Last Name              |     Chat ID     |  User Type |");
-            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
+            System.out.println("\033[34mUser information:");
+            System.out.println("\033[34m+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+\033[0m");
+            System.out.println("\033[34m|        ID       |     Username    |           First Name           |         Last Name              |     Chat ID     |  User Type |\033[0m");
+            System.out.println("\033[34m+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+\033[0m");
             for (User user : results) {
                 long id = user.getId();
                 String username = truncateStringIfNeeded(user.getUsername());
@@ -82,9 +82,9 @@ public class GetUser extends Base {
                 String lastName = truncateStringIfNeeded(user.getLastName());
                 long chatIdValue = user.getChatId();
                 String type = user.getType(); // new field
-                System.out.printf("| %-15d | %-15s | %-30s | %-30s | %-15d | %-10s |\n", id, username, firstName, lastName, chatIdValue, type);
+                System.out.printf("\033[34m| %-15d | %-15s | %-30s | %-30s | %-15d | %-10s |\033[0m\n", id, username, firstName, lastName, chatIdValue, type);
             }
-            System.out.println("+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+");
+            System.out.println("\033[34m+-----------------+-----------------+--------------------------------+--------------------------------+-----------------+------------+\033[0m");
         } else {
             System.err.println("\nNo user information available, may be the chat Id is wrong");
         }

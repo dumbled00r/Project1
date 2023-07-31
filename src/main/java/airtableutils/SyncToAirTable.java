@@ -54,7 +54,7 @@ public class SyncToAirTable {
             updateProgressBar(processedChats, numChats);
         }
 
-        System.out.println("\nGroup Data processing completed!\n");
+        System.out.println("\n\033[0;92mGroup Data processing completed!\033[0m\n");
 
         Map<String, JsonObject> idToJsonObject = new HashMap<>();
         int numUsers = jsonUserRes.size();
@@ -85,7 +85,7 @@ public class SyncToAirTable {
             processedUsers++;
             updateProgressBar(processedUsers, numUsers);
         }
-        System.out.println("\nUsers Data processing completed!");
+        System.out.println("\n\033[0;92mUsers Data processing completed!\033[0m");
 
         List<JsonObject> mergedObjects = new ArrayList<>(idToJsonObject.values());
 
@@ -105,7 +105,7 @@ public class SyncToAirTable {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String mergedJson = gson.toJson(mergedObjects);
-        System.out.println("\nUploading...");
+        System.out.println("\n\033[0;94mUploading...\033[0m");
         try {
             AirTableGroup airTableGroup = new AirTableGroup();
             for (JsonObject jsonObject : jsonGroupRes) {
@@ -115,7 +115,7 @@ public class SyncToAirTable {
             for (JsonObject jsonObject : mergedObjects) {
                 airTableUser.pushUserData(jsonObject);
             }
-            System.out.println("Update AirTable successfully");
+            System.out.println("\033[0;92mUpdate AirTable successfully\033[0m");
         } catch (Exception e) {
             System.err.println("Failed to update AirTable, check logs for more information");
             FileLogger.write(e.getMessage());
@@ -133,7 +133,7 @@ public class SyncToAirTable {
         progressBar.append(" ".repeat(remainingBars));
         progressBar.append(String.format("] %d%%", progress));
 
-        System.out.print("\rProcessing data to upload: " + progressBar.toString());
+        System.out.print("\r\033[0;93mProcessing data to upload: \033[0m" + progressBar.toString());
         System.out.flush();
     }
 }

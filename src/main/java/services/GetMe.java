@@ -48,14 +48,14 @@ public class GetMe extends Base {
 
             // Print out the user information in a tabular form
             String tableFormat = "%-15s %-20s%n";
-            System.out.println("\nYour Information:");
+            System.out.println("\033[0;95m\nYour Information:");
             System.out.println("-------------------------------------------------");
             System.out.printf(tableFormat, "Id:", userJson.get("Id").getAsInt());
             System.out.printf(tableFormat, "First Name:", userJson.get("First Name").getAsString());
             System.out.printf(tableFormat, "Last Name:", userJson.get("Last Name").getAsString());
             System.out.printf(tableFormat, "User Name:", userJson.get("User Name").getAsString());
             System.out.printf(tableFormat, "Phone Number: ", "+" + userJson.get("Phone Number").getAsString() );
-            System.out.println("-------------------------------------------------");
+            System.out.println("-------------------------------------------------\033[0m");
             Print.print("");
         } catch (InterruptedException | ExecutionException e) {
             Thread.currentThread().interrupt();

@@ -18,7 +18,6 @@ public class CreateGroup extends Base {
             @Override
             public void onResult(TdApi.Object object) throws IOException, InterruptedException, ExecutionException {
                 if (object instanceof TdApi.Error) {
-                    System.err.println("Encounter error: " + ((TdApi.Error) object).message);
                     FileLogger.write("Encounter error: " + ((TdApi.Error) object).message);
                     Print.print("");
                     future.completeExceptionally(new RuntimeException("Group creation failed: " + ((TdApi.Error) object).message));
@@ -26,7 +25,7 @@ public class CreateGroup extends Base {
                 else {
                     TdApi.Chat chat = (TdApi.Chat) object;
                     GroupChat groupChat = new GroupChat(chat.id, "BasicGroup", chat.title, 0, "", "");
-                    System.out.println("Basic Group with title: " + chat.title + ", ID: " + chat.id +" has successfully been created");
+                    System.out.println("\033[0;92mBasic Group with title: " + chat.title + ", ID: " + chat.id +" has successfully been created\033[0m");
                     future.complete(groupChat);
                 }
             }
@@ -39,7 +38,6 @@ public class CreateGroup extends Base {
             @Override
             public void onResult(TdApi.Object object) throws IOException, InterruptedException, ExecutionException {
                 if (object instanceof TdApi.Error) {
-                    System.err.println("Encounter error: " + ((TdApi.Error) object).message);
                     FileLogger.write("Encounter error: " + ((TdApi.Error) object).message);
                     Print.print("");
                     future.completeExceptionally(new RuntimeException("Group creation failed: " + ((TdApi.Error) object).message));
@@ -47,7 +45,7 @@ public class CreateGroup extends Base {
                 else {
                     TdApi.Chat chat = (TdApi.Chat) object;
                     GroupChat groupChat = new GroupChat(chat.id, "SuperGroup", chat.title, 0, "", "");
-                    System.out.println("Super Group with title: " + chat.title + ", ID: " + chat.id +" has successfully been created");
+                    System.out.println("\033[0;92mSuper Group with title: " + chat.title + ", ID: " + chat.id +" has successfully been created\033[0m");
                     future.complete(groupChat);
                 }
             }
